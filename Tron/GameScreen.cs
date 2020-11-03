@@ -21,7 +21,7 @@ namespace Tron
         SolidBrush whiteBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
-        public string blueDirection = "Up", orangeDirection = "Down";
+        public static string blueDirection = "Up", orangeDirection = "Down";
         int blueLives = 3, orangeLives = 3;
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown;
         Boolean rightBool = true, leftBool = true, upBool = false, downBool = false, wBool = false, dBool = true, sBool = false, aBool = true;
