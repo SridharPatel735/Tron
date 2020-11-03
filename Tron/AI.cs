@@ -33,29 +33,6 @@ namespace Tron
         //Moving the robot according to the distance and direction of the player
         public void AIMove(int _playerX, int _playerY)
         {
-            //if (Distance(_playerX, _playerY) < 400)
-            //{
-            //    //If player is to the left of bot and headning in left direction whilst bot is heading left on the bottom half
-            //    if(_playerX < X && GameScreen.blueDirection == "left" && botDirection == "left" && 533 / 2 > Y)
-            //    {
-            //        Go(botDirection);
-            //    }
-            //    //If player is to the left of bot and heading in left direction whilst bot is heading left and on the top half of screen
-            //    else if (_playerX < X && GameScreen.blueDirection == "left" && botDirection == "left" && 533 / 2 < Y)
-            //    {
-            //        Go(botDirection);
-            //    }
-            //    //If player is heading left of bot whilst bot is moving in same direction on the bottum half of screen
-            //    else if (_playerY < Y && GameScreen.blueDirection == "down" && botDirection == "down" && 900 / 2 < X)
-            //    {
-            //        Go(botDirection);
-            //    }
-
-            //}
-            //else 
-            //{ 
-            //    Go(botDirection); 
-            //}
             if (Distance(_playerX, _playerY) < 400)
             {
                 if (X > _playerX && GameScreen.blueDirection == "left" && botDirection == "left")//add if trail y is not within 10 of either side (&& trailY + 10 > Y && trailY - 10 < Y)     
