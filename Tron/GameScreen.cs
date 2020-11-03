@@ -24,7 +24,6 @@ namespace Tron
         public static string blueDirection = "Up", orangeDirection = "Down";
         int blueLives = 3, orangeLives = 3;
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown;
-        Boolean rightBool = true, leftBool = true, upBool = false, downBool = false, wBool = false, dBool = true, sBool = false, aBool = true;
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -32,283 +31,27 @@ namespace Tron
             {
                 case Keys.Left:
                     leftArrowDown = true;
-                    rightBool = false;
-                    upBool = true;
-                    downBool = true;
-                    if (leftArrowDown == true && downArrowDown == true && blueDirection == "Left")
-                    {
-                        blueDirection = "Down";
-                    }
-                    else if (leftArrowDown == true && upArrowDown == true && blueDirection == "Left")
-                    {
-                        blueDirection = "Up";
-                    }
-                    else if (downArrowDown == true && leftArrowDown == true && blueDirection == "Down")
-                    {
-                        blueDirection = "Left";
-                    }
-                    else if (upArrowDown == true && leftArrowDown == true && blueDirection == "Up")
-                    {
-                        blueDirection = "Left";
-                    }
-                    if (leftBool == true)
-                    {
-                        BlueRider.X -= BlueRider.riderHeight - BlueRider.riderWidth + 15;
-                        leftBool = false;
-                    }
-                    if (blueDirection == "Right" && leftArrowDown == true)
-                    {
-                        blueDirection = "Right";
-                    }
-                    else
-                    {
-                        blueDirection = "Left";
-                    }
                     break;
                 case Keys.Right:
                     rightArrowDown = true;
-                    leftBool = false;
-                    upBool = true;
-                    downBool = true;
-                    if (rightArrowDown == true && upArrowDown == true && blueDirection == "Right")
-                    {
-                        blueDirection = "Up";
-                    }
-                    else if (rightArrowDown == true && downArrowDown == true && blueDirection == "Right")
-                    {
-                        blueDirection = "Down";
-                    }
-                    else if (downArrowDown == true && rightArrowDown == true && blueDirection == "Down")
-                    {
-                        blueDirection = "Right";
-                    }
-                    else if (upArrowDown == true && rightArrowDown == true && blueDirection == "Up")
-                    {
-                        blueDirection = "Right";
-                    }
-                    if (rightBool == true)
-                    {
-                        BlueRider.X += BlueRider.riderHeight - BlueRider.riderWidth - 15;
-                        rightBool = false;
-                    }
-                    if (blueDirection == "Left" && rightArrowDown == true)
-                    {
-                        blueDirection = "Left";
-                    }
-                    else
-                    {
-                        blueDirection = "Right";
-                    }
                     break;
                 case Keys.Down:
                     downArrowDown = true;
-                    leftBool = true;
-                    upBool = false;
-                    rightBool = true;
-                    if (rightArrowDown == true && downArrowDown == true && blueDirection == "Right")
-                    {
-                        blueDirection = "Down";
-                    }
-                    else if (leftArrowDown == true && downArrowDown == true && blueDirection == "Left")
-                    {
-                        blueDirection = "Down";
-                    }
-                    else if (downArrowDown == true && rightArrowDown == true && blueDirection == "Down")
-                    {
-                        blueDirection = "Right";
-                    }
-                    else if (downArrowDown == true && leftArrowDown == true && blueDirection == "Down")
-                    {
-                        blueDirection = "Left";
-                    }
-                    if (downBool == true)
-                    {
-                        BlueRider.Y += 15;
-                        downBool = false;
-                    }
-                    if (blueDirection == "Up" && downArrowDown == true)
-                    {
-                        blueDirection = "Up";
-                    }
-                    else
-                    {
-                        blueDirection = "Down";
-                    }
                     break;
                 case Keys.Up:
                     upArrowDown = true;
-                    leftBool = true;
-                    downBool = false;
-                    rightBool = true;
-                    if (rightArrowDown == true && upArrowDown == true && blueDirection == "Right")
-                    {
-                        blueDirection = "Up";
-                    }
-                    else if (leftArrowDown == true && upArrowDown == true && blueDirection == "Left")
-                    {
-                        blueDirection = "Up";
-                    }
-                    else if (upArrowDown == true && rightArrowDown == true && blueDirection == "Up")
-                    {
-                        blueDirection = "Right";
-                    }
-                    else if (upArrowDown == true && leftArrowDown == true && blueDirection == "Up")
-                    {
-                        blueDirection = "Left";
-                    }
-                    if (upBool == true)
-                    {
-                        BlueRider.Y -= BlueRider.riderWidth - BlueRider.riderHeight + 15;
-                        upBool = false;
-                    }
-                    if (blueDirection == "Down" && upArrowDown == true)
-                    {
-                        blueDirection = "Down";
-                    }
-                    else
-                    {
-                        blueDirection = "Up";
-                    }
                     break;
                 case Keys.A:
                     aDown = true;
-                    dBool = false;
-                    wBool = true;
-                    sBool = true;
-                    if (wDown == true && aDown == true && orangeDirection == "Up")
-                    {
-                        orangeDirection = "Left";
-                    }
-                    else if (sDown == true && aDown == true && orangeDirection == "Down")
-                    {
-                        orangeDirection = "Left";
-                    }
-                    else if (aDown == true && wDown == true && orangeDirection == "Left")
-                    {
-                        orangeDirection = "Up";
-                    }
-                    else if (aDown == true && sDown == true && orangeDirection == "Left")
-                    {
-                        orangeDirection = "Down";
-                    }
-                    if (aBool == true)
-                    {
-                        OrangeRider.X -= OrangeRider.riderHeight - OrangeRider.riderWidth + 5;
-                        aBool = false;
-                    }
-                    if (orangeDirection == "Right" && aDown == true)
-                    {
-                        orangeDirection = "Right";
-                    }
-                    else
-                    {
-                        orangeDirection = "Left";
-                    }
                     break;
                 case Keys.W:
                     wDown = true;
-                    aBool = true;
-                    sBool = false;
-                    dBool = true;
-                    if (wDown == true && aDown == true && orangeDirection == "Up")
-                    {
-                        orangeDirection = "Left";
-                    }
-                    else if (wDown == true && dDown == true && orangeDirection == "Up")
-                    {
-                        orangeDirection = "Right";
-                    }
-                    else if (aDown == true && wDown == true && orangeDirection == "Left")
-                    {
-                        orangeDirection = "Up";
-                    }
-                    else if (dDown == true && wDown == true && orangeDirection == "Right")
-                    {
-                        orangeDirection = "Up";
-                    }
-                    if (wBool == true)
-                    {
-                        OrangeRider.Y -= OrangeRider.riderWidth - OrangeRider.riderHeight + 15;
-                        wBool = false;
-                    }
-                    if (orangeDirection == "Down" && wDown == true)
-                    {
-                        orangeDirection = "Down";
-                    }
-                    else
-                    {
-                        orangeDirection = "Up";
-                    }
                     break;
                 case Keys.S:
                     sDown = true;
-                    aBool = true;
-                    wBool = false;
-                    dBool = true;
-                    if (sDown == true && dDown == true && orangeDirection == "Down")
-                    {
-                        orangeDirection = "Right";
-                    }
-                    else if (sDown == true && aDown == true && orangeDirection == "Down")
-                    {
-                        orangeDirection = "Left";
-                    }
-                    else if (aDown == true && sDown == true && orangeDirection == "Left")
-                    {
-                        orangeDirection = "Down";
-                    }
-                    else if (dDown == true && sDown == true && orangeDirection == "Right")
-                    {
-                        orangeDirection = "Down";
-                    }
-                    if (sBool == true)
-                    {
-                        OrangeRider.Y += OrangeRider.riderWidth - OrangeRider.riderHeight - 15;
-                        sBool = false;
-                    }
-                    if (orangeDirection == "Up" && sDown == true)
-                    {
-                        orangeDirection = "Up";
-                    }
-                    else
-                    {
-                        orangeDirection = "Down";
-                    }
                     break;
                 case Keys.D:
                     dDown = true;
-                    aBool = false;
-                    wBool = true;
-                    sBool = true;
-                    if (wDown == true && dDown == true && orangeDirection == "Up")
-                    {
-                        orangeDirection = "Right";
-                    }
-                    else if (sDown == true && dDown == true && orangeDirection == "Down")
-                    {
-                        orangeDirection = "Right";
-                    }
-                    else if (dDown == true && wDown == true && orangeDirection == "Right")
-                    {
-                        orangeDirection = "Up";
-                    }
-                    else if (dDown == true && sDown == true && orangeDirection == "Right")
-                    {
-                        orangeDirection = "Down";
-                    }
-                    if (dBool == true)
-                    {
-                        OrangeRider.X += OrangeRider.riderHeight - OrangeRider.riderWidth - 15;
-                        dBool = false;
-                    }
-                    if (orangeDirection == "Left" && dDown == true)
-                    {
-                        orangeDirection = "Left";
-                    }
-                    else
-                    {
-                        orangeDirection = "Right";
-                    }
                     break;
             }
         }
@@ -351,6 +94,108 @@ namespace Tron
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            #region direction
+            //BlueRider
+            if (leftArrowDown && blueDirection != "Left" && blueDirection == "Up")
+            {
+                blueDirection = "Left";
+                BlueRider.X -= 32;
+                BlueRider.Y += 32;
+            }
+            else if (leftArrowDown && blueDirection != "Left" && blueDirection == "Down")
+            {
+                blueDirection = "Left";
+                BlueRider.X -= 32;
+                BlueRider.Y -= 6;
+            }
+            else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Up")
+            {
+                blueDirection = "Right";
+                BlueRider.X += 6;
+                BlueRider.Y += 32;
+            }
+            else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Down")
+            {
+                blueDirection = "Right";
+                BlueRider.X += 6;
+                BlueRider.Y -= 10;
+            }
+            else if (upArrowDown && blueDirection != "Up" && blueDirection == "Left")
+            {
+                blueDirection = "Up";
+                BlueRider.X += 32;
+                BlueRider.Y -= 32;
+            }
+            else if (upArrowDown && blueDirection != "Up" && blueDirection == "Right")
+            {
+                blueDirection = "Up";
+                BlueRider.X -= 6;
+                BlueRider.Y -= 32;
+            }
+            else if (downArrowDown && blueDirection != "Down" && blueDirection == "Left")
+            {
+                blueDirection = "Down";
+                BlueRider.X += 32;
+                BlueRider.Y += 6;
+            }
+            else if (downArrowDown && blueDirection != "Down" && blueDirection == "Right")
+            {
+                blueDirection = "Down";
+                BlueRider.X -= 6;
+                BlueRider.Y += 6;
+            }
+
+            //OrangeRider
+            if (aDown && orangeDirection != "Left" && orangeDirection == "Up")
+            {
+                orangeDirection = "Left";
+                OrangeRider.X -= 23;
+                OrangeRider.Y += 32;
+            }
+            else if (aDown && orangeDirection != "Left" && orangeDirection == "Down")
+            {
+                orangeDirection = "Left";
+                OrangeRider.X -= 23;
+                OrangeRider.Y -= 6;
+            }
+            else if (dDown && orangeDirection != "Right" && orangeDirection == "Up")
+            {
+                orangeDirection = "Right";
+                OrangeRider.X += 6;
+                OrangeRider.Y += 32;
+            }
+            else if (dDown && orangeDirection != "Right" && orangeDirection == "Down")
+            {
+                orangeDirection = "Right";
+                OrangeRider.X += 6;
+                OrangeRider.Y -= 10;
+            }
+            else if (wDown && orangeDirection != "Up" && orangeDirection == "Left")
+            {
+                orangeDirection = "Up";
+                OrangeRider.X += 28;
+                OrangeRider.Y -= 32;
+            }
+            else if (wDown && orangeDirection != "Up" && orangeDirection == "Right")
+            {
+                orangeDirection = "Up";
+                OrangeRider.X -= 6;
+                OrangeRider.Y -= 32;
+            }
+            else if (sDown && orangeDirection != "Down" && orangeDirection == "Left")
+            {
+                orangeDirection = "Down";
+                OrangeRider.X += 28;
+                OrangeRider.Y += 6;
+            }
+            else if (sDown && orangeDirection != "Down" && orangeDirection == "Right")
+            {
+                orangeDirection = "Down";
+                OrangeRider.X -= 6;
+                OrangeRider.Y += 6;
+            }
+            #endregion
+
             #region Movement & Adding Trail
             if (blueDirection == "Up" && BlueRider.Y > 0)
             {
@@ -404,43 +249,28 @@ namespace Tron
             #endregion
 
             #region Collision
-            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
-            {
-                playerTrailList.Clear();
-                BlueRider.Reset();
-                OrangeRider.Reset();
-                blueDirection = "Up";
-                orangeDirection = "Down";
-                rightBool = true;
-                leftBool = true;
-                upBool = false;
-                downBool = false;
-                wBool = false;
-                dBool = true;
-                sBool = false;
-                aBool = true;
-            }
-            foreach (Trail x in playerTrailList)
-            {
-                Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
-                if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
-                {
-                    //gameTimer.Enabled = false;
-                    BlueRider.Reset();
-                    OrangeRider.Reset();
-                    blueDirection = "Up";
-                    orangeDirection = "Down";
-                    rightBool = true;
-                    leftBool = true;
-                    upBool = false;
-                    downBool = false;
-                    wBool = false;
-                    dBool = true;
-                    sBool = false;
-                    aBool = true;
-                    playerTrailList.Clear();
-                }
-            }
+            //if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            //{
+            //    playerTrailList.Clear();
+            //    BlueRider.Reset();
+            //    OrangeRider.Reset();
+            //    blueDirection = "Up";
+            //    orangeDirection = "Down";
+            //}
+            //foreach (Trail x in playerTrailList)
+            //{
+            //    Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
+            //    if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
+            //    {
+            //        //gameTimer.Enabled = false;
+            //        BlueRider.Reset();
+            //        OrangeRider.Reset();
+            //        blueDirection = "Up";
+            //        orangeDirection = "Down";
+            //        playerTrailList.Clear();
+            //        break;
+            //    }
+            //}
             #endregion
 
             Refresh();
