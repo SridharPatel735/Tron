@@ -30,47 +30,36 @@ namespace Tron
             double distance = Math.Sqrt(dx * dx + dy * dy);
             return (distance);
         }
-        //Moving the robot according to the distance from the player
-        public void Move(int _playerX, int _playerY)
+        //Moving the robot according to the distance and direction of the player
+        public void AIMove(int _playerX, int _playerY)
         {
-            //if (Distance(_playerX, _playerY) < 400)
-            //{
-            //    //If player is to the left of bot and headning in left direction whilst bot is heading left on the bottom half
-            //    if(_playerX < X && GameScreen.blueDirection == "left" && botDirection == "left" && 533 / 2 > Y)
-            //    {
-            //        Go(botDirection);
-            //    }
-            //    //If player is to the left of bot and heading in left direction whilst bot is heading left and on the top half of screen
-            //    else if (_playerX < X && GameScreen.blueDirection == "left" && botDirection == "left" && 533 / 2 < Y)
-            //    {
-            //        Go(botDirection);
-            //    }
-            //    //If player is heading left of bot whilst bot is moving in same direction on the bottum half of screen
-            //    else if (_playerY < Y && GameScreen.blueDirection == "down" && botDirection == "down" && 900 / 2 < X)
-            //    {
-            //        Go(botDirection);
-            //    }
-
-            //}
-            //else 
-            //{ 
-            //    Go(botDirection); 
-            //}
             if (Distance(_playerX, _playerY) < 400)
             {
-                if (X > _playerX && GameScreen.blueDirection == "left" && botDirection == "left")
+                if (X > _playerX && GameScreen.blueDirection == "left" && botDirection == "left")//add if trail y is not within 10 of either side (&& trailY + 10 > Y && trailY - 10 < Y)     
+                {
+                    if (Y > _playerY || Y < _playerY && X > 20)
+                    {
+                        Go(botDirection);
+                    }
+                    else if (Y < _playerY)
+                    {
+                        TurnRight(botDirection);
+                    }
+                }
+                else if (X > _playerX && GameScreen.blueDirection == "left" && botDirection == "left")
+                {
+
+                }
+
+                else if (X < _playerX && GameScreen.blueDirection == "right" && botDirection == "right")//add if trail y is not within 10 of either side (&& trailY + 10 > Y && trailY - 10 < Y)
                 {
                     Go(botDirection);
                 }
-                else if (X < _playerX && GameScreen.blueDirection == "right" && botDirection == "right")
+                else if (Y < _playerY && GameScreen.blueDirection == "up" && botDirection == "up")//add if trail x is not within 10 of either side (&& trailX + 10 > X && trailX - 10 < X)
                 {
                     Go(botDirection);
                 }
-                else if (Y < _playerY && GameScreen.blueDirection == "up" && botDirection == "up")
-                {
-                    Go(botDirection);
-                }
-                else if (Y > _playerY && GameScreen.blueDirection == "down" && botDirection == "down")
+                else if (Y > _playerY && GameScreen.blueDirection == "down" && botDirection == "down")//add if trail x is not within 10 of either side (&& trailX + 10 > X && trailX - 10 < X)
                 {
                     Go(botDirection);
                 }
@@ -87,25 +76,37 @@ namespace Tron
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
-                X += speed;
+
+                botDirection = "left";
+
+                X -= speed;
             }
             else if (_direction == "up")
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
-                X -= speed;
+
+                botDirection = "right";
+
+                X += speed;
             }
             else if (_direction == "left")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
-                Y += speed;
+
+                botDirection = "up";
+
+                Y -= speed;
             }
             else if (_direction == "right")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
-                Y -= speed;
+
+                botDirection = "down";
+
+                Y += speed;
             }
         }
         //Turning left for the move method
@@ -115,25 +116,37 @@ namespace Tron
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
-                X -= speed;
+
+                botDirection = "right";
+
+                X += speed;
             }
             else if (_direction == "up")
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
-                X += speed;
+
+                botDirection = "left";
+
+                X -= speed;
             }
             else if (_direction == "left")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
-                Y -= speed;
+
+                botDirection = "down";
+
+                Y += speed;
             }
             else if (_direction == "right")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
-                Y += speed;
+
+                botDirection = "up";
+
+                Y -= speed;
             }
         }
         public void Go(string _direction)
