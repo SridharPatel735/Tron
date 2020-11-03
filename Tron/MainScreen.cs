@@ -21,7 +21,7 @@ namespace Tron
         {
             Form f = this.FindForm();
             f.Controls.Remove(this);
-            GameScreen gs = new GameScreen();
+            InstructionScreen gs = new InstructionScreen();
             f.Controls.Add(gs);
             gs.Focus();
         }
