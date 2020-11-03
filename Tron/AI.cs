@@ -31,7 +31,7 @@ namespace Tron
             return (distance);
         }
         //Moving the robot according to the distance from the player
-        public void Move(int _playerX, int _playerY)
+        public void AIMove(int _playerX, int _playerY)
         {
             //if (Distance(_playerX, _playerY) < 400)
             //{
@@ -87,25 +87,25 @@ namespace Tron
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
-                X += speed;
+                X -= speed;
             }
             else if (_direction == "up")
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
-                X -= speed;
+                X += speed;
             }
             else if (_direction == "left")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
-                Y += speed;
+                Y -= speed;
             }
             else if (_direction == "right")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
-                Y -= speed;
+                Y += speed;
             }
         }
         //Turning left for the move method
@@ -115,25 +115,25 @@ namespace Tron
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
-                X -= speed;
+                X += speed;
             }
             else if (_direction == "up")
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
-                X += speed;
+                X -= speed;
             }
             else if (_direction == "left")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
-                Y -= speed;
+                Y += speed;
             }
             else if (_direction == "right")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
-                Y += speed;
+                Y -= speed;
             }
         }
         public void Go(string _direction)
