@@ -117,12 +117,18 @@ namespace Tron
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
+
+                botDirection = "up";
+
                 Y -= speed;
             }
             else if (_direction == "right")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
+
+                botDirection = "down";
+
                 Y += speed;
             }
         }
@@ -133,24 +139,36 @@ namespace Tron
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
+
+                botDirection = "right";
+
                 X += speed;
             }
             else if (_direction == "up")
             {
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
+
+                botDirection = "left";
+
                 X -= speed;
             }
             else if (_direction == "left")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
+
+                botDirection = "down";
+
                 Y += speed;
             }
             else if (_direction == "right")
             {
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
+
+                botDirection = "up";
+
                 Y -= speed;
             }
         }
