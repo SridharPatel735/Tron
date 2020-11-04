@@ -108,7 +108,13 @@ namespace Tron
 
         public void OnStart()
         {
-
+            for (int i = 0; i <= 4; i++)
+            {
+                int x = randGen.Next(175, this.Width - 175);
+                int y = randGen.Next(75, this.Height - 200);
+                Rectangle newRec = new Rectangle(x, y, obsWidth, obsHeight);
+                obstacles.Add(newRec);
+            }
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -260,7 +266,7 @@ namespace Tron
                 Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y + BlueRider.riderHeight + bufferDistanceY, blueBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < this.Height)
+            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < 535)
             {
                 BlueRider.PlayerMoveUpDown(blueDirection);
                 Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y - bufferDistanceY, blueBrush);
@@ -285,7 +291,7 @@ namespace Tron
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y + OrangeRider.riderHeight + bufferDistanceY, orangeBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < this.Height)
+            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < 537)
             {
                 OrangeRider.PlayerMoveUpDown(orangeDirection);
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y - bufferDistanceY, orangeBrush);
