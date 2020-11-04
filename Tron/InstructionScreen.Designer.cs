@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstructionScreen));
             this.nameTimer = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.nameInput3 = new System.Windows.Forms.Label();
@@ -38,6 +39,10 @@
             this.nameInput6 = new System.Windows.Forms.Label();
             this.nameInput5 = new System.Windows.Forms.Label();
             this.nameInput4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.intructionLabel = new System.Windows.Forms.Label();
+            this.powerupLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // nameTimer
@@ -134,11 +139,44 @@
             this.nameInput4.TabIndex = 4;
             this.nameInput4.Text = "A";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Tron.Properties.Resources.instructionTitle;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1319, 159);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // intructionLabel
+            // 
+            this.intructionLabel.Font = new System.Drawing.Font("Digital-7 Mono", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intructionLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.intructionLabel.Location = new System.Drawing.Point(4, 185);
+            this.intructionLabel.Name = "intructionLabel";
+            this.intructionLabel.Size = new System.Drawing.Size(919, 510);
+            this.intructionLabel.TabIndex = 13;
+            this.intructionLabel.Text = resources.GetString("intructionLabel.Text");
+            // 
+            // powerupLabel
+            // 
+            this.powerupLabel.Font = new System.Drawing.Font("Digital-7 Mono", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.powerupLabel.ForeColor = System.Drawing.Color.OrangeRed;
+            this.powerupLabel.Location = new System.Drawing.Point(946, 223);
+            this.powerupLabel.Name = "powerupLabel";
+            this.powerupLabel.Size = new System.Drawing.Size(386, 231);
+            this.powerupLabel.TabIndex = 14;
+            this.powerupLabel.Text = "Power Up:\r\n\r\nSpeed Up      - \r\nSlow Opponent - \r\nSheild        - ";
+            // 
             // InstructionScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.powerupLabel);
+            this.Controls.Add(this.intructionLabel);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nameInput6);
             this.Controls.Add(this.nameInput5);
@@ -151,6 +189,7 @@
             this.Size = new System.Drawing.Size(1350, 800);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InstructionScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.InstructionScreen_PreviewKeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +206,8 @@
         private System.Windows.Forms.Label nameInput6;
         private System.Windows.Forms.Label nameInput5;
         private System.Windows.Forms.Label nameInput4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label intructionLabel;
+        private System.Windows.Forms.Label powerupLabel;
     }
 }

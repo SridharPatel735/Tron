@@ -120,4 +120,11 @@
   <metadata name="nameTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="intructionLabel.Text" xml:space="preserve">
+    <value>You cannot run into the walls, the other players trail, or your own trail as it will result in your life lost.
+
+If both players bikes run into each other then no one will lose a life the result will be a tie.
+
+The goal of the game is to be the last person standing.</value>
+  </data>
 </root>

@@ -66,9 +66,9 @@
             // 
             // titlePictureBox
             // 
-            this.titlePictureBox.BackgroundImage = global::Tron.Properties.Resources.titleImage;
+            this.titlePictureBox.BackgroundImage = global::Tron.Properties.Resources.mainScreenTitle;
             this.titlePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.titlePictureBox.Location = new System.Drawing.Point(164, 3);
+            this.titlePictureBox.Location = new System.Drawing.Point(97, 0);
             this.titlePictureBox.Name = "titlePictureBox";
             this.titlePictureBox.Size = new System.Drawing.Size(1163, 543);
             this.titlePictureBox.TabIndex = 1;

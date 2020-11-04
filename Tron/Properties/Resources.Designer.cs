@@ -149,7 +149,15 @@ namespace Tron.Properties {
         }
         
         /// <summary>
-
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Explosion {
+            get {
+                return ResourceManager.GetStream("Explosion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;highscore&gt;
         ///  &lt;player&gt;
@@ -180,19 +188,9 @@ namespace Tron.Properties {
         ///    &lt;name&gt;AAA&lt;/name&gt;
         ///    &lt;score&gt; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string HighScores
-        {
-            get
-            {
-                return ResourceManager.GetString("HighScores", resourceCulture);
-            }
-        }
-
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream Explosion {
+        internal static string HighScores {
             get {
-                return ResourceManager.GetStream("Explosion", resourceCulture);
+                return ResourceManager.GetString("HighScores", resourceCulture);
             }
         }
         
@@ -202,6 +200,16 @@ namespace Tron.Properties {
         internal static System.Drawing.Bitmap instructionTitle {
             get {
                 object obj = ResourceManager.GetObject("instructionTitle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mainScreenTitle {
+            get {
+                object obj = ResourceManager.GetObject("mainScreenTitle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,7 +241,6 @@ namespace Tron.Properties {
             get {
                 object obj = ResourceManager.GetObject("Number3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-
             }
         }
         
@@ -298,12 +305,11 @@ namespace Tron.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        internal static System.Drawing.Bitmap titleImage {
+        internal static string titleImage {
             get {
-                object obj = ResourceManager.GetObject("titleImage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("titleImage", resourceCulture);
             }
         }
     }
