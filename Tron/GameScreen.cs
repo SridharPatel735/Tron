@@ -23,12 +23,7 @@ namespace Tron
         public int riderHeight = 55;
         public static string blueDirection = "Up", orangeDirection = "Down";
         int blueLives = 3, orangeLives = 3;
-        Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown;
-
-        private void GameScreen_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            int i = 4;
-        }
+        Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -57,6 +52,10 @@ namespace Tron
                     break;
                 case Keys.D:
                     dDown = true;
+                    break;
+                case Keys.Escape:
+                    escDown = true;
+                    Pause();
                     break;
             }
         }
@@ -88,6 +87,9 @@ namespace Tron
                     break;
                 case Keys.D:
                     dDown = false;
+                    break;
+                case Keys.Escape:
+                    escDown = false;
                     break;
             }
         }
