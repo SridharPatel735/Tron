@@ -81,6 +81,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rider.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="Trail.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -145,6 +146,9 @@
     <None Include="Resources\New Piskel-1.png %282%29-1.png.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\HighScores.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Exit.png" />
   </ItemGroup>
   <ItemGroup>

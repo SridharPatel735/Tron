@@ -149,6 +149,41 @@ namespace Tron.Properties {
         }
         
         /// <summary>
+
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;highscore&gt;
+        ///  &lt;player&gt;
+        ///    &lt;name&gt;AAA&lt;/name&gt;
+        ///    &lt;score&gt;0&lt;/score&gt;
+        ///  &lt;/player&gt;
+        ///  &lt;player&gt;
+        ///    &lt;name&gt;AAA&lt;/name&gt;
+        ///    &lt;score&gt;1&lt;/score&gt;
+        ///  &lt;/player&gt;
+        ///  &lt;player&gt;
+        ///    &lt;name&gt;AAA&lt;/name&gt;
+        ///    &lt;score&gt;2&lt;/score&gt;
+        ///  &lt;/player&gt;
+        ///  &lt;player&gt;
+        ///    &lt;name&gt;AAA&lt;/name&gt;
+        ///    &lt;score&gt;3&lt;/score&gt;
+        ///  &lt;/player&gt;
+        ///  &lt;player&gt;
+        ///    &lt;name&gt;AAA&lt;/name&gt;
+        ///    &lt;score&gt;4&lt;/score&gt;
+        ///  &lt;/player&gt;
+        ///  &lt;player&gt;
+        ///    &lt;name&gt;AAA&lt;/name&gt;
+        ///    &lt;score&gt;5&lt;/score&gt;
+        ///  &lt;/player&gt;
+        ///  &lt;player&gt;
+        ///    &lt;name&gt;AAA&lt;/name&gt;
+        ///    &lt;score&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string HighScores {
+            get {
+                return ResourceManager.GetString("HighScores", resourceCulture);
+
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Explosion {
@@ -194,6 +229,7 @@ namespace Tron.Properties {
             get {
                 object obj = ResourceManager.GetObject("Number3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+
             }
         }
         

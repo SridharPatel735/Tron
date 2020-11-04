@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<highscore>
+  <player>
+    <name>AAA</name>
+    <score>0</score>
+  </player>
+  <player>
+    <name>AAA</name>
+    <score>1</score>
+  </player>
+  <player>
+    <name>AAA</name>
+    <score>2</score>
+  </player>
+  <player>
+    <name>AAA</name>
+    <score>3</score>
+  </player>
+  <player>
+    <name>AAA</name>
+    <score>4</score>
+  </player>
+  <player>
+    <name>AAA</name>
+    <score>5</score>
+  </player>
+  <player>
+    <name>AAA</name>
+    <score>6</score>
+  </player>
+  <player>
+    <name>AAA</name>
+    <score>7</score>
+  </player>
+  <player>
+    <name></name>
+    <score>8</score>
+  </player>
+  <player>
+    <name>AAA</name>
+    <score>9</score>
+  </player>
+</highscore>
