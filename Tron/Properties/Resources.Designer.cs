@@ -180,9 +180,13 @@ namespace Tron.Properties {
         ///    &lt;name&gt;AAA&lt;/name&gt;
         ///    &lt;score&gt; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string HighScores {
-            get {
+        internal static string HighScores
+        {
+            get
+            {
                 return ResourceManager.GetString("HighScores", resourceCulture);
+            }
+        }
 
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
