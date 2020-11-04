@@ -23,6 +23,7 @@ namespace Tron
         Image orangeRider = Properties.Resources.RedTronBike;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
+        SolidBrush blackBrush = new SolidBrush(Color.Black);
         public int riderWidth = 20;
         public int riderHeight = 55;
         public static string blueDirection = "Up", orangeDirection = "Down";
@@ -406,6 +407,8 @@ namespace Tron
             }
             e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
+
+            e.Graphics.FillRectangle(blackBrush, 0, this.Height -80, this.Width, 80);
         }
     }
 }
