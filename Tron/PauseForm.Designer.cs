@@ -34,25 +34,38 @@
             // 
             // continueButton
             // 
-            this.continueButton.Location = new System.Drawing.Point(505, 330);
+            this.continueButton.BackColor = System.Drawing.Color.Black;
+            this.continueButton.BackgroundImage = global::Tron.Properties.Resources.Continue;
+            this.continueButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.continueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.continueButton.Location = new System.Drawing.Point(324, 312);
             this.continueButton.Name = "continueButton";
-            this.continueButton.Size = new System.Drawing.Size(236, 97);
-            this.continueButton.TabIndex = 0;
-            this.continueButton.UseVisualStyleBackColor = true;
+            this.continueButton.Size = new System.Drawing.Size(316, 62);
+            this.continueButton.TabIndex = 1;
+            this.continueButton.UseVisualStyleBackColor = false;
+            this.continueButton.Click += new System.EventHandler(this.continueButton_Click);
+            this.continueButton.Enter += new System.EventHandler(this.continueButton_Enter);
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(25, 330);
+            this.exitButton.BackColor = System.Drawing.Color.Black;
+            this.exitButton.BackgroundImage = global::Tron.Properties.Resources.ExitHighlight;
+            this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Location = new System.Drawing.Point(12, 305);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(236, 97);
-            this.exitButton.TabIndex = 1;
-            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Size = new System.Drawing.Size(253, 76);
+            this.exitButton.TabIndex = 0;
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.exitButton.Enter += new System.EventHandler(this.exitButton_Enter);
             // 
             // PauseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(652, 393);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.continueButton);
             this.Name = "PauseForm";
