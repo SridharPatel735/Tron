@@ -15,18 +15,21 @@ namespace Tron
     {
         #region variable declarations
         //player name global string
-        public static string playerName;
+        public static string bluePlayerName, orangePlayerName;
 
         //booleans for key presses
         Boolean upArrowDown, downArrowDown, leftArrowDown, rightArrowDown;
 
         //booleans for checking which label the user is on
-        Boolean char1Selected, char2Selected, char3Selected;
+        Boolean char1Selected, char2Selected, char3Selected, char4Selected, char5Selected, char6Selected;
 
         //integers corresponding to each label's letter
         int i1 = 0;
         int i2 = 0;
         int i3 = 0;
+        int i4 = 0;
+        int i5 = 0;
+        int i6 = 0;
 
         //create a list with for letters A-Z
         List<string> letters = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "Y", "X", "Z", };
@@ -47,6 +50,9 @@ namespace Tron
             char1Selected = true;
             char2Selected = false;
             char3Selected = false;
+            char4Selected = false;
+            char5Selected = false;
+            char6Selected = false;
         }
         #endregion initial setup
 
@@ -78,7 +84,8 @@ namespace Tron
                     //gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
 
                     //set the player name
-                    playerName = nameInput1.Text + nameInput2.Text + nameInput3.Text;
+                    bluePlayerName = nameInput1.Text + nameInput2.Text + nameInput3.Text;
+                    orangePlayerName = nameInput4.Text + nameInput5.Text + nameInput6.Text;
                     break;
             }
         }
@@ -112,6 +119,9 @@ namespace Tron
                 nameInput1.BackColor = Color.DeepSkyBlue;
                 nameInput2.BackColor = Color.Black;
                 nameInput3.BackColor = Color.Black;
+                nameInput4.BackColor = Color.Black;
+                nameInput5.BackColor = Color.Black;
+                nameInput6.BackColor = Color.Black;
 
                 #region letter selection
                 //if up is pressed, go to the next letter in the alphabet
@@ -138,13 +148,16 @@ namespace Tron
                     char1Selected = false;
                     char2Selected = true;
                     char3Selected = false;
+                    char4Selected = false;
+                    char5Selected = false;
+                    char6Selected = false;
 
                     Thread.Sleep(150);
                     return;
                 }
                 #endregion letter selection
             }
-            #endregion char1
+            #endregion
 
             #region char2
             if (char2Selected == true)
@@ -153,6 +166,9 @@ namespace Tron
                 nameInput1.BackColor = Color.Black;
                 nameInput2.BackColor = Color.DeepSkyBlue;
                 nameInput3.BackColor = Color.Black;
+                nameInput4.BackColor = Color.Black;
+                nameInput5.BackColor = Color.Black;
+                nameInput6.BackColor = Color.Black;
 
                 #region letter selection
                 //if up is pressed, go to the next letter in the alphabet
@@ -179,6 +195,9 @@ namespace Tron
                     char1Selected = true;
                     char2Selected = false;
                     char3Selected = false;
+                    char4Selected = false;
+                    char5Selected = false;
+                    char6Selected = false;
 
                     Thread.Sleep(150);
                     return;
@@ -189,13 +208,16 @@ namespace Tron
                     char1Selected = false;
                     char2Selected = false;
                     char3Selected = true;
+                    char4Selected = false;
+                    char5Selected = false;
+                    char6Selected = false;
 
                     Thread.Sleep(150);
                     return;
                 }
                 #endregion letter selection
             }
-            #endregion char2
+            #endregion
 
             #region char3
             if (char3Selected == true)
@@ -204,6 +226,9 @@ namespace Tron
                 nameInput1.BackColor = Color.Black;
                 nameInput2.BackColor = Color.Black;
                 nameInput3.BackColor = Color.DeepSkyBlue;
+                nameInput4.BackColor = Color.Black;
+                nameInput5.BackColor = Color.Black;
+                nameInput6.BackColor = Color.Black;
 
                 #region letter selection
                 //if up is pressed, go to the next letter in the alphabet
@@ -230,13 +255,192 @@ namespace Tron
                     char1Selected = false;
                     char2Selected = true;
                     char3Selected = false;
+                    char4Selected = false;
+                    char5Selected = false;
+                    char6Selected = false;
+
+                    Thread.Sleep(150);
+                    return;
+                }
+                if (rightArrowDown == true)
+                {
+                    char1Selected = false;
+                    char2Selected = false;
+                    char3Selected = false;
+                    char4Selected = true;
+                    char5Selected = false;
+                    char6Selected = false;
 
                     Thread.Sleep(150);
                     return;
                 }
                 #endregion letter selection
             }
-            #endregion char3
+            #endregion
+
+            #region char4
+            if (char4Selected == true)
+            {
+                //highlight the letter selected
+                nameInput1.BackColor = Color.Black;
+                nameInput2.BackColor = Color.Black;
+                nameInput3.BackColor = Color.Black;
+                nameInput4.BackColor = Color.DeepSkyBlue;
+                nameInput5.BackColor = Color.Black;
+                nameInput6.BackColor = Color.Black;
+
+                #region letter selection
+                //if up is pressed, go to the next letter in the alphabet
+                if (upArrowDown == true)
+                {
+                    i4++;
+                    LetterLoop();
+                    nameInput4.Text = letters[i4];
+
+                    Thread.Sleep(150);
+                }
+                //if down is pressed, go to the previous letter in the alphabet
+                if (downArrowDown == true)
+                {
+                    i4--;
+                    LetterLoop();
+                    nameInput4.Text = letters[i4];
+
+                    Thread.Sleep(150);
+                }
+                //if right is pressed, go to the next letter
+                if (rightArrowDown == true)
+                {
+                    char1Selected = false;
+                    char2Selected = false;
+                    char3Selected = false;
+                    char4Selected = false;
+                    char5Selected = true;
+                    char6Selected = false;
+
+                    Thread.Sleep(150);
+                    return;
+                }
+                if (leftArrowDown == true)
+                {
+                    char1Selected = false;
+                    char2Selected = false;
+                    char3Selected = true;
+                    char4Selected = false;
+                    char5Selected = false;
+                    char6Selected = false;
+
+                    Thread.Sleep(150);
+                    return;
+                }
+                #endregion letter selection
+            }
+            #endregion
+
+            #region char5
+            if (char5Selected == true)
+            {
+                //highlight the letter selected
+                nameInput1.BackColor = Color.Black;
+                nameInput2.BackColor = Color.Black;
+                nameInput3.BackColor = Color.Black;
+                nameInput4.BackColor = Color.Black;
+                nameInput5.BackColor = Color.DeepSkyBlue;
+                nameInput6.BackColor = Color.Black;
+
+                #region letter selection
+                //if up is pressed, go to the next letter in the alphabet
+                if (upArrowDown == true)
+                {
+                    i5++;
+                    LetterLoop();
+                    nameInput5.Text = letters[i5];
+
+                    Thread.Sleep(150);
+                }
+                //if down is pressed, go to the previous letter in the alphabet
+                if (downArrowDown == true)
+                {
+                    i5--;
+                    LetterLoop();
+                    nameInput5.Text = letters[i5];
+
+                    Thread.Sleep(150);
+                }
+                //if left is pressed, go to the previous letter
+                if (rightArrowDown == true)
+                {
+                    char1Selected = false;
+                    char2Selected = false;
+                    char3Selected = false;
+                    char4Selected = false;
+                    char5Selected = false;
+                    char6Selected = true;
+
+                    Thread.Sleep(150);
+                    return;
+                }
+                if (leftArrowDown == true)
+                {
+                    char1Selected = false;
+                    char2Selected = false;
+                    char3Selected = false;
+                    char4Selected = true;
+                    char5Selected = false;
+                    char6Selected = false;
+
+                    Thread.Sleep(150);
+                    return;
+                }
+                #endregion letter selection
+            }
+            #endregion
+
+            #region char6
+            if (char6Selected == true)
+            {
+                //highlight the letter selected
+                nameInput1.BackColor = Color.Black;
+                nameInput2.BackColor = Color.Black;
+                nameInput3.BackColor = Color.Black;
+                nameInput4.BackColor = Color.Black;
+                nameInput5.BackColor = Color.Black;
+                nameInput6.BackColor = Color.DeepSkyBlue;
+
+                #region letter selection
+                //if up is pressed, go to the next letter in the alphabet
+                if (upArrowDown == true)
+                {
+                    i6++;
+                    LetterLoop();
+                    nameInput6.Text = letters[i6];
+
+                    Thread.Sleep(150);
+                }
+                //if down is pressed, go to the previous letter in the alphabet
+                if (downArrowDown == true)
+                {
+                    i6--;
+                    LetterLoop();
+                    nameInput6.Text = letters[i6];
+
+                    Thread.Sleep(150);
+                }
+                if (leftArrowDown == true)
+                {
+                    char1Selected = false;
+                    char2Selected = false;
+                    char3Selected = false;
+                    char4Selected = false;
+                    char5Selected = true;
+                    char6Selected = false;
+
+                    Thread.Sleep(150);
+                    return;
+                }
+                #endregion letter selection
+            }
+            #endregion
         }
         private void LetterLoop()
         {
@@ -250,6 +454,15 @@ namespace Tron
 
             if (i3 == 26) { i3 = 0; }
             if (i3 == -1) { i3 = 25; }
+
+            if (i4 == 26) { i4 = 0; }
+            if (i4 == -1) { i4 = 25; }
+
+            if (i5 == 26) { i5 = 0; }
+            if (i5 == -1) { i5 = 25; }
+
+            if (i6 == 26) { i6 = 0; }
+            if (i6 == -1) { i6 = 25; }
         }
     }
 }

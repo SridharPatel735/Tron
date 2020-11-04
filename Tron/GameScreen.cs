@@ -25,6 +25,11 @@ namespace Tron
         int blueLives = 3, orangeLives = 3;
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown;
 
+        private void GameScreen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int i = 4;
+        }
+
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             switch (e.KeyCode)
@@ -96,17 +101,55 @@ namespace Tron
         {
             #region direction
             //BlueRider
-            if (leftArrowDown && blueDirection != "Left" && blueDirection == "Up")
+            if (leftArrowDown && (upArrowDown || downArrowDown))
+            {
+                leftArrowDown = upArrowDown = downArrowDown = false;
+            }
+            else if (rightArrowDown && (upArrowDown || downArrowDown))
+            {
+                rightArrowDown = upArrowDown = downArrowDown = false;
+            }
+            else if (downArrowDown && (rightArrowDown || leftArrowDown))
+            {
+                downArrowDown = rightArrowDown = leftArrowDown = false;
+            }
+            else if (upArrowDown && (rightArrowDown || leftArrowDown))
+            {
+                upArrowDown = rightArrowDown = leftArrowDown = false;
+            }
+
+            //OrangeRider
+            if (aDown && (wDown || sDown))
+            {
+                aDown = wDown = sDown = false;
+            }
+            else if (dDown && (wDown || sDown))
+            {
+                dDown = wDown = sDown = false;
+            }
+            else if (sDown && (dDown || aDown))
+            {
+                sDown = dDown = aDown = false;
+            }
+            else if (wDown && (dDown || aDown))
+            {
+                wDown = dDown = aDown = false;
+            }
+
+            //BlueRider
+            if (leftArrowDown && blueDirection == "Up")
             {
                 blueDirection = "Left";
                 BlueRider.X -= 32;
                 BlueRider.Y += 32;
+                leftArrowDown = false;
             }
-            else if (leftArrowDown && blueDirection != "Left" && blueDirection == "Down")
+            else if (leftArrowDown && blueDirection == "Down")
             {
                 blueDirection = "Left";
                 BlueRider.X -= 32;
                 BlueRider.Y -= 6;
+                leftArrowDown = false;
             }
             else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Up")
             {
@@ -249,6 +292,7 @@ namespace Tron
             #endregion
 
             #region Collision
+            ////Collision with walls
             //if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             //{
             //    playerTrailList.Clear();
@@ -257,6 +301,9 @@ namespace Tron
             //    blueDirection = "Up";
             //    orangeDirection = "Down";
             //}
+            ////Collision with other player
+            ////if ()
+            ////Collision with trail
             //foreach (Trail x in playerTrailList)
             //{
             //    Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
