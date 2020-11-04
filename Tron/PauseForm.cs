@@ -18,6 +18,7 @@ namespace Tron
         //Creating button selected
         private int buttonSelected;
 
+
         public PauseForm()
         {
             InitializeComponent();
@@ -26,22 +27,33 @@ namespace Tron
         public static DialogResult Show()
         {
             pauseForm = new PauseForm();
-            pauseForm.StartPosition = FormStartPosition.CenterParent;
+            pauseForm.StartPosition = FormStartPosition.CenterScreen;
 
             pauseForm.ShowDialog();
             return buttonResult;
         }
-
-        private void exitButton_Enter(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             buttonResult = DialogResult.Abort;
             pauseForm.Close();
         }
 
-        private void continueButton_Enter(object sender, EventArgs e)
+        private void continueButton_Click(object sender, EventArgs e)
         {
             buttonResult = DialogResult.Cancel;
             pauseForm.Close();
+        }
+
+        private void continueButton_Enter(object sender, EventArgs e)
+        {
+            exitButton.BackgroundImage = Properties.Resources.Exit;
+            continueButton.BackgroundImage = Properties.Resources.ContinueHighlight;
+        }
+
+        private void exitButton_Enter(object sender, EventArgs e)
+        {
+            exitButton.BackgroundImage = Properties.Resources.ExitHighlight;
+            continueButton.BackgroundImage = Properties.Resources.Continue;
         }
     }
 }
