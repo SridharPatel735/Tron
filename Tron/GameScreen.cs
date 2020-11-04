@@ -13,6 +13,7 @@ namespace Tron
     public partial class GameScreen : UserControl
     {
         List<Trail> playerTrailList = new List<Trail>();
+        List<Rectangle> obstacles = new List<Rectangle>();
         Rider OrangeRider = new Rider(745, 2, 5);
         Rider BlueRider = new Rider(150, 503, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
@@ -20,11 +21,12 @@ namespace Tron
         Image orangeRider = Properties.Resources.RedTronBike;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
-        SolidBrush whiteBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
         public static string blueDirection = "Up", orangeDirection = "Down";
+        int obsWidth = 7, obsHeight = 56;
         int blueLives = 3, orangeLives = 3;
+        Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -99,6 +101,12 @@ namespace Tron
         public GameScreen()
         {
             InitializeComponent();
+            OnStart();
+        }
+
+        public void OnStart()
+        {
+
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
