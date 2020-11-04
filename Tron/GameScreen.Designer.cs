@@ -41,11 +41,10 @@
             // 
             // timerLabel
             // 
-            this.timerLabel.Location = new System.Drawing.Point(595, 237);
+            this.timerLabel.Location = new System.Drawing.Point(1267, 766);
             this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(377, 327);
+            this.timerLabel.Size = new System.Drawing.Size(83, 34);
             this.timerLabel.TabIndex = 0;
-            this.timerLabel.Text = "label1";
             // 
             // GameScreen
             // 
@@ -56,7 +55,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(1350, 800);
+            this.Size = new System.Drawing.Size(1350, 875);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
