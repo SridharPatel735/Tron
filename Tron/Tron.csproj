@@ -94,6 +94,9 @@
     <EmbeddedResource Include="InstructionScreen.resx">
       <DependentUpon>InstructionScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PauseForm.resx">
+      <DependentUpon>PauseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
