@@ -15,17 +15,21 @@ namespace Tron
     {
         List<Score> highScoreList = new List<Score>();
         List<Trail> playerTrailList = new List<Trail>();
+        List<Rectangle> obstacles = new List<Rectangle>();
         Rider OrangeRider = new Rider(745, 2, 5);
         Rider BlueRider = new Rider(150, 503, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
+        Image blueRider = Properties.Resources.BlueTronBike;
+        Image orangeRider = Properties.Resources.RedTronBike;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
-        SolidBrush whiteBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
         public static string blueDirection = "Up", orangeDirection = "Down";
+        int obsWidth = 7, obsHeight = 56;
         int blueLives = 3, orangeLives = 3;
-        Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown;
+        Random randGen = new Random();
+        Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -54,6 +58,10 @@ namespace Tron
                     break;
                 case Keys.D:
                     dDown = true;
+                    break;
+                case Keys.Escape:
+                    escDown = true;
+                    Pause();
                     break;
             }
         }
@@ -86,29 +94,76 @@ namespace Tron
                 case Keys.D:
                     dDown = false;
                     break;
+                case Keys.Escape:
+                    escDown = false;
+                    break;
             }
         }
 
         public GameScreen()
         {
             InitializeComponent();
+            OnStart();
+        }
+
+        public void OnStart()
+        {
+
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             #region direction
             //BlueRider
-            if (leftArrowDown && blueDirection != "Left" && blueDirection == "Up")
+            if (leftArrowDown && (upArrowDown || downArrowDown))
+            {
+                leftArrowDown = upArrowDown = downArrowDown = false;
+            }
+            else if (rightArrowDown && (upArrowDown || downArrowDown))
+            {
+                rightArrowDown = upArrowDown = downArrowDown = false;
+            }
+            else if (downArrowDown && (rightArrowDown || leftArrowDown))
+            {
+                downArrowDown = rightArrowDown = leftArrowDown = false;
+            }
+            else if (upArrowDown && (rightArrowDown || leftArrowDown))
+            {
+                upArrowDown = rightArrowDown = leftArrowDown = false;
+            }
+
+            //OrangeRider
+            if (aDown && (wDown || sDown))
+            {
+                aDown = wDown = sDown = false;
+            }
+            else if (dDown && (wDown || sDown))
+            {
+                dDown = wDown = sDown = false;
+            }
+            else if (sDown && (dDown || aDown))
+            {
+                sDown = dDown = aDown = false;
+            }
+            else if (wDown && (dDown || aDown))
+            {
+                wDown = dDown = aDown = false;
+            }
+
+            //BlueRider
+            if (leftArrowDown && blueDirection == "Up")
             {
                 blueDirection = "Left";
                 BlueRider.X -= 32;
                 BlueRider.Y += 32;
+                leftArrowDown = false;
             }
-            else if (leftArrowDown && blueDirection != "Left" && blueDirection == "Down")
+            else if (leftArrowDown && blueDirection == "Down")
             {
                 blueDirection = "Left";
                 BlueRider.X -= 32;
                 BlueRider.Y -= 6;
+                leftArrowDown = false;
             }
             else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Up")
             {
@@ -251,6 +306,7 @@ namespace Tron
             #endregion
 
             #region Collision
+            ////Collision with walls
             //if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             //{
             //    playerTrailList.Clear();
@@ -259,6 +315,9 @@ namespace Tron
             //    blueDirection = "Up";
             //    orangeDirection = "Down";
             //}
+            ////Collision with other player
+            ////if ()
+            ////Collision with trail
             //foreach (Trail x in playerTrailList)
             //{
             //    Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
@@ -339,8 +398,8 @@ namespace Tron
             {
                 e.Graphics.FillRectangle(b.colour, b.trailX, b.trailY, b.trailWidth, b.trailHeight);
             }
-            e.Graphics.FillRectangle(whiteBrush, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
-            e.Graphics.FillRectangle(whiteBrush, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
+            e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
+            e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
         }
     }
 }
