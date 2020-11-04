@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Tron
 {
     public partial class GameScreen : UserControl
     {
+        List<Score> highScoreList = new List<Score>();
         List<Trail> playerTrailList = new List<Trail>();
         Rider OrangeRider = new Rider(745, 2, 5);
         Rider BlueRider = new Rider(150, 503, 5);
@@ -312,10 +314,25 @@ namespace Tron
             }
 
             timerLabel.Text = "" + timer;
-
-
         }
+        public void HighScoreWrite()
+        {
+            XmlWriter writer = XmlWriter.Create("Resources/HighScore.xml", null);
 
+            writer.WriteStartElement("HighScore");
+
+            foreach (Score s in highScoreList)
+            {
+                writer.WriteStartElement("Score");
+
+                writer.WriteElementString("numericScore", s.score);
+                writer.WriteElementString("name", s.name);
+
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+            writer.Close();
+        }
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             foreach (Trail b in playerTrailList)
