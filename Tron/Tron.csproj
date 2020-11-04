@@ -144,5 +144,62 @@
   <ItemGroup>
     <None Include="Resources\New Piskel-1.png %282%29-1.png.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExitHighlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ContinueHighlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Continue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Number3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Number2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Number1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShieldPowerUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedTronBike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueTronBike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpeedPowerUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SlowTimePowerUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonClick.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ButtonSwitch.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedTronBike-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueTronBike-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueTronBike-1.png-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedTronBike-1.png-1.png.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

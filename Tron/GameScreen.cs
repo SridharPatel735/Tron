@@ -16,6 +16,8 @@ namespace Tron
         Rider OrangeRider = new Rider(745, 2, 5);
         Rider BlueRider = new Rider(150, 503, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
+        Image blueRider = Properties.Resources.BlueTronBike;
+        Image orangeRider = Properties.Resources.RedTronBike;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
         SolidBrush whiteBrush = new SolidBrush(Color.White);
@@ -356,8 +358,8 @@ namespace Tron
             {
                 e.Graphics.FillRectangle(b.colour, b.trailX, b.trailY, b.trailWidth, b.trailHeight);
             }
-            e.Graphics.FillRectangle(whiteBrush, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
-            e.Graphics.FillRectangle(whiteBrush, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
+            e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
+            e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
         }
     }
 }
