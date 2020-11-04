@@ -300,6 +300,21 @@ namespace Tron
                 }
             }
         }
+        public void HighScore()
+        {
+            int counter = 0;
+            int timer = 0;
+            counter++;
+
+            if (counter == 100)
+            {
+                timer++;
+            }
+
+            timerLabel.Text = "" + timer;
+
+
+        }
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
