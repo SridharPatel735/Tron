@@ -15,7 +15,7 @@ namespace Tron
     {
         List<Score> highScoreList = new List<Score>();
         List<Trail> playerTrailList = new List<Trail>();
-        List<Rectangle> obstacles = new List<Rectangle>();
+        List<Rectangle> obstaclesList = new List<Rectangle>();
         Rider OrangeRider = new Rider(745, 2, 5);
         Rider BlueRider = new Rider(150, 503, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
@@ -24,13 +24,13 @@ namespace Tron
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
         SolidBrush blackBrush = new SolidBrush(Color.Black);
+        int counter = 0;
+        int timer = 0;
+        SolidBrush obsBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
         public static string blueDirection = "Up", orangeDirection = "Down";
-        int obsWidth = 7, obsHeight = 56;
-        int blueLives = 3, orangeLives = 3;
-        int counter = 0;
-        int timer = 0;
+        int obsWidth = 10, obsHeight = 400;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
 
@@ -111,12 +111,29 @@ namespace Tron
 
         public void OnStart()
         {
-            for (int i = 0; i <= 4; i++)
+            blueDirection = "Up";
+            orangeDirection = "Down";
+            for (int i = 0; i <= 3; i++)
             {
-                int x = randGen.Next(175, this.Width - 175);
-                int y = randGen.Next(75, this.Height - 200);
+                int x = randGen.Next(55, this.Width - 55);
+                if (x >= 150 && x <= 170)
+                {
+                    x = randGen.Next(55, this.Width - 55);
+                }
+                else if (x >= 745 && x <= 765)
+                {
+                    x = randGen.Next(55, this.Width - 55);
+                }
+                foreach(Rectangle b in obstaclesList)
+                {
+                    if (b.X <= x + 75 && b.X >= x - 75)
+                    {
+                        x = randGen.Next(55, this.Width - 55);
+                    }
+                }
+                int y = randGen.Next(65, 100);
                 Rectangle newRec = new Rectangle(x, y, obsWidth, obsHeight);
-                obstacles.Add(newRec);
+                obstaclesList.Add(newRec);
             }
         }
 
@@ -294,7 +311,7 @@ namespace Tron
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y + OrangeRider.riderHeight + bufferDistanceY, orangeBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < 537)
+            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < 535)
             {
                 OrangeRider.PlayerMoveUpDown(orangeDirection);
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y - bufferDistanceY, orangeBrush);
@@ -313,8 +330,41 @@ namespace Tron
                 playerTrailList.Add(newtrail);
             }
             #endregion
-
+            
             HighScore();
+            
+            #region Collision
+            //Collision with walls
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            {
+                playerTrailList.Clear();
+                BlueRider.Reset();
+                OrangeRider.Reset();
+                blueDirection = "Up";
+                orangeDirection = "Down";
+            }
+            //Collision with other player
+            if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
+            {
+                BlueRider.Reset();
+                OrangeRider.Reset();
+            }
+            //Collision with trail
+            foreach (Trail x in playerTrailList)
+            {
+                Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
+                if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
+                {
+                    //gameTimer.Enabled = false;
+                    BlueRider.Reset();
+                    OrangeRider.Reset();
+                    blueDirection = "Up";
+                    orangeDirection = "Down";
+                    playerTrailList.Clear();
+                    break;
+                }
+            }
+            #endregion
 
             Refresh();
         }
@@ -378,6 +428,10 @@ namespace Tron
             foreach (Trail b in playerTrailList)
             {
                 e.Graphics.FillRectangle(b.colour, b.trailX, b.trailY, b.trailWidth, b.trailHeight);
+            }
+            foreach (Rectangle x in obstaclesList)
+            {
+                e.Graphics.FillRectangle(obsBrush, x.X, x.Y, x.Width, x.Height);
             }
             e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
