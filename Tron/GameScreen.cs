@@ -429,7 +429,7 @@ namespace Tron
         }
         public void HighScore()
         {
-
+            counter++;
             if (counter > 80)
             {
                 timer++;
