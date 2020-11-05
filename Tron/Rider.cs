@@ -9,7 +9,7 @@ namespace Tron
 {
     class Rider
     {
-        public int X, Y, speed, startX, startY;
+        public int X, Y, speed, startX, startY, lives = 3;
         public int riderWidth = 7, riderHeight = 28, riderWidthUpDown = 7, riderWidthLeftRight = 28, riderHeightUpDown = 28, riderHeightLeftRight = 7;
 
         public Rider (int _X, int _Y, int _speed)
@@ -73,6 +73,20 @@ namespace Tron
             Rectangle riderRec = new Rectangle(X, Y, riderWidth, riderHeight);
             Rectangle trailRec = new Rectangle(playerTrail.trailX, playerTrail.trailY, playerTrail.trailWidth, playerTrail.trailHeight);
             if (riderRec.IntersectsWith(trailRec))
+            {
+                lives--;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public Boolean PlayerCollision(Rider rider)
+        {
+            Rectangle riderRec = new Rectangle(X, Y, riderWidth, riderHeight);
+            Rectangle otherRec = new Rectangle(rider.X, rider.Y, rider.riderWidth, rider.riderHeight);
+            if (riderRec.IntersectsWith(otherRec))
             {
                 return true;
             }

@@ -28,7 +28,6 @@ namespace Tron
         public int riderHeight = 55;
         public static string blueDirection = "Up", orangeDirection = "Down";
         int obsWidth = 10, obsHeight = 400;
-        int blueLives = 3, orangeLives = 3;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
 
@@ -328,32 +327,36 @@ namespace Tron
             #endregion
 
             #region Collision
-            ////Collision with walls
-            //if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
-            //{
-            //    playerTrailList.Clear();
-            //    BlueRider.Reset();
-            //    OrangeRider.Reset();
-            //    blueDirection = "Up";
-            //    orangeDirection = "Down";
-            //}
-            ////Collision with other player
-            ////if ()
-            ////Collision with trail
-            //foreach (Trail x in playerTrailList)
-            //{
-            //    Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
-            //    if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
-            //    {
-            //        //gameTimer.Enabled = false;
-            //        BlueRider.Reset();
-            //        OrangeRider.Reset();
-            //        blueDirection = "Up";
-            //        orangeDirection = "Down";
-            //        playerTrailList.Clear();
-            //        break;
-            //    }
-            //}
+            //Collision with walls
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            {
+                playerTrailList.Clear();
+                BlueRider.Reset();
+                OrangeRider.Reset();
+                blueDirection = "Up";
+                orangeDirection = "Down";
+            }
+            //Collision with other player
+            if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
+            {
+                BlueRider.Reset();
+                OrangeRider.Reset();
+            }
+            //Collision with trail
+            foreach (Trail x in playerTrailList)
+            {
+                Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
+                if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
+                {
+                    //gameTimer.Enabled = false;
+                    BlueRider.Reset();
+                    OrangeRider.Reset();
+                    blueDirection = "Up";
+                    orangeDirection = "Down";
+                    playerTrailList.Clear();
+                    break;
+                }
+            }
             #endregion
 
             Refresh();
