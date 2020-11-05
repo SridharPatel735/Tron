@@ -111,6 +111,7 @@ namespace Tron
 
         public void OnStart()
         {
+            
             blueDirection = "Up";
             orangeDirection = "Down";
             for (int i = 0; i <= 3; i++)
@@ -331,11 +332,12 @@ namespace Tron
             }
             #endregion
             
+
             HighScore();
             
             #region Collision
             //Collision with walls
-            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= 535 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= 535 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
                 playerTrailList.Clear();
                 BlueRider.Reset();
