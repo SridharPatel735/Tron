@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Threading;
 
 namespace Tron
 {
@@ -33,6 +34,7 @@ namespace Tron
         int obsWidth = 10, obsHeight = 400;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
+        Boolean reset = true;
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -124,7 +126,7 @@ namespace Tron
                 {
                     x = randGen.Next(55, this.Width - 55);
                 }
-                foreach(Rectangle b in obstaclesList)
+                foreach (Rectangle b in obstaclesList)
                 {
                     if (b.X <= x + 75 && b.X >= x - 75)
                     {
@@ -330,24 +332,33 @@ namespace Tron
                 playerTrailList.Add(newtrail);
             }
             #endregion
-            
-            HighScore();
-            
+
+            if (reset == false)
+            {
+                HighScore();
+            }
+            else if(reset)
+            {
+                CountDown();
+                reset = false;
+            }
             #region Collision
             //Collision with walls
-            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= 535 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= 535 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
                 playerTrailList.Clear();
                 BlueRider.Reset();
                 OrangeRider.Reset();
                 blueDirection = "Up";
                 orangeDirection = "Down";
+                CountDown();
             }
             //Collision with other player
             if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
             {
                 BlueRider.Reset();
                 OrangeRider.Reset();
+                CountDown();
             }
             //Collision with trail
             foreach (Trail x in playerTrailList)
@@ -358,6 +369,7 @@ namespace Tron
                     //gameTimer.Enabled = false;
                     BlueRider.Reset();
                     OrangeRider.Reset();
+                    CountDown();
                     blueDirection = "Up";
                     orangeDirection = "Down";
                     playerTrailList.Clear();
@@ -393,16 +405,30 @@ namespace Tron
                 }
             }
         }
+
+        public void CountDown()
+        {
+            Graphics g = this.CreateGraphics();
+            g.DrawImage(Properties.Resources.Number3, 363, 156, 372, 372);
+
+            Thread.Sleep(1000);
+
+
+            g.DrawImage(Properties.Resources.Number2, 363,156, 372, 372);
+
+            Thread.Sleep(1000);
+
+            g.DrawImage(Properties.Resources.Number1, 363,156, 372, 372);
+            Thread.Sleep(1000);
+        }
         public void HighScore()
         {
-            counter++;
 
-            if (counter > 100)
+            if (counter > 80)
             {
                 timer++;
                 counter = 0;
             }
-
             timerLabel.Text = "" + timer;
         }
         public void HighScoreWrite()
@@ -436,7 +462,11 @@ namespace Tron
             e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
 
-            e.Graphics.FillRectangle(blackBrush, 0, this.Height -80, this.Width, 80);
+            e.Graphics.FillRectangle(blackBrush, 0, this.Height - 80, this.Width, 80);
+
+            if(reset)
+            e.Graphics.DrawImage(Properties.Resources.Number3, 363, 156, 352, 352);
+
         }
     }
 }
