@@ -23,6 +23,9 @@ namespace Tron
         Image orangeRider = Properties.Resources.RedTronBike;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
+        SolidBrush blackBrush = new SolidBrush(Color.Black);
+        int counter = 0;
+        int timer = 0;
         SolidBrush obsBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
@@ -327,7 +330,9 @@ namespace Tron
                 playerTrailList.Add(newtrail);
             }
             #endregion
-
+            
+            HighScore();
+            
             #region Collision
             //Collision with walls
             if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
@@ -390,13 +395,12 @@ namespace Tron
         }
         public void HighScore()
         {
-            int counter = 0;
-            int timer = 0;
             counter++;
 
-            if (counter == 100)
+            if (counter > 100)
             {
                 timer++;
+                counter = 0;
             }
 
             timerLabel.Text = "" + timer;
@@ -431,6 +435,8 @@ namespace Tron
             }
             e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
+
+            e.Graphics.FillRectangle(blackBrush, 0, this.Height -80, this.Width, 80);
         }
     }
 }
