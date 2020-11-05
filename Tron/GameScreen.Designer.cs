@@ -33,6 +33,8 @@
             this.timerLabel = new System.Windows.Forms.Label();
             this.blueLifeLabel = new System.Windows.Forms.Label();
             this.redLifeLabel = new System.Windows.Forms.Label();
+            this.countDownBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.countDownBox)).BeginInit();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -76,11 +78,22 @@
             this.redLifeLabel.TabIndex = 2;
             this.redLifeLabel.Text = "RED LIVES:";
             // 
+            // countDownBox
+            // 
+            this.countDownBox.BackgroundImage = global::Tron.Properties.Resources.Number3;
+            this.countDownBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.countDownBox.Location = new System.Drawing.Point(363, 156);
+            this.countDownBox.Name = "countDownBox";
+            this.countDownBox.Size = new System.Drawing.Size(372, 381);
+            this.countDownBox.TabIndex = 3;
+            this.countDownBox.TabStop = false;
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.countDownBox);
             this.Controls.Add(this.redLifeLabel);
             this.Controls.Add(this.blueLifeLabel);
             this.Controls.Add(this.timerLabel);
@@ -91,6 +104,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.countDownBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -101,5 +115,6 @@
         private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Label blueLifeLabel;
         private System.Windows.Forms.Label redLifeLabel;
+        private System.Windows.Forms.PictureBox countDownBox;
     }
 }
