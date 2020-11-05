@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Threading;
 
 namespace Tron
 {
@@ -75,6 +76,7 @@ namespace Tron
             if (riderRec.IntersectsWith(trailRec))
             {
                 lives--;
+                Thread.Sleep(1000);
                 return true;
             }
             else
@@ -88,6 +90,7 @@ namespace Tron
             Rectangle otherRec = new Rectangle(rider.X, rider.Y, rider.riderWidth, rider.riderHeight);
             if (riderRec.IntersectsWith(otherRec))
             {
+                Thread.Sleep(1000);
                 return true;
             }
             else

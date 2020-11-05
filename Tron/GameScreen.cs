@@ -108,6 +108,8 @@ namespace Tron
 
         public void OnStart()
         {
+            blueDirection = "Up";
+            orangeDirection = "Down";
             for (int i = 0; i <= 3; i++)
             {
                 int x = randGen.Next(55, this.Width - 55);
