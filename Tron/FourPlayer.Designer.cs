@@ -37,6 +37,10 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.Name = "FourPlayer";
             this.Size = new System.Drawing.Size(1652, 1348);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FourPlayer_Paint);
+            this.Enter += new System.EventHandler(this.FourPlayer_Enter);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FourPlayer_KeyUp);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FourPlayer_PreviewKeyDown);
             this.ResumeLayout(false);
 
         }
