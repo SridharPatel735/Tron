@@ -205,5 +205,26 @@
   <ItemGroup>
     <None Include="Resources\RedTronBike-1.png-1.png.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-1.png %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-1.png %285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-1.png %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-1.png %281%29-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-1.png %282%29-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-1.png %281%29-1.png %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

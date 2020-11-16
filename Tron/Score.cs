@@ -8,10 +8,11 @@ namespace Tron
 {
     class Score
     {
-        public string score, name;
-        public Score(string _name,string _score)
+        public string score, name1, name2;
+        public Score(string _name1, string _name2,string _score)
         {
-            name = _name;
+            name1 = _name1;
+            name2 = _name2;
             score = _score;
         }
     }
