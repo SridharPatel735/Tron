@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Tron
 {
     public partial class FourPlayer : UserControl
@@ -126,6 +127,7 @@ namespace Tron
         }
         public void CountDown()
         {
+            countDownBox.Location = New Point((FourPlayer.Width / 2) - (FourPlayer.Width / 2), (FourPlayer.Height / 2) - (FourPlayer.Height / 2);
             //countDownBox.Visible = true;
             //countDownBox.BackgroundImage = Properties.Resources.Number3;
             //countDownBox.Refresh();
