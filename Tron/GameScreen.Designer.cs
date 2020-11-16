@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.timerLabel = new System.Windows.Forms.Label();
+            this.blueLifeLabel = new System.Windows.Forms.Label();
+            this.redLifeLabel = new System.Windows.Forms.Label();
+            this.countDownBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.countDownBox)).BeginInit();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -52,11 +56,46 @@
             this.timerLabel.Text = "0";
             this.timerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // blueLifeLabel
+            // 
+            this.blueLifeLabel.BackColor = System.Drawing.Color.Black;
+            this.blueLifeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blueLifeLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.blueLifeLabel.Location = new System.Drawing.Point(3, 712);
+            this.blueLifeLabel.Name = "blueLifeLabel";
+            this.blueLifeLabel.Size = new System.Drawing.Size(348, 46);
+            this.blueLifeLabel.TabIndex = 1;
+            this.blueLifeLabel.Text = "BLUE LIVES:";
+            // 
+            // redLifeLabel
+            // 
+            this.redLifeLabel.BackColor = System.Drawing.Color.Black;
+            this.redLifeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.redLifeLabel.ForeColor = System.Drawing.Color.OrangeRed;
+            this.redLifeLabel.Location = new System.Drawing.Point(769, 712);
+            this.redLifeLabel.Name = "redLifeLabel";
+            this.redLifeLabel.Size = new System.Drawing.Size(328, 46);
+            this.redLifeLabel.TabIndex = 2;
+            this.redLifeLabel.Text = "RED LIVES:";
+            // 
+            // countDownBox
+            // 
+            this.countDownBox.BackgroundImage = global::Tron.Properties.Resources.Number3;
+            this.countDownBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.countDownBox.Location = new System.Drawing.Point(363, 156);
+            this.countDownBox.Name = "countDownBox";
+            this.countDownBox.Size = new System.Drawing.Size(372, 381);
+            this.countDownBox.TabIndex = 3;
+            this.countDownBox.TabStop = false;
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.countDownBox);
+            this.Controls.Add(this.redLifeLabel);
+            this.Controls.Add(this.blueLifeLabel);
             this.Controls.Add(this.timerLabel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -65,6 +104,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.countDownBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -73,5 +113,8 @@
 
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label timerLabel;
+        private System.Windows.Forms.Label blueLifeLabel;
+        private System.Windows.Forms.Label redLifeLabel;
+        private System.Windows.Forms.PictureBox countDownBox;
     }
 }

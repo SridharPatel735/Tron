@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Threading;
 
 namespace Tron
 {
@@ -23,7 +24,7 @@ namespace Tron
         Image orangeRider = Properties.Resources.RedTronBike;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
-        SolidBrush blackBrush = new SolidBrush(Color.Black);
+        SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17,17,17));
         int counter = 0;
         int timer = 0;
         SolidBrush obsBrush = new SolidBrush(Color.White);
@@ -33,6 +34,7 @@ namespace Tron
         int obsWidth = 10, obsHeight = 400;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
+        Boolean reset = true;
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -125,7 +127,7 @@ namespace Tron
                 {
                     x = randGen.Next(55, this.Width - 55);
                 }
-                foreach(Rectangle b in obstaclesList)
+                foreach (Rectangle b in obstaclesList)
                 {
                     if (b.X <= x + 75 && b.X >= x - 75)
                     {
@@ -331,13 +333,17 @@ namespace Tron
                 playerTrailList.Add(newtrail);
             }
             #endregion
-            
-            HighScore();
-            
+
+            if (reset == false)
+            {
+                HighScore();
+            }
+
             #region Collision
             //Collision with walls
             if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= 950 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= 950 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
+                reset = true;
                 playerTrailList.Clear();
                 BlueRider.Reset();
                 OrangeRider.Reset();
@@ -346,10 +352,15 @@ namespace Tron
                 timer = 0;
                 blueDirection = "Up";
                 orangeDirection = "Down";
+                CountDown();
+                reset = false;
             }
             //Collision with other player
             if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
             {
+                reset = true;
+                CountDown();
+                reset = false;
                 playerTrailList.Clear();
                 BlueRider.Reset();
                 OrangeRider.Reset();
@@ -365,6 +376,9 @@ namespace Tron
                 Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
                 if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
                 {
+                    reset = true;
+                    CountDown();
+                    reset = false;
                     playerTrailList.Clear();
                     BlueRider.Reset();
                     OrangeRider.Reset();
@@ -405,16 +419,35 @@ namespace Tron
                 }
             }
         }
+
+        public void CountDown()
+        {
+            countDownBox.Visible = true;
+            countDownBox.BackgroundImage = Properties.Resources.Number3;
+            countDownBox.Refresh();
+
+            Thread.Sleep(1000);
+
+            countDownBox.BackgroundImage = Properties.Resources.Number2;
+            countDownBox.Refresh();
+
+            Thread.Sleep(1000);
+
+            countDownBox.BackgroundImage = Properties.Resources.Number1;
+            countDownBox.Refresh();
+
+            Thread.Sleep(1000);
+
+            countDownBox.Visible = false;
+        }
         public void HighScore()
         {
             counter++;
-
-            if (counter > 100)
+            if (counter > 80)
             {
                 timer++;
                 counter = 0;
             }
-
             timerLabel.Text = "" + timer;
         }
         public void HighScoreRead()
@@ -500,7 +533,8 @@ namespace Tron
             e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
 
-            e.Graphics.FillRectangle(blackBrush, 0, this.Height -80, this.Width, 80);
+            e.Graphics.FillRectangle(blackBrush, 0, this.Height - 80, this.Width, 80);
+
         }
     }
 }
