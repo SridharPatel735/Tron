@@ -32,6 +32,7 @@
             this.playButton = new System.Windows.Forms.Button();
             this.titlePictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.titlePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exitButton.FlatAppearance.BorderSize = 0;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Location = new System.Drawing.Point(757, 587);
+            this.exitButton.Location = new System.Drawing.Point(922, 587);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(338, 126);
             this.exitButton.TabIndex = 1;
@@ -57,7 +58,7 @@
             this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.playButton.FlatAppearance.BorderSize = 0;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playButton.Location = new System.Drawing.Point(268, 587);
+            this.playButton.Location = new System.Drawing.Point(97, 587);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(338, 126);
             this.playButton.TabIndex = 0;
@@ -86,12 +87,26 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Press Space to Select\r\n";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.BackgroundImage = global::Tron.Properties.Resources._4PlayerButton;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(441, 587);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(475, 126);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
@@ -109,5 +124,6 @@
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

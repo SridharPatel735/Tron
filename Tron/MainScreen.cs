@@ -36,6 +36,7 @@ namespace Tron
         {
             playButton.BackgroundImage = Properties.Resources.playImage;
             exitButton.BackgroundImage = Properties.Resources.exitImageSelected;
+
         }
 
         private void playButton_Enter(object sender, EventArgs e)
