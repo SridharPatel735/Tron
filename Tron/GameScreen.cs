@@ -17,6 +17,7 @@ namespace Tron
         List<Score> highScoreList = new List<Score>();
         List<Trail> playerTrailList = new List<Trail>();
         List<Rectangle> obstaclesList = new List<Rectangle>();
+        List<PowerUp> powerUpList = new List<PowerUp>();
         Rider OrangeRider = new Rider(745, 2, 5);
         Rider BlueRider = new Rider(150, 503, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
@@ -32,6 +33,7 @@ namespace Tron
         public int riderHeight = 55;
         public static string blueDirection = "Up", orangeDirection = "Down";
         int obsWidth = 10, obsHeight = 400;
+        int powerUpSize = 20;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
         Boolean reset = true;
@@ -381,6 +383,16 @@ namespace Tron
 
             Refresh();
         }
+        public void SammyPowerUp()
+        {
+            
+            #region Collision with Powerups
+            if(powerUpCollide(OrangeRider))
+            {
+
+            }
+            #endregion
+        }
         public void Pause()
         {
             if (gameTimer.Enabled == true)
@@ -469,6 +481,18 @@ namespace Tron
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
 
             e.Graphics.FillRectangle(blackBrush, 0, this.Height - 80, this.Width, 80);
+
+        }
+        public void Shield()
+        {
+
+        }
+        public void SpeedBoost()
+        {
+
+        }
+        public void SlowDown()
+        {
 
         }
     }
