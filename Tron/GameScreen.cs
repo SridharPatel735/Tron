@@ -437,6 +437,8 @@ namespace Tron
         }
         public void CountDown()
         {
+            countDownBox.Location = new Point((this.Width / 2) - (countDownBox.Width / 2), (this.Height / 2) - (countDownBox.Height / 2));
+
             countDownBox.Visible = true;
             countDownBox.BackgroundImage = Properties.Resources.Number3;
             countDownBox.Refresh();
