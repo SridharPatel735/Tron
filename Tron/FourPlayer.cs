@@ -21,8 +21,8 @@ namespace Tron
         Rider GreenRider = new Rider(150, 2, 5);
         Rider YellowRider = new Rider(745, 503, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
-        Image blueRider = Properties.Resources.BlueTronBike;
-        Image orangeRider = Properties.Resources.RedTronBike;
+        Image blueRider = Properties.Resources.BlueBikeUp;
+        Image orangeRider = Properties.Resources.RedBikeDown;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
