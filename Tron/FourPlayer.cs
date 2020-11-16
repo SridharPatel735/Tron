@@ -15,6 +15,8 @@ namespace Tron
         List<Trail> playerTrailList = new List<Trail>();
         Rider OrangeRider = new Rider(745, 2, 5);
         Rider BlueRider = new Rider(150, 503, 5);
+        Rider GreenRider = new Rider(150, 2, 5);
+        Rider YellowRider = new Rider(745, 503, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
         Image blueRider = Properties.Resources.BlueTronBike;
         Image orangeRider = Properties.Resources.RedTronBike;
