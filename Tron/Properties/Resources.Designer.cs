@@ -160,33 +160,32 @@ namespace Tron.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;highscore&gt;
-        ///  &lt;player&gt;
-        ///    &lt;name&gt;AAA&lt;/name&gt;
-        ///    &lt;score&gt;0&lt;/score&gt;
-        ///  &lt;/player&gt;
-        ///  &lt;player&gt;
-        ///    &lt;name&gt;AAA&lt;/name&gt;
-        ///    &lt;score&gt;1&lt;/score&gt;
-        ///  &lt;/player&gt;
-        ///  &lt;player&gt;
-        ///    &lt;name&gt;AAA&lt;/name&gt;
-        ///    &lt;score&gt;2&lt;/score&gt;
-        ///  &lt;/player&gt;
-        ///  &lt;player&gt;
-        ///    &lt;name&gt;AAA&lt;/name&gt;
-        ///    &lt;score&gt;3&lt;/score&gt;
-        ///  &lt;/player&gt;
-        ///  &lt;player&gt;
-        ///    &lt;name&gt;AAA&lt;/name&gt;
-        ///    &lt;score&gt;4&lt;/score&gt;
-        ///  &lt;/player&gt;
-        ///  &lt;player&gt;
-        ///    &lt;name&gt;AAA&lt;/name&gt;
-        ///    &lt;score&gt;5&lt;/score&gt;
-        ///  &lt;/player&gt;
-        ///  &lt;player&gt;
-        ///    &lt;name&gt;AAA&lt;/name&gt;
-        ///    &lt;score&gt; [rest of string was truncated]&quot;;.
+        ///  &lt;Score&gt;
+        ///    &lt;name1&gt;AAA&lt;/name1&gt;
+        ///    &lt;name2&gt;BBB&lt;/name2&gt;
+        ///    &lt;time&gt;11&lt;/time&gt;
+        ///  &lt;/Score&gt;
+        ///  &lt;Score&gt;
+        ///    &lt;name1&gt;CCC&lt;/name1&gt;
+        ///    &lt;name2&gt;DDD&lt;/name2&gt;
+        ///    &lt;time&gt;10&lt;/time&gt;
+        ///  &lt;/Score&gt;
+        ///  &lt;Score&gt;
+        ///    &lt;name1&gt;EEE&lt;/name1&gt;
+        ///    &lt;name2&gt;FFF&lt;/name2&gt;
+        ///    &lt;time&gt;9&lt;/time&gt;
+        ///  &lt;/Score&gt;
+        ///  &lt;Score&gt;
+        ///    &lt;name1&gt;GGG&lt;/name1&gt;
+        ///    &lt;name2&gt;HHH&lt;/name2&gt;
+        ///    &lt;time&gt;8&lt;/time&gt;
+        ///  &lt;/Score&gt;
+        ///  &lt;Score&gt;
+        ///    &lt;name1&gt;III&lt;/name1&gt;
+        ///    &lt;name2&gt;JJJ&lt;/name2&gt;
+        ///    &lt;time&gt;7&lt;/time&gt;
+        ///  &lt;/Score&gt;
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string HighScores {
             get {
@@ -280,6 +279,16 @@ namespace Tron.Properties {
         internal static System.Drawing.Bitmap Number3 {
             get {
                 object obj = ResourceManager.GetObject("Number3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pause {
+            get {
+                object obj = ResourceManager.GetObject("pause", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
