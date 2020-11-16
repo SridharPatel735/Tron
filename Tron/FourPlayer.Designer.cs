@@ -34,9 +34,9 @@
             // 
             // countDownBox
             // 
-            this.countDownBox.Location = new System.Drawing.Point(496, 598);
+            this.countDownBox.Location = new System.Drawing.Point(496, 386);
             this.countDownBox.Name = "countDownBox";
-            this.countDownBox.Size = new System.Drawing.Size(612, 417);
+            this.countDownBox.Size = new System.Drawing.Size(760, 629);
             this.countDownBox.TabIndex = 0;
             this.countDownBox.TabStop = false;
             // 
