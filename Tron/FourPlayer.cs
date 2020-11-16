@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Threading;
 
 
 namespace Tron
@@ -127,24 +129,26 @@ namespace Tron
         }
         public void CountDown()
         {
-            countDownBox.Location = New Point((FourPlayer.Width / 2) - (FourPlayer.Width / 2), (FourPlayer.Height / 2) - (FourPlayer.Height / 2);
-            //countDownBox.Visible = true;
-            //countDownBox.BackgroundImage = Properties.Resources.Number3;
-            //countDownBox.Refresh();
+            //center to screen
+            countDownBox.Location = new Point ((this.Width / 2) - (countDownBox.Width / 2), (this.Height / 2) - (countDownBox.Height / 2));
 
-            //Thread.Sleep(1000);
+            countDownBox.Visible = true;
+            countDownBox.BackgroundImage = Properties.Resources.Number3;
+            countDownBox.Refresh();
 
-            //countDownBox.BackgroundImage = Properties.Resources.Number2;
-            //countDownBox.Refresh();
+            Thread.Sleep(1000);
 
-            //Thread.Sleep(1000);
+            countDownBox.BackgroundImage = Properties.Resources.Number2;
+            countDownBox.Refresh();
 
-            //countDownBox.BackgroundImage = Properties.Resources.Number1;
-            //countDownBox.Refresh();
+            Thread.Sleep(1000);
 
-            //Thread.Sleep(1000);
+            countDownBox.BackgroundImage = Properties.Resources.Number1;
+            countDownBox.Refresh();
 
-            //countDownBox.Visible = false;
+            Thread.Sleep(1000);
+
+            countDownBox.Visible = false;
         }
 
         public FourPlayer()
