@@ -36,6 +36,151 @@ namespace Tron
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown, bDown, nDown, mDown;
 
+        private void gameTimer_Tick(object sender, EventArgs e)
+        {
+            #region Movement
+            //BlueRider
+            if (leftArrowDown && (upArrowDown || downArrowDown))
+            {
+                leftArrowDown = upArrowDown = downArrowDown = false;
+            }
+            else if (rightArrowDown && (upArrowDown || downArrowDown))
+            {
+                rightArrowDown = upArrowDown = downArrowDown = false;
+            }
+            else if (downArrowDown && (rightArrowDown || leftArrowDown))
+            {
+                downArrowDown = rightArrowDown = leftArrowDown = false;
+            }
+            else if (upArrowDown && (rightArrowDown || leftArrowDown))
+            {
+                upArrowDown = rightArrowDown = leftArrowDown = false;
+            }
+
+            //OrangeRider
+            if (aDown && (wDown || sDown))
+            {
+                aDown = wDown = sDown = false;
+            }
+            else if (dDown && (wDown || sDown))
+            {
+                dDown = wDown = sDown = false;
+            }
+            else if (sDown && (dDown || aDown))
+            {
+                sDown = dDown = aDown = false;
+            }
+            else if (wDown && (dDown || aDown))
+            {
+                wDown = dDown = aDown = false;
+            }
+            //YellowRider
+            //GreenRider
+
+            //BlueRider
+            if (leftArrowDown && blueDirection == "Up")
+            {
+                blueDirection = "Left";
+                BlueRider.X -= 32;
+                BlueRider.Y += 32;
+                leftArrowDown = false;
+            }
+            else if (leftArrowDown && blueDirection == "Down")
+            {
+                blueDirection = "Left";
+                BlueRider.X -= 32;
+                BlueRider.Y -= 6;
+                leftArrowDown = false;
+            }
+            else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Up")
+            {
+                blueDirection = "Right";
+                BlueRider.X += 6;
+                BlueRider.Y += 32;
+            }
+            else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Down")
+            {
+                blueDirection = "Right";
+                BlueRider.X += 6;
+                BlueRider.Y -= 10;
+            }
+            else if (upArrowDown && blueDirection != "Up" && blueDirection == "Left")
+            {
+                blueDirection = "Up";
+                BlueRider.X += 32;
+                BlueRider.Y -= 32;
+            }
+            else if (upArrowDown && blueDirection != "Up" && blueDirection == "Right")
+            {
+                blueDirection = "Up";
+                BlueRider.X -= 6;
+                BlueRider.Y -= 32;
+            }
+            else if (downArrowDown && blueDirection != "Down" && blueDirection == "Left")
+            {
+                blueDirection = "Down";
+                BlueRider.X += 32;
+                BlueRider.Y += 6;
+            }
+            else if (downArrowDown && blueDirection != "Down" && blueDirection == "Right")
+            {
+                blueDirection = "Down";
+                BlueRider.X -= 6;
+                BlueRider.Y += 6;
+            }
+
+            //OrangeRider
+            if (aDown && orangeDirection != "Left" && orangeDirection == "Up")
+            {
+                orangeDirection = "Left";
+                OrangeRider.X -= 23;
+                OrangeRider.Y += 32;
+            }
+            else if (aDown && orangeDirection != "Left" && orangeDirection == "Down")
+            {
+                orangeDirection = "Left";
+                OrangeRider.X -= 23;
+                OrangeRider.Y -= 6;
+            }
+            else if (dDown && orangeDirection != "Right" && orangeDirection == "Up")
+            {
+                orangeDirection = "Right";
+                OrangeRider.X += 6;
+                OrangeRider.Y += 32;
+            }
+            else if (dDown && orangeDirection != "Right" && orangeDirection == "Down")
+            {
+                orangeDirection = "Right";
+                OrangeRider.X += 6;
+                OrangeRider.Y -= 10;
+            }
+            else if (wDown && orangeDirection != "Up" && orangeDirection == "Left")
+            {
+                orangeDirection = "Up";
+                OrangeRider.X += 28;
+                OrangeRider.Y -= 32;
+            }
+            else if (wDown && orangeDirection != "Up" && orangeDirection == "Right")
+            {
+                orangeDirection = "Up";
+                OrangeRider.X -= 6;
+                OrangeRider.Y -= 32;
+            }
+            else if (sDown && orangeDirection != "Down" && orangeDirection == "Left")
+            {
+                orangeDirection = "Down";
+                OrangeRider.X += 28;
+                OrangeRider.Y += 6;
+            }
+            else if (sDown && orangeDirection != "Down" && orangeDirection == "Right")
+            {
+                orangeDirection = "Down";
+                OrangeRider.X -= 6;
+                OrangeRider.Y += 6;
+            }
+#endregion
+        }
+
         private void FourPlayer_Enter(object sender, EventArgs e)
         {
             CountDown();
@@ -125,6 +270,31 @@ namespace Tron
                 case Keys.Escape:
                     escDown = false;
                     break;
+            }
+        }
+        public void Pause()
+        {
+            if (gameTimer.Enabled == true)
+            {
+
+                gameTimer.Enabled = false;
+
+                DialogResult dr = PauseForm.Show();
+
+                if (dr == DialogResult.Cancel)
+                {
+                    gameTimer.Enabled = true;
+                }
+                else if (dr == DialogResult.Abort)
+                {
+                    Form form = this.FindForm();
+                    MainScreen ms = new MainScreen();
+
+                    //ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
+
+                    form.Controls.Add(ms);
+                    form.Controls.Remove(this);
+                }
             }
         }
         public void CountDown()

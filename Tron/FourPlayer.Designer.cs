@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.countDownBox = new System.Windows.Forms.PictureBox();
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.countDownBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,6 +41,12 @@
             this.countDownBox.Size = new System.Drawing.Size(760, 629);
             this.countDownBox.TabIndex = 0;
             this.countDownBox.TabStop = false;
+            // 
+            // gameTimer
+            // 
+            this.gameTimer.Enabled = true;
+            this.gameTimer.Interval = 13;
+            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // FourPlayer
             // 
@@ -60,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox countDownBox;
+        private System.Windows.Forms.Timer gameTimer;
     }
 }
