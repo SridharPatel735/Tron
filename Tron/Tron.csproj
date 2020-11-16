@@ -235,5 +235,53 @@
   <ItemGroup>
     <None Include="Resources\image-1.png %281%29-1.png %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image-1.png %282%29-1.png-1.png %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreeenBikeDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenBikeRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenBikeLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenBikeUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YellowBikeDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YellowBikeRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YellowBikeUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YellowBikeLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueBikeLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedTronBikeDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedTronBikeRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedTronBikeLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueBikeRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueBikeDown.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

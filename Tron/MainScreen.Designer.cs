@@ -31,6 +31,7 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.titlePictureBox = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.titlePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,17 +75,30 @@
             this.titlePictureBox.TabIndex = 1;
             this.titlePictureBox.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.Font = new System.Drawing.Font("Digital-7 Mono", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.label1.Location = new System.Drawing.Point(476, 730);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(445, 60);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Press Space to Select\r\n";
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.titlePictureBox);
             this.Name = "MainScreen";
             this.Size = new System.Drawing.Size(1350, 800);
+            this.Load += new System.EventHandler(this.MainScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.titlePictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -94,5 +108,6 @@
         private System.Windows.Forms.PictureBox titlePictureBox;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Label label1;
     }
 }

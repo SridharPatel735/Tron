@@ -26,6 +26,14 @@ namespace Tron
         {
             if (_direction == "Up")
             {
+                if (GameScreen.blueDirection == "Up")
+                {
+                    GameScreen.blueRider = Properties.Resources.BlueBikeUp;
+                }
+                if (GameScreen.orangeDirection == "Up")
+                {
+                    GameScreen.orangeRider = Properties.Resources.RedBikeUp;
+                }
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
                 Y -= speed;
@@ -33,6 +41,14 @@ namespace Tron
             }
             else if (_direction == "Down")
             {
+                if (GameScreen.blueDirection == "Down")
+                {
+                    GameScreen.blueRider = Properties.Resources.BlueBikeDown;
+                }
+                if (GameScreen.orangeDirection == "Down")
+                {
+                    GameScreen.orangeRider = Properties.Resources.RedBikeDown;
+                }
                 riderHeight = riderHeightUpDown;
                 riderWidth = riderWidthUpDown;
                 Y += speed;
@@ -50,6 +66,14 @@ namespace Tron
         {
             if (_direction == "Left")
             {
+                if (GameScreen.blueDirection == "Left")
+                {
+                    GameScreen.blueRider = Properties.Resources.BlueBikeLeft;
+                }
+                if (GameScreen.orangeDirection == "Left")
+                {
+                    GameScreen.orangeRider = Properties.Resources.RedBikeLeft;
+                }
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
                 X -= speed;
@@ -57,6 +81,14 @@ namespace Tron
             }
             else if (_direction == "Right")
             {
+                if (GameScreen.blueDirection == "Right")
+                {
+                    GameScreen.blueRider = Properties.Resources.BlueBikeRight;
+                }
+                if (GameScreen.orangeDirection == "Right")
+                {
+                    GameScreen.orangeRider = Properties.Resources.RedBikeRight;
+                }
                 riderHeight = riderHeightLeftRight;
                 riderWidth = riderWidthLeftRight;
                 X += speed;
@@ -76,7 +108,6 @@ namespace Tron
             if (riderRec.IntersectsWith(trailRec))
             {
                 lives--;
-                Thread.Sleep(1000);
                 return true;
             }
             else
@@ -90,7 +121,19 @@ namespace Tron
             Rectangle otherRec = new Rectangle(rider.X, rider.Y, rider.riderWidth, rider.riderHeight);
             if (riderRec.IntersectsWith(otherRec))
             {
-                Thread.Sleep(1000);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public Boolean BarrierCollision(Rectangle obstacles)
+        {
+            Rectangle riderRec = new Rectangle(X, Y, riderWidth, riderHeight);
+            if (riderRec.IntersectsWith(obstacles))
+            {
+                lives--;
                 return true;
             }
             else

@@ -23,6 +23,7 @@ namespace Tron
             f.Controls.Remove(this);
             InstructionScreen gs = new InstructionScreen();
             f.Controls.Add(gs);
+            gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
             gs.Focus();
         }
 
@@ -41,6 +42,12 @@ namespace Tron
         {
             playButton.BackgroundImage = Properties.Resources.playImageSelected;
             exitButton.BackgroundImage = Properties.Resources.exitImage;
+        }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+            Form form = this.FindForm();
+            this.Location = new Point((form.Width - this.Width) / 2, (form.Height - this.Height) / 2);
         }
     }
 }
