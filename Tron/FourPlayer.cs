@@ -23,6 +23,8 @@ namespace Tron
         int bufferDistanceY = 10, bufferDistanceX = 1;
         Image blueRider = Properties.Resources.BlueBikeUp;
         Image orangeRider = Properties.Resources.RedBikeDown;
+        Image greenRider = Properties.Resources.GreenBikeDown;
+        Image yellowRider = Properties.Resources.YellowBikeDown; 
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
@@ -84,6 +86,23 @@ namespace Tron
             {
                 xDown = vDown = zDown = false;
             }
+            else if (zDown && (xDown || vDown))
+            {
+                zDown = xDown = vDown = false;
+            }
+            else if (vDown && (xDown || cDown))
+            {
+                vDown = xDown = cDown = false;
+            }
+            //GreenRider
+            if (leftArrowDown && (upArrowDown || downArrowDown))
+            {
+                leftArrowDown = upArrowDown = downArrowDown = false;
+            }
+            else if (rightArrowDown && (upArrowDown || downArrowDown))
+            {
+                rightArrowDown = upArrowDown = downArrowDown = false;
+            }
             else if (downArrowDown && (rightArrowDown || leftArrowDown))
             {
                 downArrowDown = rightArrowDown = leftArrowDown = false;
@@ -92,7 +111,6 @@ namespace Tron
             {
                 upArrowDown = rightArrowDown = leftArrowDown = false;
             }
-            //GreenRider
 
             //BlueRider
             if (leftArrowDown && blueDirection == "Up")
