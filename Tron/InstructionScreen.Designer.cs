@@ -41,7 +41,6 @@
             this.nameInput4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.intructionLabel = new System.Windows.Forms.Label();
-            this.powerupLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,28 +152,17 @@
             // 
             this.intructionLabel.Font = new System.Drawing.Font("Digital-7 Mono", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.intructionLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.intructionLabel.Location = new System.Drawing.Point(4, 185);
+            this.intructionLabel.Location = new System.Drawing.Point(4, 237);
             this.intructionLabel.Name = "intructionLabel";
-            this.intructionLabel.Size = new System.Drawing.Size(919, 510);
+            this.intructionLabel.Size = new System.Drawing.Size(1328, 458);
             this.intructionLabel.TabIndex = 13;
             this.intructionLabel.Text = resources.GetString("intructionLabel.Text");
-            // 
-            // powerupLabel
-            // 
-            this.powerupLabel.Font = new System.Drawing.Font("Digital-7 Mono", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.powerupLabel.ForeColor = System.Drawing.Color.OrangeRed;
-            this.powerupLabel.Location = new System.Drawing.Point(946, 223);
-            this.powerupLabel.Name = "powerupLabel";
-            this.powerupLabel.Size = new System.Drawing.Size(386, 231);
-            this.powerupLabel.TabIndex = 14;
-            this.powerupLabel.Text = "Power Up:\r\n\r\nSpeed Up      - \r\nSlow Opponent - \r\nSheild        - ";
             // 
             // InstructionScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
-            this.Controls.Add(this.powerupLabel);
             this.Controls.Add(this.intructionLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
@@ -208,6 +196,5 @@
         private System.Windows.Forms.Label nameInput4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label intructionLabel;
-        private System.Windows.Forms.Label powerupLabel;
     }
 }

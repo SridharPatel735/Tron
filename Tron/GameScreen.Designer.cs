@@ -48,10 +48,10 @@
             this.timerLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.timerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timerLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.timerLabel.Location = new System.Drawing.Point(559, 858);
+            this.timerLabel.Location = new System.Drawing.Point(530, 1252);
             this.timerLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(318, 73);
+            this.timerLabel.Size = new System.Drawing.Size(318, 55);
             this.timerLabel.TabIndex = 0;
             this.timerLabel.Text = "0";
             this.timerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -61,7 +61,7 @@
             this.blueLifeLabel.BackColor = System.Drawing.Color.Black;
             this.blueLifeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.blueLifeLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.blueLifeLabel.Location = new System.Drawing.Point(3, 712);
+            this.blueLifeLabel.Location = new System.Drawing.Point(15, 1252);
             this.blueLifeLabel.Name = "blueLifeLabel";
             this.blueLifeLabel.Size = new System.Drawing.Size(348, 46);
             this.blueLifeLabel.TabIndex = 1;
@@ -72,7 +72,7 @@
             this.redLifeLabel.BackColor = System.Drawing.Color.Black;
             this.redLifeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.redLifeLabel.ForeColor = System.Drawing.Color.OrangeRed;
-            this.redLifeLabel.Location = new System.Drawing.Point(769, 712);
+            this.redLifeLabel.Location = new System.Drawing.Point(1134, 1252);
             this.redLifeLabel.Name = "redLifeLabel";
             this.redLifeLabel.Size = new System.Drawing.Size(328, 46);
             this.redLifeLabel.TabIndex = 2;
@@ -100,7 +100,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(2223, 1591);
+            this.Size = new System.Drawing.Size(1622, 1348);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);

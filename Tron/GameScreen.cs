@@ -14,6 +14,10 @@ namespace Tron
 {
     public partial class GameScreen : UserControl
     {
+        //HighScore Error
+        //Countdown not working
+        //Barriers spawning in front of players
+
         List<Score> highScoreList = new List<Score>();
         List<Trail> playerTrailList = new List<Trail>();
         List<Rectangle> obstaclesList = new List<Rectangle>();
@@ -31,7 +35,7 @@ namespace Tron
         public int riderWidth = 20;
         public int riderHeight = 55;
         public static string blueDirection = "Up", orangeDirection = "Down";
-        int obsWidth = 10, obsHeight = 400;
+        int obsWidth = 10, obsHeight = 500;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
         Boolean reset = true;
@@ -113,10 +117,9 @@ namespace Tron
 
         public void OnStart()
         {
-            
             blueDirection = "Up";
             orangeDirection = "Down";
-            for (int i = 0; i <= randGen.Next(3,6); i++)
+            for (int i = 0; i <= randGen.Next(3,5); i++)
             {
                 int x = randGen.Next(55, this.Width - 55);
                 if (x >= 150 && x <= 170)
@@ -137,6 +140,8 @@ namespace Tron
                 int y = randGen.Next(65, 100);
                 Rectangle newRec = new Rectangle(x, y, obsWidth, obsHeight);
                 obstaclesList.Add(newRec);
+                CountDown();
+                reset = false;
             }
         }
 
@@ -419,23 +424,25 @@ namespace Tron
                 }
             }
         }
-
         public void CountDown()
         {
             countDownBox.Visible = true;
             countDownBox.BackgroundImage = Properties.Resources.Number3;
             countDownBox.Refresh();
 
+            Refresh();
             Thread.Sleep(1000);
 
             countDownBox.BackgroundImage = Properties.Resources.Number2;
             countDownBox.Refresh();
 
+            Refresh();
             Thread.Sleep(1000);
 
             countDownBox.BackgroundImage = Properties.Resources.Number1;
             countDownBox.Refresh();
 
+            Refresh();
             Thread.Sleep(1000);
 
             countDownBox.Visible = false;
@@ -452,17 +459,13 @@ namespace Tron
         }
         public void HighScoreRead()
         {
-            XmlReader reader = XmlReader.Create("Resources/HighScore.xml", null);
+            XmlReader reader = XmlReader.Create("Resources/HighScores.xml", null);
 
-            reader.ReadToFollowing("HighScore");
 
             while (reader.Read())
             {
                 if (reader.NodeType == XmlNodeType.Text)
                 {
-                    reader.ReadToFollowing("Score");
-
-                    reader.ReadToNextSibling("name1");
                     string player1 = reader.ReadString();
 
                     reader.ReadToNextSibling("name2");
@@ -534,7 +537,6 @@ namespace Tron
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
 
             e.Graphics.FillRectangle(blackBrush, 0, this.Height - 80, this.Width, 80);
-
         }
     }
 }
