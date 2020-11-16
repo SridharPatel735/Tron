@@ -114,14 +114,14 @@ namespace Tron
             
             blueDirection = "Up";
             orangeDirection = "Down";
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i <= randGen.Next(3,6); i++)
             {
                 int x = randGen.Next(55, this.Width - 55);
                 if (x >= 150 && x <= 170)
                 {
                     x = randGen.Next(55, this.Width - 55);
                 }
-                else if (x >= 745 && x <= 765)
+                if (x >= 745 && x <= 765)
                 {
                     x = randGen.Next(55, this.Width - 55);
                 }
@@ -287,7 +287,7 @@ namespace Tron
                 Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y + BlueRider.riderHeight + bufferDistanceY, blueBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < 535)
+            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < 950)
             {
                 BlueRider.PlayerMoveUpDown(blueDirection);
                 Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y - bufferDistanceY, blueBrush);
@@ -312,7 +312,7 @@ namespace Tron
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y + OrangeRider.riderHeight + bufferDistanceY, orangeBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < 535)
+            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < 950)
             {
                 OrangeRider.PlayerMoveUpDown(orangeDirection);
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y - bufferDistanceY, orangeBrush);
@@ -332,24 +332,32 @@ namespace Tron
             }
             #endregion
             
-
             HighScore();
             
             #region Collision
             //Collision with walls
-            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= 535 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= 535 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= 950 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= 950 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
                 playerTrailList.Clear();
                 BlueRider.Reset();
                 OrangeRider.Reset();
+                HighScoreRead();
+                HighScoreWrite();
+                timer = 0;
                 blueDirection = "Up";
                 orangeDirection = "Down";
             }
             //Collision with other player
             if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
             {
+                playerTrailList.Clear();
                 BlueRider.Reset();
                 OrangeRider.Reset();
+                HighScoreRead();
+                HighScoreWrite();
+                timer = 0;
+                blueDirection = "Up";
+                orangeDirection = "Down";
             }
             //Collision with trail
             foreach (Trail x in playerTrailList)
@@ -357,12 +365,14 @@ namespace Tron
                 Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
                 if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
                 {
-                    //gameTimer.Enabled = false;
+                    playerTrailList.Clear();
                     BlueRider.Reset();
                     OrangeRider.Reset();
+                    HighScoreRead();
+                    HighScoreWrite();
+                    timer = 0;
                     blueDirection = "Up";
                     orangeDirection = "Down";
-                    playerTrailList.Clear();
                     break;
                 }
             }
@@ -407,6 +417,57 @@ namespace Tron
 
             timerLabel.Text = "" + timer;
         }
+        public void HighScoreRead()
+        {
+            XmlReader reader = XmlReader.Create("Resources/HighScore.xml", null);
+
+            reader.ReadToFollowing("HighScore");
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    reader.ReadToFollowing("Score");
+
+                    reader.ReadToNextSibling("name1");
+                    string player1 = reader.ReadString();
+
+                    reader.ReadToNextSibling("name2");
+                    string player2 = reader.ReadString();
+
+                    reader.ReadToFollowing("time");
+                    string score = reader.ReadString();
+
+                    Score s = new Score(player1, player2, score);
+                    highScoreList.Add(s);
+                }
+            }
+            highScoreList.RemoveAt(highScoreList.Count - 1);
+            reader.Close();
+
+            //Checks for 10 highgscores
+            if (highScoreList.Count > 10)
+            {
+                highScoreList.RemoveAt(10);
+            }
+            if (Convert.ToInt32(highScoreList[highScoreList.Count - 1].score) <= timer)
+            {
+                for (int i = 0; i <= highScoreList.Count; i++)
+                {
+                    if (Convert.ToInt32(highScoreList[i].score) <= timer)
+                    {
+                        Score s = new Score(InstructionScreen.bluePlayerName, InstructionScreen.orangePlayerName, Convert.ToString(timer));
+                        highScoreList.Insert(i, s);
+                        break;
+                    }
+                }
+            }
+            if (highScoreList.Count > 10)
+            {
+                highScoreList.RemoveAt(10);
+            }
+
+        }
         public void HighScoreWrite()
         {
             XmlWriter writer = XmlWriter.Create("Resources/HighScore.xml", null);
@@ -417,8 +478,9 @@ namespace Tron
             {
                 writer.WriteStartElement("Score");
 
-                writer.WriteElementString("numericScore", s.score);
-                writer.WriteElementString("name", s.name);
+                writer.WriteElementString("name1", s.name1);
+                writer.WriteElementString("name2", s.name2);
+                writer.WriteElementString("time", s.score);
 
                 writer.WriteEndElement();
             }
