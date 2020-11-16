@@ -34,6 +34,7 @@
             this.blueLifeLabel = new System.Windows.Forms.Label();
             this.redLifeLabel = new System.Windows.Forms.Label();
             this.countDownBox = new System.Windows.Forms.PictureBox();
+            this.winnerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.countDownBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,19 +81,33 @@
             // 
             // countDownBox
             // 
+            this.countDownBox.BackColor = System.Drawing.Color.Transparent;
             this.countDownBox.BackgroundImage = global::Tron.Properties.Resources.Number3;
             this.countDownBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.countDownBox.Location = new System.Drawing.Point(363, 156);
+            this.countDownBox.Location = new System.Drawing.Point(655, 235);
             this.countDownBox.Name = "countDownBox";
             this.countDownBox.Size = new System.Drawing.Size(372, 381);
             this.countDownBox.TabIndex = 3;
             this.countDownBox.TabStop = false;
+            // 
+            // winnerLabel
+            // 
+            this.winnerLabel.BackColor = System.Drawing.Color.Transparent;
+            this.winnerLabel.Font = new System.Drawing.Font("Digital-7 Mono", 71.99999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winnerLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.winnerLabel.Location = new System.Drawing.Point(412, 292);
+            this.winnerLabel.Name = "winnerLabel";
+            this.winnerLabel.Size = new System.Drawing.Size(756, 566);
+            this.winnerLabel.TabIndex = 4;
+            this.winnerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.winnerLabel.Visible = false;
             // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.winnerLabel);
             this.Controls.Add(this.countDownBox);
             this.Controls.Add(this.redLifeLabel);
             this.Controls.Add(this.blueLifeLabel);
@@ -117,5 +132,6 @@
         private System.Windows.Forms.Label blueLifeLabel;
         private System.Windows.Forms.Label redLifeLabel;
         private System.Windows.Forms.PictureBox countDownBox;
+        private System.Windows.Forms.Label winnerLabel;
     }
 }

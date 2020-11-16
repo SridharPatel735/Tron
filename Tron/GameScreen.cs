@@ -22,8 +22,8 @@ namespace Tron
         Rider OrangeRider = new Rider(915, 2, 5);
         Rider BlueRider = new Rider(150, 788, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
-        Image blueRider = Properties.Resources.BlueTronBike;
-        Image orangeRider = Properties.Resources.RedTronBike;
+        public static Image blueRider = Properties.Resources.BlueBikeUp;
+        public static Image orangeRider = Properties.Resources.RedBikeUp;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
@@ -104,6 +104,7 @@ namespace Tron
                     break;
             }
         }
+
         public GameScreen()
         {
             InitializeComponent();
@@ -143,6 +144,8 @@ namespace Tron
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            blueLifeLabel.Text = BlueRider.lives + "";
+            redLifeLabel.Text = OrangeRider.lives + "";
             #region direction
             //BlueRider
             if (leftArrowDown && (upArrowDown || downArrowDown))
@@ -342,34 +345,20 @@ namespace Tron
 
             #region Collision
             //Collision with walls
-            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= 950 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width || OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= 950 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= 950 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
             {
-                reset = true;
-                playerTrailList.Clear();
-                BlueRider.Reset();
-                OrangeRider.Reset();
-                HighScoreRead();
-                HighScoreWrite();
-                timer = 0;
-                blueDirection = "Up";
-                orangeDirection = "Down";
-                CountDown();
-                reset = false;
+                BlueRider.lives--;
+                collisionReset();
+            }
+            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= 950 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            {
+                OrangeRider.lives--;
+                collisionReset();
             }
             //Collision with other player
             if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
             {
-                reset = true;
-                playerTrailList.Clear();
-                BlueRider.Reset();
-                OrangeRider.Reset();
-                HighScoreRead();
-                HighScoreWrite();
-                timer = 0;
-                blueDirection = "Up";
-                orangeDirection = "Down";
-                CountDown();
-                reset = false;
+                collisionReset();
             }
             //Collision with trail
             foreach (Trail x in playerTrailList)
@@ -377,19 +366,46 @@ namespace Tron
                 Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
                 if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
                 {
-                    reset = true;
-                    playerTrailList.Clear();
-                    BlueRider.Reset();
-                    OrangeRider.Reset();
-                    HighScoreRead();
-                    HighScoreWrite();
-                    timer = 0;
-                    blueDirection = "Up";
-                    orangeDirection = "Down";
-                    CountDown();
-                    reset = false;
+                    collisionReset();
                     break;
                 }
+            }
+
+            foreach (Rectangle x in obstaclesList)
+            {
+                Rectangle tempObstacle = new Rectangle(x.X, x.Y, x.Width, x.Height);
+                if (BlueRider.BarrierCollision(tempObstacle) || OrangeRider.BarrierCollision(tempObstacle))
+                {
+                    collisionReset();
+                    break;
+                }
+            }
+            #endregion
+
+            #region Life Check
+            if (BlueRider.lives == 0 || OrangeRider.lives == 0)
+            {
+                gameTimer.Enabled = false;
+                countDownBox.Visible = false;
+                winnerLabel.Visible = true;
+                if (BlueRider.lives == 0)
+                {
+                    winnerLabel.Text = InstructionScreen.orangePlayerName + " is the Winner!!!";
+                }
+                else
+                {
+                    winnerLabel.Text = InstructionScreen.bluePlayerName + " is the Winner!!!";
+                }
+                Refresh();
+                Thread.Sleep(4000);
+                winnerLabel.Visible = false;
+                Refresh();
+                // Goes to the main screen
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+                MainScreen ms = new MainScreen();
+                f.Controls.Add(ms);
+                ms.Focus();
             }
             #endregion
 
@@ -413,9 +429,8 @@ namespace Tron
                     Form form = this.FindForm();
                     MainScreen ms = new MainScreen();
 
-                    //ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
-
                     form.Controls.Add(ms);
+                    ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
                     form.Controls.Remove(this);
                 }
             }
@@ -533,6 +548,23 @@ namespace Tron
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
 
             e.Graphics.FillRectangle(blackBrush, 0, this.Height - 80, this.Width, 80);
+        }
+        public void collisionReset()
+        {
+            blueDirection = "Up";
+            BlueRider.PlayerMoveUpDown(blueDirection);
+            orangeDirection = "Down";
+            OrangeRider.PlayerMoveUpDown(orangeDirection);
+            Refresh();
+            reset = true;
+            playerTrailList.Clear();
+            BlueRider.Reset();
+            OrangeRider.Reset();
+            HighScoreRead();
+            HighScoreWrite();
+            timer = 0;
+            CountDown();
+            reset = false;
         }
     }
 }

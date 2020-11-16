@@ -63,9 +63,39 @@ namespace Tron.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BlueTronBike {
+        internal static System.Drawing.Bitmap BlueBikeDown {
             get {
-                object obj = ResourceManager.GetObject("BlueTronBike", resourceCulture);
+                object obj = ResourceManager.GetObject("BlueBikeDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BlueBikeLeft {
+            get {
+                object obj = ResourceManager.GetObject("BlueBikeLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BlueBikeRight {
+            get {
+                object obj = ResourceManager.GetObject("BlueBikeRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BlueBikeUp {
+            get {
+                object obj = ResourceManager.GetObject("BlueBikeUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -154,6 +184,46 @@ namespace Tron.Properties {
         internal static System.IO.UnmanagedMemoryStream Explosion {
             get {
                 return ResourceManager.GetStream("Explosion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreeenBikeDown {
+            get {
+                object obj = ResourceManager.GetObject("GreeenBikeDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenBikeLeft {
+            get {
+                object obj = ResourceManager.GetObject("GreenBikeLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenBikeRight {
+            get {
+                object obj = ResourceManager.GetObject("GreenBikeRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GreenBikeUp {
+            get {
+                object obj = ResourceManager.GetObject("GreenBikeUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -316,9 +386,39 @@ namespace Tron.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RedTronBike {
+        internal static System.Drawing.Bitmap RedBikeDown {
             get {
-                object obj = ResourceManager.GetObject("RedTronBike", resourceCulture);
+                object obj = ResourceManager.GetObject("RedBikeDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RedBikeLeft {
+            get {
+                object obj = ResourceManager.GetObject("RedBikeLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RedBikeRight {
+            get {
+                object obj = ResourceManager.GetObject("RedBikeRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RedBikeUp {
+            get {
+                object obj = ResourceManager.GetObject("RedBikeUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -359,6 +459,46 @@ namespace Tron.Properties {
         internal static string titleImage {
             get {
                 return ResourceManager.GetString("titleImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap YellowBikeDown {
+            get {
+                object obj = ResourceManager.GetObject("YellowBikeDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap YellowBikeLeft {
+            get {
+                object obj = ResourceManager.GetObject("YellowBikeLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap YellowBikeRight {
+            get {
+                object obj = ResourceManager.GetObject("YellowBikeRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap YellowBikeUp {
+            get {
+                object obj = ResourceManager.GetObject("YellowBikeUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

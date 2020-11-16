@@ -98,6 +98,7 @@
             this.Controls.Add(this.titlePictureBox);
             this.Name = "MainScreen";
             this.Size = new System.Drawing.Size(1350, 800);
+            this.Load += new System.EventHandler(this.MainScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.titlePictureBox)).EndInit();
             this.ResumeLayout(false);
 
