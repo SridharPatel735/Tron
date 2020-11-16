@@ -34,7 +34,7 @@ namespace Tron
         public static string blueDirection = "Up", orangeDirection = "Down";
         int obsWidth = 10, obsHeight = 400;
         Random randGen = new Random();
-        Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown, bDown, nDown, mDown;
+        Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown, bDown, nDown, mDown, spaceDown, cDown, vDown, xDown, zDown;
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -74,7 +74,24 @@ namespace Tron
             {
                 wDown = dDown = aDown = false;
             }
+
             //YellowRider
+            if (cDown && (vDown || zDown))
+            {
+                cDown = vDown = zDown = false;
+            }
+            else if (xDown && (vDown || zDown))
+            {
+                xDown = vDown = zDown = false;
+            }
+            else if (downArrowDown && (rightArrowDown || leftArrowDown))
+            {
+                downArrowDown = rightArrowDown = leftArrowDown = false;
+            }
+            else if (upArrowDown && (rightArrowDown || leftArrowDown))
+            {
+                upArrowDown = rightArrowDown = leftArrowDown = false;
+            }
             //GreenRider
 
             //BlueRider
@@ -178,7 +195,7 @@ namespace Tron
                 OrangeRider.X -= 6;
                 OrangeRider.Y += 6;
             }
-#endregion
+            #endregion
         }
 
         private void FourPlayer_Enter(object sender, EventArgs e)
@@ -222,6 +239,21 @@ namespace Tron
                     break;
                 case Keys.M:
                     mDown = true;
+                    break;
+                case Keys.Space:
+                    spaceDown = true;
+                    break;
+                case Keys.C:
+                    cDown = true;
+                    break;
+                case Keys.V:
+                    vDown = true;
+                    break;
+                case Keys.X:
+                    xDown = true;
+                    break;
+                case Keys.Z:
+                    zDown = true;
                     break;
                 case Keys.Escape:
                     escDown = true;
@@ -267,6 +299,21 @@ namespace Tron
                 case Keys.M:
                     mDown = false;
                     break;
+                case Keys.Space:
+                    spaceDown = false;
+                    break;
+                case Keys.C:
+                    cDown = false;
+                    break;
+                case Keys.V:
+                    vDown = false;
+                    break;
+                case Keys.X:
+                    xDown = false;
+                    break;
+                case Keys.Z:
+                    zDown = false;
+                    break;
                 case Keys.Escape:
                     escDown = false;
                     break;
@@ -300,7 +347,7 @@ namespace Tron
         public void CountDown()
         {
             //center to screen
-            countDownBox.Location = new Point ((this.Width / 2) - (countDownBox.Width / 2), (this.Height / 2) - (countDownBox.Height / 2));
+            countDownBox.Location = new Point((this.Width / 2) - (countDownBox.Width / 2), (this.Height / 2) - (countDownBox.Height / 2));
 
             countDownBox.Visible = true;
             countDownBox.BackgroundImage = Properties.Resources.Number3;
