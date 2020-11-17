@@ -96,10 +96,10 @@ namespace Tron
             buttonClickPlayer.Play();
             Form f = this.FindForm();
             f.Controls.Remove(this);
-            FourPlayer fp = new FourPlayer();
-            f.Controls.Add(fp);
-            fp.Location = new Point((f.Width - fp.Width) / 2, (f.Height - fp.Height) / 2);
-            fp.Focus();
+            InstructionScreen gs = new InstructionScreen();
+            f.Controls.Add(gs);
+            gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
+            gs.Focus();
             InstructionScreen.l1.Visible = false;
             InstructionScreen.l2.Visible = false;
             InstructionScreen.l3.Visible = false;
