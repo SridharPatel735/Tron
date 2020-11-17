@@ -31,7 +31,7 @@ namespace Tron
         SolidBrush obsBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
-        public static string blueDirection = "Up", greenDirection = "Right",yellowDirection = "Left", orangeDirection = "Down";
+        public static string blueDirection = "Up", greenDirection = "Right", yellowDirection = "Left", orangeDirection = "Down";
         int obsWidth = 10, obsHeight = 400;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown, bDown, nDown, mDown, spaceDown, cDown, vDown, xDown, zDown;
@@ -39,6 +39,8 @@ namespace Tron
         private void gameTimer_Tick(object sender, EventArgs e)
         {
             #region Movement
+
+            #region Cancel presses on more than one
             //BlueRider
             if (leftArrowDown && (upArrowDown || downArrowDown))
             {
@@ -111,9 +113,10 @@ namespace Tron
                 nDown = mDown = bDown = false;
             }
 
+            #endregion
 
-            //BlueRider
-            if (leftArrowDown && blueDirection == "Up")
+            //YellowRider
+            if (cDown && yellowDirection == "Up")
             {
                 blueDirection = "Left";
                 BlueRider.X -= 32;
