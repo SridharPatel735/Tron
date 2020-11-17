@@ -84,6 +84,24 @@ namespace Tron
             {
                 xDown = vDown = zDown = false;
             }
+            else if (zDown && (xDown || cDown))
+            {
+                zDown = xDown = cDown = false;
+            }
+            else if (vDown && (xDown || cDown))
+            {
+                vDown = rightArrowDown = leftArrowDown = false;
+            }
+
+            //GreenRider
+            if (bDown && (nDown || spaceDown))
+            {
+                bDown = nDown = spaceDown = false;
+            }
+            else if (mDown && (nDown || spaceDown))
+            {
+                rightArrowDown = upArrowDown = downArrowDown = false;
+            }
             else if (downArrowDown && (rightArrowDown || leftArrowDown))
             {
                 downArrowDown = rightArrowDown = leftArrowDown = false;
@@ -92,7 +110,6 @@ namespace Tron
             {
                 upArrowDown = rightArrowDown = leftArrowDown = false;
             }
-            //GreenRider
 
             //BlueRider
             if (leftArrowDown && blueDirection == "Up")
