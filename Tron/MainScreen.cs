@@ -54,7 +54,7 @@ namespace Tron
 
         private void multiPlayerButton_Enter(object sender, EventArgs e)
         {
-            playButton.BackgroundImage = Properties.Resources.playImageSelected;
+            playButton.BackgroundImage = Properties.Resources.playImage;
             exitButton.BackgroundImage = Properties.Resources.exitImage;
             multiPlayerButton.BackgroundImage = Properties.Resources._4PlayerButtonSelected;
         }
