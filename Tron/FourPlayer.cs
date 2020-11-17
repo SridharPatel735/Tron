@@ -168,55 +168,55 @@ namespace Tron
             }
 
             //GreenRider
-            if (bDown && blueDirection == "Up")
+            if (bDown && greenDirection == "Up")
             {
-                blueDirection = "Left";
-                BlueRider.X -= 32;
-                BlueRider.Y += 32;
-                leftArrowDown = false;
+                greenDirection = "Left";
+                GreenRider.X -= 32;
+                GreenRider.Y += 32;
+                bDown = false;
             }
-            else if (leftArrowDown && blueDirection == "Down")
+            else if (bDown && greenDirection == "Down")
             {
-                blueDirection = "Left";
-                BlueRider.X -= 32;
-                BlueRider.Y -= 6;
-                leftArrowDown = false;
+                greenDirection = "Left";
+                GreenRider.X -= 32;
+                GreenRider.Y -= 6;
+                bDown = false;
             }
-            else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Up")
+            else if (mDown && greenDirection != "Right" && greenDirection == "Up")
             {
-                blueDirection = "Right";
-                BlueRider.X += 6;
-                BlueRider.Y += 32;
+                greenDirection = "Right";
+                GreenRider.X += 6;
+                GreenRider.Y += 32;
             }
-            else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Down")
+            else if (mDown && greenDirection != "Right" && greenDirection == "Down")
             {
-                blueDirection = "Right";
-                BlueRider.X += 6;
-                BlueRider.Y -= 10;
+                greenDirection = "Right";
+                GreenRider.X += 6;
+                GreenRider.Y -= 10;
             }
-            else if (upArrowDown && blueDirection != "Up" && blueDirection == "Left")
+            else if (nDown && greenDirection != "Up" && greenDirection == "Left")
             {
-                blueDirection = "Up";
-                BlueRider.X += 32;
-                BlueRider.Y -= 32;
+                greenDirection = "Up";
+                GreenRider.X += 32;
+                GreenRider.Y -= 32;
             }
-            else if (upArrowDown && blueDirection != "Up" && blueDirection == "Right")
+            else if (nDown && greenDirection != "Up" && greenDirection == "Right")
             {
-                blueDirection = "Up";
-                BlueRider.X -= 6;
-                BlueRider.Y -= 32;
+                greenDirection = "Up";
+                GreenRider.X -= 6;
+                GreenRider.Y -= 32;
             }
-            else if (downArrowDown && blueDirection != "Down" && blueDirection == "Left")
+            else if (spaceDown && greenDirection != "Down" && greenDirection == "Left")
             {
-                blueDirection = "Down";
-                BlueRider.X += 32;
-                BlueRider.Y += 6;
+                greenDirection = "Down";
+                GreenRider.X += 32;
+                GreenRider.Y += 6;
             }
-            else if (downArrowDown && blueDirection != "Down" && blueDirection == "Right")
+            else if (spaceDown && greenDirection != "Down" && greenDirection == "Right")
             {
-                blueDirection = "Down";
-                BlueRider.X -= 6;
-                BlueRider.Y += 6;
+                greenDirection = "Down";
+                GreenRider.X -= 6;
+                GreenRider.Y += 6;
             }
 
 
