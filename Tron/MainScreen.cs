@@ -36,19 +36,27 @@ namespace Tron
         {
             playButton.BackgroundImage = Properties.Resources.playImage;
             exitButton.BackgroundImage = Properties.Resources.exitImageSelected;
-
+            multiPlayerButton.BackgroundImage = Properties.Resources._4PlayerButton;
         }
 
         private void playButton_Enter(object sender, EventArgs e)
         {
             playButton.BackgroundImage = Properties.Resources.playImageSelected;
             exitButton.BackgroundImage = Properties.Resources.exitImage;
+            multiPlayerButton.BackgroundImage = Properties.Resources._4PlayerButton;
         }
 
         private void MainScreen_Load(object sender, EventArgs e)
         {
             Form form = this.FindForm();
             this.Location = new Point((form.Width - this.Width) / 2, (form.Height - this.Height) / 2);
+        }
+
+        private void multiPlayerButton_Enter(object sender, EventArgs e)
+        {
+            playButton.BackgroundImage = Properties.Resources.playImageSelected;
+            exitButton.BackgroundImage = Properties.Resources.exitImage;
+            multiPlayerButton.BackgroundImage = Properties.Resources._4PlayerButtonSelected;
         }
     }
 }

@@ -32,7 +32,7 @@
             this.playButton = new System.Windows.Forms.Button();
             this.titlePictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.multiPlayerButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.titlePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +46,7 @@
             this.exitButton.Location = new System.Drawing.Point(922, 587);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(338, 126);
-            this.exitButton.TabIndex = 1;
+            this.exitButton.TabIndex = 3;
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             this.exitButton.Enter += new System.EventHandler(this.exitButton_Enter);
@@ -61,7 +61,7 @@
             this.playButton.Location = new System.Drawing.Point(97, 587);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(338, 126);
-            this.playButton.TabIndex = 0;
+            this.playButton.TabIndex = 1;
             this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             this.playButton.Enter += new System.EventHandler(this.playButton_Enter);
@@ -87,18 +87,19 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Press Space to Select\r\n";
             // 
-            // button1
+            // multiPlayerButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.BackgroundImage = global::Tron.Properties.Resources._4PlayerButton;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(441, 587);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(475, 126);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = false;
+            this.multiPlayerButton.BackColor = System.Drawing.Color.Black;
+            this.multiPlayerButton.BackgroundImage = global::Tron.Properties.Resources._4PlayerButton;
+            this.multiPlayerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.multiPlayerButton.FlatAppearance.BorderSize = 0;
+            this.multiPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.multiPlayerButton.Location = new System.Drawing.Point(441, 587);
+            this.multiPlayerButton.Name = "multiPlayerButton";
+            this.multiPlayerButton.Size = new System.Drawing.Size(475, 126);
+            this.multiPlayerButton.TabIndex = 2;
+            this.multiPlayerButton.UseVisualStyleBackColor = false;
+            this.multiPlayerButton.Enter += new System.EventHandler(this.multiPlayerButton_Enter);
             // 
             // MainScreen
             // 
@@ -106,7 +107,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.multiPlayerButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
@@ -124,6 +125,6 @@
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button multiPlayerButton;
     }
 }
