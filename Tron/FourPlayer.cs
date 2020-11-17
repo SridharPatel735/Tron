@@ -25,20 +25,24 @@ namespace Tron
         Image orangeRider = Properties.Resources.RedBikeDown;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
+        SolidBrush greenBrush = new SolidBrush(Color.Lime);
+        SolidBrush yellowBrush = new SolidBrush(Color.Gold);
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
         int counter = 0;
         int timer = 0;
         SolidBrush obsBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
-        public static string blueDirection = "Up", orangeDirection = "Down";
+        public static string blueDirection = "Up", greenDirection = "Right", yellowDirection = "Left", orangeDirection = "Down";
         int obsWidth = 10, obsHeight = 400;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown, bDown, nDown, mDown, spaceDown, cDown, vDown, xDown, zDown;
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            #region Movement
+            #region Changing Direction
+
+            #region Cancel presses on more than one
             //BlueRider
             if (leftArrowDown && (upArrowDown || downArrowDown))
             {
@@ -84,15 +88,139 @@ namespace Tron
             {
                 xDown = vDown = zDown = false;
             }
-            else if (downArrowDown && (rightArrowDown || leftArrowDown))
+            else if (zDown && (xDown || cDown))
             {
-                downArrowDown = rightArrowDown = leftArrowDown = false;
+                zDown = xDown = cDown = false;
             }
-            else if (upArrowDown && (rightArrowDown || leftArrowDown))
+            else if (vDown && (xDown || cDown))
             {
-                upArrowDown = rightArrowDown = leftArrowDown = false;
+                vDown = xDown = cDown = false;
             }
+
             //GreenRider
+            if (bDown && (nDown || spaceDown))
+            {
+                bDown = nDown = spaceDown = false;
+            }
+            else if (mDown && (nDown || spaceDown))
+            {
+                mDown = nDown = spaceDown = false;
+            }
+            else if (spaceDown && (mDown || bDown))
+            {
+                spaceDown = mDown = bDown = false;
+            }
+            else if (nDown && (mDown || bDown))
+            {
+                nDown = mDown = bDown = false;
+            }
+
+            #endregion
+
+            //YellowRider
+            if (cDown && yellowDirection == "Up")
+            {
+                yellowDirection = "Left";
+                YellowRider.X -= 32;
+                YellowRider.Y += 32;
+                cDown = false;
+            }
+            else if (cDown && yellowDirection == "Down")
+            {
+                yellowDirection = "Left";
+                YellowRider.X -= 32;
+                YellowRider.Y -= 6;
+                cDown = false;
+            }
+            else if (xDown && yellowDirection != "Right" && yellowDirection == "Up")
+            {
+                yellowDirection = "Right";
+                YellowRider.X += 6;
+                YellowRider.Y += 32;
+            }
+            else if (xDown && yellowDirection != "Right" && yellowDirection == "Down")
+            {
+                yellowDirection = "Right";
+                YellowRider.X += 6;
+                YellowRider.Y -= 10;
+            }
+            else if (vDown && yellowDirection != "Up" && yellowDirection == "Left")
+            {
+                yellowDirection = "Up";
+                YellowRider.X += 32;
+                YellowRider.Y -= 32;
+            }
+            else if (vDown && yellowDirection != "Up" && yellowDirection == "Right")
+            {
+                yellowDirection = "Up";
+                YellowRider.X -= 6;
+                YellowRider.Y -= 32;
+            }
+            else if (zDown && yellowDirection != "Down" && yellowDirection == "Left")
+            {
+                yellowDirection = "Down";
+                YellowRider.X += 32;
+                YellowRider.Y += 6;
+            }
+            else if (zDown && yellowDirection != "Down" && yellowDirection == "Right")
+            {
+                yellowDirection = "Down";
+                YellowRider.X -= 6;
+                YellowRider.Y += 6;
+            }
+
+            //GreenRider
+            if (bDown && greenDirection == "Up")
+            {
+                greenDirection = "Left";
+                GreenRider.X -= 32;
+                GreenRider.Y += 32;
+                bDown = false;
+            }
+            else if (bDown && greenDirection == "Down")
+            {
+                greenDirection = "Left";
+                GreenRider.X -= 32;
+                GreenRider.Y -= 6;
+                bDown = false;
+            }
+            else if (mDown && greenDirection != "Right" && greenDirection == "Up")
+            {
+                greenDirection = "Right";
+                GreenRider.X += 6;
+                GreenRider.Y += 32;
+            }
+            else if (mDown && greenDirection != "Right" && greenDirection == "Down")
+            {
+                greenDirection = "Right";
+                GreenRider.X += 6;
+                GreenRider.Y -= 10;
+            }
+            else if (nDown && greenDirection != "Up" && greenDirection == "Left")
+            {
+                greenDirection = "Up";
+                GreenRider.X += 32;
+                GreenRider.Y -= 32;
+            }
+            else if (nDown && greenDirection != "Up" && greenDirection == "Right")
+            {
+                greenDirection = "Up";
+                GreenRider.X -= 6;
+                GreenRider.Y -= 32;
+            }
+            else if (spaceDown && greenDirection != "Down" && greenDirection == "Left")
+            {
+                greenDirection = "Down";
+                GreenRider.X += 32;
+                GreenRider.Y += 6;
+            }
+            else if (spaceDown && greenDirection != "Down" && greenDirection == "Right")
+            {
+                greenDirection = "Down";
+                GreenRider.X -= 6;
+                GreenRider.Y += 6;
+            }
+
 
             //BlueRider
             if (leftArrowDown && blueDirection == "Up")
@@ -196,6 +324,261 @@ namespace Tron
                 OrangeRider.Y += 6;
             }
             #endregion
+
+            #region Movement and bike trail
+            //Green Bike movement and trail generation
+            if (greenDirection == "Up" && GreenRider.Y > 0)
+            {
+                GreenRider.PlayerMoveUpDown(greenDirection);
+                Trail newtrail = new Trail(GreenRider.X + bufferDistanceX, GreenRider.Y + GreenRider.riderHeight + bufferDistanceY, greenBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (greenDirection == "Down" && GreenRider.Y + GreenRider.riderHeight < this.Height - 160)
+            {
+                GreenRider.PlayerMoveUpDown(greenDirection);
+                Trail newtrail = new Trail(GreenRider.X + bufferDistanceX, GreenRider.Y - bufferDistanceY, greenBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (greenDirection == "Left" && GreenRider.X > 0)
+            {
+                GreenRider.PlayerMoveLeftRight(greenDirection);
+                Trail newtrail = new Trail(GreenRider.X + GreenRider.riderWidth + bufferDistanceY, GreenRider.Y + bufferDistanceX, greenBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (greenDirection == "Right" && GreenRider.X + GreenRider.riderWidth < this.Width)
+            {
+                GreenRider.PlayerMoveLeftRight(greenDirection);
+                Trail newtrail = new Trail(GreenRider.X - bufferDistanceY, GreenRider.Y + bufferDistanceX, greenBrush);
+                playerTrailList.Add(newtrail);
+            }
+
+            //Yellow Bike movement and trail generation
+            if (yellowDirection == "Up" && YellowRider.Y > 0)
+            {
+                YellowRider.PlayerMoveUpDown(yellowDirection);
+                Trail newtrail = new Trail(YellowRider.X + bufferDistanceX, YellowRider.Y + YellowRider.riderHeight + bufferDistanceY, yellowBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (yellowDirection == "Down" && YellowRider.Y + YellowRider.riderHeight < this.Height - 160)
+            {
+                YellowRider.PlayerMoveUpDown(yellowDirection);
+                Trail newtrail = new Trail(YellowRider.X + bufferDistanceX, YellowRider.Y - bufferDistanceY, yellowBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (yellowDirection == "Left" && YellowRider.X > 0)
+            {
+                YellowRider.PlayerMoveLeftRight(yellowDirection);
+                Trail newtrail = new Trail(YellowRider.X + YellowRider.riderWidth + bufferDistanceX, YellowRider.Y + bufferDistanceX, yellowBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (yellowDirection == "Right" && YellowRider.X + YellowRider.riderWidth < this.Width)
+            {
+                YellowRider.PlayerMoveLeftRight(yellowDirection);
+                Trail newtrail = new Trail(YellowRider.X - bufferDistanceY, YellowRider.Y + bufferDistanceX, yellowBrush);
+                playerTrailList.Add(newtrail);
+            }
+
+
+
+            if (blueDirection == "Up" && BlueRider.Y > 0)
+            {
+                BlueRider.PlayerMoveUpDown(blueDirection);
+                Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y + BlueRider.riderHeight + bufferDistanceY, blueBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < this.Height - 160)
+            {
+                BlueRider.PlayerMoveUpDown(blueDirection);
+                Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y - bufferDistanceY, blueBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (blueDirection == "Left" && BlueRider.X > 0)
+            {
+                BlueRider.PlayerMoveLeftRight(blueDirection);
+                Trail newtrail = new Trail(BlueRider.X + BlueRider.riderWidth + bufferDistanceY, BlueRider.Y + bufferDistanceX, blueBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (blueDirection == "Right" && BlueRider.X + BlueRider.riderWidth < this.Width)
+            {
+                BlueRider.PlayerMoveLeftRight(blueDirection);
+                Trail newtrail = new Trail(BlueRider.X - bufferDistanceY, BlueRider.Y + bufferDistanceX, blueBrush);
+                playerTrailList.Add(newtrail);
+            }
+
+            if (orangeDirection == "Up" && OrangeRider.Y > 0)
+            {
+                OrangeRider.PlayerMoveUpDown(orangeDirection);
+                Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y + OrangeRider.riderHeight + bufferDistanceY, orangeBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < this.Height - 160)
+            {
+                OrangeRider.PlayerMoveUpDown(orangeDirection);
+                Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y - bufferDistanceY, orangeBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (orangeDirection == "Left" && OrangeRider.X > 0)
+            {
+                OrangeRider.PlayerMoveLeftRight(orangeDirection);
+                Trail newtrail = new Trail(OrangeRider.X + OrangeRider.riderWidth + bufferDistanceX, OrangeRider.Y + bufferDistanceX, orangeBrush);
+                playerTrailList.Add(newtrail);
+            }
+            else if (orangeDirection == "Right" && OrangeRider.X + OrangeRider.riderWidth < this.Width)
+            {
+                OrangeRider.PlayerMoveLeftRight(orangeDirection);
+                Trail newtrail = new Trail(OrangeRider.X - bufferDistanceY, OrangeRider.Y + bufferDistanceX, orangeBrush);
+                playerTrailList.Add(newtrail);
+            }
+            #endregion
+
+            #region Collision
+            //Blue bike collision with wall
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height - 160 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
+            {
+                BlueRider.lives--;
+                collisionReset();
+            }
+            //Orange bike collision with wall
+            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height - 160 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            {
+                OrangeRider.lives--;
+                collisionReset();
+            }
+
+            //Green bike collision with wall
+            if (GreenRider.Y <= 0 || GreenRider.Y + GreenRider.riderHeight >= this.Height - 160 || GreenRider.X <= 0 || GreenRider.X + GreenRider.riderWidth >= this.Width)
+            {
+                GreenRider.lives--;
+                collisionReset();
+            }
+
+            //Yellow bike collision with wall
+            else if (YellowRider.Y <= 0 || YellowRider.Y + YellowRider.riderHeight >= this.Height - 160 || YellowRider.X <= 0 || YellowRider.X + YellowRider.riderWidth >= this.Width)
+            {
+                YellowRider.lives--;
+                collisionReset();
+            }
+
+            //Collision with other player
+            if (BlueRider.PlayerCollision(OrangeRider) || BlueRider.PlayerCollision(GreenRider) || BlueRider.PlayerCollision(YellowRider))
+            {
+                collisionReset();
+            }
+            else if (OrangeRider.PlayerCollision(YellowRider) || OrangeRider.PlayerCollision(GreenRider))
+            {
+                collisionReset();
+            }
+            else if (YellowRider.PlayerCollision(GreenRider))
+            {
+                collisionReset();
+            }
+
+            #region Collision with trails
+            //Collision with trail
+            foreach (Trail x in playerTrailList)
+            {
+                Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
+                if (BlueRider.Collision(tempTrail))
+                {
+                    foreach (Trail t in playerTrailList)
+                    {
+                        if (t.colour == blueBrush)
+                        {
+                            playerTrailList.Remove(t);
+                        }
+                    }
+                }
+                if (OrangeRider.Collision(tempTrail))
+                {
+                    foreach (Trail t in playerTrailList)
+                    {
+                        if (t.colour == orangeBrush)
+                        {
+                            playerTrailList.Remove(t);
+                        }
+                    }
+                }
+                if (GreenRider.Collision(tempTrail))
+                {
+                    foreach (Trail t in playerTrailList)
+                    {
+                        if (t.colour == greenBrush)
+                        {
+                            playerTrailList.Remove(t);
+                        }
+                    }
+                }
+                if (YellowRider.Collision(tempTrail))
+                {
+                    foreach (Trail t in playerTrailList)
+                    {
+                        if (t.colour == yellowBrush)
+                        {
+                            playerTrailList.Remove(t);
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            #endregion
+
+            //LifeCheck();
+        }
+
+        //public void LifeCheck()
+        //{
+        //    gameTimer.Enabled = false;
+        //    countDownBox.Visible = false;
+        //    winnerLabel.Visible = true;
+
+        //    if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives != 0)
+        //    {
+        //        winnerLabel.Text = "Yellow is the Winner!!!";
+        //    }
+
+        //    else if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives != 0 && YellowRider.lives == 0)
+        //    {
+        //        winnerLabel.Text = "Green is the Winner!!!";
+        //    }
+        //    else if (BlueRider.lives == 0 && OrangeRider.lives != 0 && GreenRider.lives == 0 && YellowRider.lives == 0)
+        //    {
+        //        winnerLabel.Text = "Orange is the Winner!";
+        //    }
+        //    else if(BlueRider.lives != 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives == 0)
+        //    {
+        //        winnerLabel.TExt = "Blue is the winner";
+        //    }
+
+        //    Refresh();
+        //    Thread.Sleep(4000);
+        //    winnerLabel.Visible = false;
+        //    Refresh();
+
+        //    // Goes to the main screen
+        //    Form f = this.FindForm();
+        //    f.Controls.Remove(this);
+        //    MainScreen ms = new MainScreen();
+        //    f.Controls.Add(ms);
+        //    ms.Focus();
+        //}
+        public void collisionReset()
+        {
+            blueDirection = "Up";
+            BlueRider.PlayerMoveUpDown(blueDirection);
+            orangeDirection = "Down";
+            OrangeRider.PlayerMoveUpDown(orangeDirection);
+            playerTrailList.Clear();
+            BlueRider.Reset();
+            OrangeRider.Reset();
+            timer = 0;
+            Refresh();
+            if (BlueRider.lives == 0 || OrangeRider.lives == 0)
+            { }
+            else
+            {
+                CountDown();
+            }
         }
 
         private void FourPlayer_Enter(object sender, EventArgs e)
