@@ -118,6 +118,58 @@ namespace Tron
             //YellowRider
             if (cDown && yellowDirection == "Up")
             {
+                yellowDirection = "Left";
+                YellowRider.X -= 32;
+                YellowRider.Y += 32;
+                cDown = false;
+            }
+            else if (cDown && yellowDirection == "Down")
+            {
+                yellowDirection = "Left";
+                YellowRider.X -= 32;
+                YellowRider.Y -= 6;
+                cDown = false;
+            }
+            else if (xDown && yellowDirection != "Right" && yellowDirection == "Up")
+            {
+                yellowDirection = "Right";
+                YellowRider.X += 6;
+                YellowRider.Y += 32;
+            }
+            else if (xDown && yellowDirection != "Right" && yellowDirection == "Down")
+            {
+                yellowDirection = "Right";
+                YellowRider.X += 6;
+                YellowRider.Y -= 10;
+            }
+            else if (vDown && yellowDirection != "Up" && yellowDirection == "Left")
+            {
+                yellowDirection = "Up";
+                YellowRider.X += 32;
+                YellowRider.Y -= 32;
+            }
+            else if (vDown && yellowDirection != "Up" && yellowDirection == "Right")
+            {
+                yellowDirection = "Up";
+                YellowRider.X -= 6;
+                YellowRider.Y -= 32;
+            }
+            else if (zDown && yellowDirection != "Down" && yellowDirection == "Left")
+            {
+                yellowDirection = "Down";
+                YellowRider.X += 32;
+                YellowRider.Y += 6;
+            }
+            else if (zDown && yellowDirection != "Down" && yellowDirection == "Right")
+            {
+                yellowDirection = "Down";
+                YellowRider.X -= 6;
+                YellowRider.Y += 6;
+            }
+
+            //GreenRider
+            if (bDown && blueDirection == "Up")
+            {
                 blueDirection = "Left";
                 BlueRider.X -= 32;
                 BlueRider.Y += 32;
@@ -166,7 +218,6 @@ namespace Tron
                 BlueRider.X -= 6;
                 BlueRider.Y += 6;
             }
-
 
 
             //BlueRider
