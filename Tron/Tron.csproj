@@ -36,6 +36,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +48,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -197,13 +199,19 @@
     <None Include="Resources\SlowTimePowerUp.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ButtonClick.wav" />
+    <None Include="Resources\ButtonClick.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Explosion.wav" />
+    <None Include="Resources\Explosion.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ButtonSwitch.wav" />
+    <None Include="Resources\ButtonSwitch.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RedTronBike-1.png.png" />
@@ -294,6 +302,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\4PlayerButton %281%29-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orangelifebike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluelife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orangeLife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluelifebike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluelife-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orangeLife-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgroundMusic.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="System\Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

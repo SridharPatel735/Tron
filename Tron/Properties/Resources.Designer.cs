@@ -81,6 +81,15 @@ namespace Tron.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream backgroundMusic {
+            get {
+                return ResourceManager.GetStream("backgroundMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap BlueBikeDown {
@@ -116,6 +125,26 @@ namespace Tron.Properties {
         internal static System.Drawing.Bitmap BlueBikeUp {
             get {
                 object obj = ResourceManager.GetObject("BlueBikeUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bluelife_1_png {
+            get {
+                object obj = ResourceManager.GetObject("bluelife_1_png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bluelifebike {
+            get {
+                object obj = ResourceManager.GetObject("bluelifebike", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -369,6 +398,26 @@ namespace Tron.Properties {
         internal static System.Drawing.Bitmap Number3 {
             get {
                 object obj = ResourceManager.GetObject("Number3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap orangeLife_1_png {
+            get {
+                object obj = ResourceManager.GetObject("orangeLife_1_png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap orangelifebike {
+            get {
+                object obj = ResourceManager.GetObject("orangelifebike", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
