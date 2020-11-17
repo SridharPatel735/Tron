@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.exitButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
             this.titlePictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.multiPlayerButton = new System.Windows.Forms.Button();
+            this.musicTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.titlePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,6 +103,11 @@
             this.multiPlayerButton.UseVisualStyleBackColor = false;
             this.multiPlayerButton.Enter += new System.EventHandler(this.multiPlayerButton_Enter);
             // 
+            // musicTimer
+            // 
+            this.musicTimer.Enabled = true;
+            this.musicTimer.Tick += new System.EventHandler(this.musicTimer_Tick);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -126,5 +133,6 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button multiPlayerButton;
+        private System.Windows.Forms.Timer musicTimer;
     }
 }

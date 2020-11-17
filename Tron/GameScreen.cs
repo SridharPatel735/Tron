@@ -110,7 +110,7 @@ namespace Tron
         }
         public void OnStart()
         {
-            for (int i = 0; i <= randGen.Next(3,5); i++)
+            for (int i = 0; i <= randGen.Next(3,6); i++)
             {
                 int x = randGen.Next(55, this.Width - 55);
                 if (x >= 130 && x <= 170)
