@@ -25,6 +25,8 @@ namespace Tron
         Image orangeRider = Properties.Resources.RedBikeDown;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
+        SolidBrush greenBrush = new SolidBrush (Color.Lime);
+        SolidBrush yellowBrush = new SolidBrush (Color.Gold); 
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
         int counter = 0;
         int timer = 0;
@@ -324,54 +326,55 @@ namespace Tron
             #endregion
 
             #region Movement and bike trail
-            //GreenBike
+            //Green Bike movement and trail generation
             if (greenDirection == "Up" && GreenRider.Y > 0)
             {
                 GreenRider.PlayerMoveUpDown(greenDirection);
-                Trail newtrail = new Trail(GreenRider.X + bufferDistanceX, GreenRider.Y + GreenRider.riderHeight + bufferDistanceY, blueBrush);
+                Trail newtrail = new Trail(GreenRider.X + bufferDistanceX, GreenRider.Y + GreenRider.riderHeight + bufferDistanceY, greenBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < this.Height - 160)
+            else if (greenDirection == "Down" && GreenRider.Y + GreenRider.riderHeight < this.Height - 160)
             {
-                BlueRider.PlayerMoveUpDown(blueDirection);
-                Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y - bufferDistanceY, blueBrush);
+                GreenRider.PlayerMoveUpDown(greenDirection);
+                Trail newtrail = new Trail(GreenRider.X + bufferDistanceX, GreenRider.Y - bufferDistanceY, greenBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (blueDirection == "Left" && BlueRider.X > 0)
+            else if (greenDirection == "Left" && GreenRider.X > 0)
             {
-                BlueRider.PlayerMoveLeftRight(blueDirection);
-                Trail newtrail = new Trail(BlueRider.X + BlueRider.riderWidth + bufferDistanceY, BlueRider.Y + bufferDistanceX, blueBrush);
+                GreenRider.PlayerMoveLeftRight(greenDirection);
+                Trail newtrail = new Trail(GreenRider.X + GreenRider.riderWidth + bufferDistanceY, GreenRider.Y + bufferDistanceX, greenBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (blueDirection == "Right" && BlueRider.X + BlueRider.riderWidth < this.Width)
+            else if (greenDirection == "Right" && GreenRider.X + GreenRider.riderWidth < this.Width)
             {
-                BlueRider.PlayerMoveLeftRight(blueDirection);
-                Trail newtrail = new Trail(BlueRider.X - bufferDistanceY, BlueRider.Y + bufferDistanceX, blueBrush);
+                GreenRider.PlayerMoveLeftRight(greenDirection);
+                Trail newtrail = new Trail(GreenRider.X - bufferDistanceY, GreenRider.Y + bufferDistanceX, greenBrush);
                 playerTrailList.Add(newtrail);
             }
 
-            if (orangeDirection == "Up" && OrangeRider.Y > 0)
+            //Yellow Bike movement and trail generation
+            if (yellowDirection == "Up" && YellowRider.Y > 0)
             {
-                OrangeRider.PlayerMoveUpDown(orangeDirection);
-                Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y + OrangeRider.riderHeight + bufferDistanceY, orangeBrush);
+                YellowRider.PlayerMoveUpDown(yellowDirection);
+                Trail newtrail = new Trail(YellowRider.X + bufferDistanceX, YellowRider.Y + YellowRider.riderHeight + bufferDistanceY, yellowBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < this.Height - 160)
+            else if (yellowDirection == "Down" && YellowRider.Y + YellowRider.riderHeight < this.Height - 160)
             {
-                OrangeRider.PlayerMoveUpDown(orangeDirection);
-                Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y - bufferDistanceY, orangeBrush);
+                YellowRider.PlayerMoveUpDown(yellowDirection);
+                Trail newtrail = new Trail(YellowRider.X + bufferDistanceX, YellowRider.Y - bufferDistanceY, yellowBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (orangeDirection == "Left" && OrangeRider.X > 0)
+            else if (yellowDirection == "Left" && YellowRider.X > 0)
             {
-                OrangeRider.PlayerMoveLeftRight(orangeDirection);
-                Trail newtrail = new Trail(OrangeRider.X + OrangeRider.riderWidth + bufferDistanceX, OrangeRider.Y + bufferDistanceX, orangeBrush);
+                YellowRider.PlayerMoveLeftRight(yellowDirection);
+                Trail newtrail = new Trail(YellowRider.X + YellowRider.riderWidth + bufferDistanceX, YellowRider.Y + bufferDistanceX, yellowBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (orangeDirection == "Right" && OrangeRider.X + OrangeRider.riderWidth < this.Width)
+            else if (yellowDirection == "Right" && YellowRider.X + YellowRider.riderWidth < this.Width)
             {
-                OrangeRider.PlayerMoveLeftRight(orangeDirection);
-                Trail newtrail = new Trail(OrangeRider.X - bufferDistanceY, OrangeRider.Y + bufferDistanceX, orangeBrush);
+                YellowRider.PlayerMoveLeftRight(yellowDirection);
+                Trail newtrail = new Trail(YellowRider.X - bufferDistanceY, YellowRider.Y + bufferDistanceX, yellowBrush);
                 playerTrailList.Add(newtrail);
             }
 
@@ -427,6 +430,53 @@ namespace Tron
                 playerTrailList.Add(newtrail);
             }
             #endregion
+
+            #region Collision
+            //Collision with walls
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height - 160 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
+            {
+                BlueRider.lives--;
+                collisionReset();
+            }
+            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height - 160 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            {
+                OrangeRider.lives--;
+                collisionReset();
+            }
+            //Collision with other player
+            if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
+            {
+                collisionReset();
+            }
+            //Collision with trail
+            foreach (Trail x in playerTrailList)
+            {
+                Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
+                if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
+                {
+                    collisionReset();
+                    break;
+                }
+            }
+            #endregion
+        }
+        public void collisionReset()
+        {
+            blueDirection = "Up";
+            BlueRider.PlayerMoveUpDown(blueDirection);
+            orangeDirection = "Down";
+            OrangeRider.PlayerMoveUpDown(orangeDirection);
+            playerTrailList.Clear();
+            BlueRider.Reset();
+            OrangeRider.Reset();
+            timer = 0;
+            Refresh();
+            if (BlueRider.lives == 0 || OrangeRider.lives == 0)
+            { }
+            else
+            {
+                CountDown();
+            }
         }
 
         private void FourPlayer_Enter(object sender, EventArgs e)
