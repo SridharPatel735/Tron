@@ -472,17 +472,94 @@ namespace Tron
             {
                 collisionReset();
             }
+
+            #region Collision with trails
             //Collision with trail
             foreach (Trail x in playerTrailList)
+            {
+                Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
+                if (BlueRider.Collision(tempTrail))
                 {
-                    Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
-                    if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
+                    foreach (Trail t in playerTrailList)
                     {
-                        collisionReset();
-                        break;
+                        if (t.colour == blueBrush)
+                        {
+                            playerTrailList.Remove(t);
+                        }
                     }
                 }
+                if (OrangeRider.Collision(tempTrail))
+                {
+                    foreach (Trail t in playerTrailList)
+                    {
+                        if (t.colour == orangeBrush)
+                        {
+                            playerTrailList.Remove(t);
+                        }
+                    }
+                }
+                if (GreenRider.Collision(tempTrail))
+                {
+                    foreach (Trail t in playerTrailList)
+                    {
+                        if (t.colour == greenBrush)
+                        {
+                            playerTrailList.Remove(t);
+                        }
+                    }
+                }
+                if (YellowRider.Collision(tempTrail))
+                {
+                    foreach (Trail t in playerTrailList)
+                    {
+                        if (t.colour == yellowBrush)
+                        {
+                            playerTrailList.Remove(t);
+                        }
+                    }
+                }
+            }
             #endregion
+
+            #endregion
+
+        }
+
+        public void LifeCheck()
+        {
+            if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives != 0)
+            {
+                gameTimer.Enabled = false;
+                countDownBox.Visible = false;
+                winnerLabel.Visible = true;
+
+                winnerLabel.Text = "Yellow is the Winner!!!";
+
+                Refresh();
+                Thread.Sleep(4000);
+                winnerLabel.Visible = false;
+                Refresh();
+            }
+
+            else if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives != 0 && YellowRider.lives == 0)
+            {
+                gameTimer.Enabled = false;
+                countDownBox.Visible = false;
+                winnerLabel.Visible = true;
+
+                winnerLabel.Text = "Green is the Winner!!!";
+
+                Refresh();
+                Thread.Sleep(4000);
+                winnerLabel.Visible = false;
+                Refresh();
+            }
+            // Goes to the main screen
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            MainScreen ms = new MainScreen();
+            f.Controls.Add(ms);
+            ms.Focus();
         }
         public void collisionReset()
         {
