@@ -523,44 +523,45 @@ namespace Tron
 
             #endregion
 
+            //LifeCheck();
         }
 
-        public void LifeCheck()
-        {
-            if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives != 0)
-            {
-                gameTimer.Enabled = false;
-                countDownBox.Visible = false;
-                winnerLabel.Visible = true;
+        //public void LifeCheck()
+        //{
+        //    gameTimer.Enabled = false;
+        //    countDownBox.Visible = false;
+        //    winnerLabel.Visible = true;
 
-                winnerLabel.Text = "Yellow is the Winner!!!";
+        //    if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives != 0)
+        //    {
+        //        winnerLabel.Text = "Yellow is the Winner!!!";
+        //    }
 
-                Refresh();
-                Thread.Sleep(4000);
-                winnerLabel.Visible = false;
-                Refresh();
-            }
+        //    else if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives != 0 && YellowRider.lives == 0)
+        //    {
+        //        winnerLabel.Text = "Green is the Winner!!!";
+        //    }
+        //    else if (BlueRider.lives == 0 && OrangeRider.lives != 0 && GreenRider.lives == 0 && YellowRider.lives == 0)
+        //    {
+        //        winnerLabel.Text = "Orange is the Winner!";
+        //    }
+        //    else if(BlueRider.lives != 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives == 0)
+        //    {
+        //        winnerLabel.TExt = "Blue is the winner";
+        //    }
 
-            else if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives != 0 && YellowRider.lives == 0)
-            {
-                gameTimer.Enabled = false;
-                countDownBox.Visible = false;
-                winnerLabel.Visible = true;
+        //    Refresh();
+        //    Thread.Sleep(4000);
+        //    winnerLabel.Visible = false;
+        //    Refresh();
 
-                winnerLabel.Text = "Green is the Winner!!!";
-
-                Refresh();
-                Thread.Sleep(4000);
-                winnerLabel.Visible = false;
-                Refresh();
-            }
-            // Goes to the main screen
-            Form f = this.FindForm();
-            f.Controls.Remove(this);
-            MainScreen ms = new MainScreen();
-            f.Controls.Add(ms);
-            ms.Focus();
-        }
+        //    // Goes to the main screen
+        //    Form f = this.FindForm();
+        //    f.Controls.Remove(this);
+        //    MainScreen ms = new MainScreen();
+        //    f.Controls.Add(ms);
+        //    ms.Focus();
+        //}
         public void collisionReset()
         {
             blueDirection = "Up";
