@@ -324,10 +324,11 @@ namespace Tron
             #endregion
 
             #region Movement and bike trail
-            if (blueDirection == "Up" && BlueRider.Y > 0)
+            //GreenBike
+            if (greenDirection == "Up" && GreenRider.Y > 0)
             {
-                BlueRider.PlayerMoveUpDown(blueDirection);
-                Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y + BlueRider.riderHeight + bufferDistanceY, blueBrush);
+                GreenRider.PlayerMoveUpDown(greenDirection);
+                Trail newtrail = new Trail(GreenRider.X + bufferDistanceX, GreenRider.Y + GreenRider.riderHeight + bufferDistanceY, blueBrush);
                 playerTrailList.Add(newtrail);
             }
             else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < this.Height - 160)
