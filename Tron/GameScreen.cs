@@ -14,8 +14,6 @@ namespace Tron
 {
     public partial class GameScreen : UserControl
     {
-        //Barriers spawning in front of players
-
         List<Score> highScoreList = new List<Score>();
         List<Trail> playerTrailList = new List<Trail>();
         List<Rectangle> obstaclesList = new List<Rectangle>();
@@ -125,12 +123,12 @@ namespace Tron
                 }
                 foreach (Rectangle b in obstaclesList)
                 {
-                    if (b.X <= x + 75 && b.X >= x - 75)
+                    if (b.X <= x + 175 && b.X >= x - 175)
                     {
                         x = randGen.Next(55, this.Width - 55);
                     }
                 }
-                int y = randGen.Next(55, this.Height - 395);
+                int y = randGen.Next(55, this.Height - 715);
                 Rectangle newRec = new Rectangle(x, y, obsWidth, obsHeight);
                 obstaclesList.Add(newRec);
             }
@@ -570,6 +568,7 @@ namespace Tron
                 CountDown();
             }
             reset = false;
+            obstaclesList.Clear();
             OnStart();
         }
     }
