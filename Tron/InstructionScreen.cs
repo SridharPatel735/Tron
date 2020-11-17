@@ -16,7 +16,7 @@ namespace Tron
         #region variable declarations
         //player name global string
         public static string bluePlayerName, orangePlayerName;
-
+        public static Label l1, l2, l3, l4, l5, l6, l7, l8;
         //booleans for key presses
         Boolean upArrowDown, downArrowDown, leftArrowDown, rightArrowDown, wDown, aDown, sDown, dDown;
 
@@ -39,6 +39,14 @@ namespace Tron
         public InstructionScreen()
         {
             InitializeComponent();
+            l1 = label1;
+            l2 = nameInput1;
+            l3 = nameInput2;
+            l4 = nameInput3;
+            l5 = label2;
+            l6 = nameInput4;
+            l7 = nameInput5;
+            l8 = nameInput6;
             OnStart();
         }
         #endregion component initialization and general setup

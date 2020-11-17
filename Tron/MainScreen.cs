@@ -94,13 +94,20 @@ namespace Tron
         {
             buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
             buttonClickPlayer.Play();
-
             Form f = this.FindForm();
             f.Controls.Remove(this);
             FourPlayer fp = new FourPlayer();
             f.Controls.Add(fp);
             fp.Location = new Point((f.Width - fp.Width) / 2, (f.Height - fp.Height) / 2);
             fp.Focus();
+            InstructionScreen.l1.Visible = false;
+            InstructionScreen.l2.Visible = false;
+            InstructionScreen.l3.Visible = false;
+            InstructionScreen.l4.Visible = false;
+            InstructionScreen.l5.Visible = false;
+            InstructionScreen.l6.Visible = false;
+            InstructionScreen.l7.Visible = false;
+            InstructionScreen.l8.Visible = false;
         }
     }
 }
