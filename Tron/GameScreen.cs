@@ -112,16 +112,14 @@ namespace Tron
         }
         public void OnStart()
         {
-            blueDirection = "Up";
-            orangeDirection = "Down";
             for (int i = 0; i <= randGen.Next(3,5); i++)
             {
                 int x = randGen.Next(55, this.Width - 55);
-                if (x >= 150 && x <= 170)
+                if (x >= 130 && x <= 170)
                 {
                     x = randGen.Next(55, this.Width - 55);
                 }
-                if (x >= 745 && x <= 765)
+                if (x >= 1455 && x <= 1495)
                 {
                     x = randGen.Next(55, this.Width - 55);
                 }
@@ -132,7 +130,7 @@ namespace Tron
                         x = randGen.Next(55, this.Width - 55);
                     }
                 }
-                int y = randGen.Next(65, 100);
+                int y = randGen.Next(55, this.Height - 395);
                 Rectangle newRec = new Rectangle(x, y, obsWidth, obsHeight);
                 obstaclesList.Add(newRec);
             }
@@ -293,7 +291,7 @@ namespace Tron
                 Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y + BlueRider.riderHeight + bufferDistanceY, blueBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < this.Height)
+            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < this.Height - 160)
             {
                 BlueRider.PlayerMoveUpDown(blueDirection);
                 Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y - bufferDistanceY, blueBrush);
@@ -318,7 +316,7 @@ namespace Tron
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y + OrangeRider.riderHeight + bufferDistanceY, orangeBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < this.Height)
+            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < this.Height - 160)
             {
                 OrangeRider.PlayerMoveUpDown(orangeDirection);
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y - bufferDistanceY, orangeBrush);
@@ -345,12 +343,12 @@ namespace Tron
 
             #region Collision
             //Collision with walls
-            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height - 160 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
             {
                 BlueRider.lives--;
                 collisionReset();
             }
-            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height - 160 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
                 OrangeRider.lives--;
                 collisionReset();
@@ -549,7 +547,7 @@ namespace Tron
             e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
             e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
 
-            e.Graphics.FillRectangle(blackBrush, 0, this.Height - 80, this.Width, 80);
+            e.Graphics.FillRectangle(blackBrush, 0, this.Height - 160, this.Width, 160);
         }
         public void collisionReset()
         {
@@ -557,7 +555,6 @@ namespace Tron
             BlueRider.PlayerMoveUpDown(blueDirection);
             orangeDirection = "Down";
             OrangeRider.PlayerMoveUpDown(orangeDirection);
-            Refresh();
             reset = true;
             playerTrailList.Clear();
             BlueRider.Reset();
@@ -565,8 +562,15 @@ namespace Tron
             HighScoreRead();
             HighScoreWrite();
             timer = 0;
-            CountDown();
+            Refresh();
+            if (BlueRider.lives == 0 || OrangeRider.lives == 0)
+            {}
+            else
+            {
+                CountDown();
+            }
             reset = false;
+            OnStart();
         }
     }
 }
