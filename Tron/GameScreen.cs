@@ -19,8 +19,8 @@ namespace Tron
         List<Score> highScoreList = new List<Score>();
         List<Trail> playerTrailList = new List<Trail>();
         List<Rectangle> obstaclesList = new List<Rectangle>();
-        Rider OrangeRider = new Rider(915, 2, 5);
-        Rider BlueRider = new Rider(150, 788, 5);
+        Rider OrangeRider = new Rider(1475, 10, 5);
+        Rider BlueRider = new Rider(150, 1148, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
         public static Image blueRider = Properties.Resources.BlueBikeUp;
         public static Image orangeRider = Properties.Resources.RedBikeUp;
@@ -293,7 +293,7 @@ namespace Tron
                 Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y + BlueRider.riderHeight + bufferDistanceY, blueBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < 950)
+            else if (blueDirection == "Down" && BlueRider.Y + BlueRider.riderHeight < this.Height)
             {
                 BlueRider.PlayerMoveUpDown(blueDirection);
                 Trail newtrail = new Trail(BlueRider.X + bufferDistanceX, BlueRider.Y - bufferDistanceY, blueBrush);
@@ -318,7 +318,7 @@ namespace Tron
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y + OrangeRider.riderHeight + bufferDistanceY, orangeBrush);
                 playerTrailList.Add(newtrail);
             }
-            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < 950)
+            else if (orangeDirection == "Down" && OrangeRider.Y + OrangeRider.riderHeight < this.Height)
             {
                 OrangeRider.PlayerMoveUpDown(orangeDirection);
                 Trail newtrail = new Trail(OrangeRider.X + bufferDistanceX, OrangeRider.Y - bufferDistanceY, orangeBrush);
@@ -345,12 +345,12 @@ namespace Tron
 
             #region Collision
             //Collision with walls
-            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= 950 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
+            if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
             {
                 BlueRider.lives--;
                 collisionReset();
             }
-            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= 950 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
                 OrangeRider.lives--;
                 collisionReset();
