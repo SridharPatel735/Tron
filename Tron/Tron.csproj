@@ -295,5 +295,23 @@
   <ItemGroup>
     <None Include="Resources\4PlayerButton %281%29-1.png.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orangelifebike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluelife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orangeLife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluelifebike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluelife-1.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orangeLife-1.png.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

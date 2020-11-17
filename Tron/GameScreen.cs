@@ -123,7 +123,7 @@ namespace Tron
                 }
                 foreach (Rectangle b in obstaclesList)
                 {
-                    if (b.X <= x + 175 && b.X >= x - 175)
+                    while (b.X <= x + 175 && b.X >= x - 175)
                     {
                         x = randGen.Next(55, this.Width - 55);
                     }
@@ -140,8 +140,6 @@ namespace Tron
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            blueLifeLabel.Text = BlueRider.lives + "";
-            redLifeLabel.Text = OrangeRider.lives + "";
             #region direction
             //BlueRider
             if (leftArrowDown && (upArrowDown || downArrowDown))
@@ -379,6 +377,57 @@ namespace Tron
             #endregion
 
             #region Life Check
+            //Blue Life
+            if (BlueRider.lives == 3)
+            {
+                blueLife1.BackgroundImage = Properties.Resources.bluelife_1_png;
+                blueLife2.BackgroundImage = Properties.Resources.bluelife_1_png;
+                blueLife3.BackgroundImage = Properties.Resources.bluelife_1_png;
+            }
+            else if (BlueRider.lives == 2)
+            {
+                blueLife1.BackgroundImage = Properties.Resources.bluelife_1_png;
+                blueLife2.BackgroundImage = Properties.Resources.bluelife_1_png;
+                blueLife3.BackgroundImage = null;
+            }
+            else if (BlueRider.lives == 1)
+            {
+                blueLife1.BackgroundImage = Properties.Resources.bluelife_1_png;
+                blueLife2.BackgroundImage = null;
+                blueLife3.BackgroundImage = null;
+            }
+            else if (BlueRider.lives == 0)
+            {
+                blueLife1.BackgroundImage = null;
+                blueLife2.BackgroundImage = null;
+                blueLife3.BackgroundImage = null;
+            }
+            //Orange Life
+            if (OrangeRider.lives == 3)
+            {
+                orangeLife1.BackgroundImage = Properties.Resources.orangeLife_1_png;
+                orangeLife2.BackgroundImage = Properties.Resources.orangeLife_1_png;
+                orangeLife3.BackgroundImage = Properties.Resources.orangeLife_1_png;
+            }
+            else if (OrangeRider.lives == 2)
+            {
+                orangeLife1.BackgroundImage = Properties.Resources.orangeLife_1_png;
+                orangeLife2.BackgroundImage = Properties.Resources.orangeLife_1_png;
+                orangeLife3.BackgroundImage = null;
+            }
+            else if (OrangeRider.lives == 1)
+            {
+                orangeLife1.BackgroundImage = Properties.Resources.orangeLife_1_png;
+                orangeLife2.BackgroundImage = null;
+                orangeLife3.BackgroundImage = null;
+            }
+            else if (OrangeRider.lives == 0)
+            {
+                orangeLife1.BackgroundImage = null;
+                orangeLife2.BackgroundImage = null;
+                orangeLife3.BackgroundImage = null;
+            }
+
             if (BlueRider.lives == 0 || OrangeRider.lives == 0)
             {
                 gameTimer.Enabled = false;
