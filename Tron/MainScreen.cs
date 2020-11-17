@@ -89,5 +89,18 @@ namespace Tron
             }
             counter++;
         }
+
+        private void multiPlayerButton_Click(object sender, EventArgs e)
+        {
+            buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+            buttonClickPlayer.Play();
+            InstructionScreen
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            InstructionScreen gs = new InstructionScreen();
+            f.Controls.Add(gs);
+            gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
+            gs.Focus();
+        }
     }
 }
