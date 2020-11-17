@@ -31,7 +31,7 @@ namespace Tron
         SolidBrush obsBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
-        public static string blueDirection = "Up", orangeDirection = "Down";
+        public static string blueDirection = "Up", greenDirection = "Right",yellowDirection = "Left", orangeDirection = "Down";
         int obsWidth = 10, obsHeight = 400;
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown, bDown, nDown, mDown, spaceDown, cDown, vDown, xDown, zDown;
@@ -90,7 +90,7 @@ namespace Tron
             }
             else if (vDown && (xDown || cDown))
             {
-                vDown = rightArrowDown = leftArrowDown = false;
+                vDown = xDown = cDown = false;
             }
 
             //GreenRider
@@ -100,16 +100,71 @@ namespace Tron
             }
             else if (mDown && (nDown || spaceDown))
             {
-                rightArrowDown = upArrowDown = downArrowDown = false;
+                mDown = nDown = spaceDown = false;
             }
-            else if (downArrowDown && (rightArrowDown || leftArrowDown))
+            else if (spaceDown && (mDown || bDown))
             {
-                downArrowDown = rightArrowDown = leftArrowDown = false;
+                spaceDown = mDown = bDown = false;
             }
-            else if (upArrowDown && (rightArrowDown || leftArrowDown))
+            else if (nDown && (mDown || bDown))
             {
-                upArrowDown = rightArrowDown = leftArrowDown = false;
+                nDown = mDown = bDown = false;
             }
+
+
+            //BlueRider
+            if (leftArrowDown && blueDirection == "Up")
+            {
+                blueDirection = "Left";
+                BlueRider.X -= 32;
+                BlueRider.Y += 32;
+                leftArrowDown = false;
+            }
+            else if (leftArrowDown && blueDirection == "Down")
+            {
+                blueDirection = "Left";
+                BlueRider.X -= 32;
+                BlueRider.Y -= 6;
+                leftArrowDown = false;
+            }
+            else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Up")
+            {
+                blueDirection = "Right";
+                BlueRider.X += 6;
+                BlueRider.Y += 32;
+            }
+            else if (rightArrowDown && blueDirection != "Right" && blueDirection == "Down")
+            {
+                blueDirection = "Right";
+                BlueRider.X += 6;
+                BlueRider.Y -= 10;
+            }
+            else if (upArrowDown && blueDirection != "Up" && blueDirection == "Left")
+            {
+                blueDirection = "Up";
+                BlueRider.X += 32;
+                BlueRider.Y -= 32;
+            }
+            else if (upArrowDown && blueDirection != "Up" && blueDirection == "Right")
+            {
+                blueDirection = "Up";
+                BlueRider.X -= 6;
+                BlueRider.Y -= 32;
+            }
+            else if (downArrowDown && blueDirection != "Down" && blueDirection == "Left")
+            {
+                blueDirection = "Down";
+                BlueRider.X += 32;
+                BlueRider.Y += 6;
+            }
+            else if (downArrowDown && blueDirection != "Down" && blueDirection == "Right")
+            {
+                blueDirection = "Down";
+                BlueRider.X -= 6;
+                BlueRider.Y += 6;
+            }
+
+
 
             //BlueRider
             if (leftArrowDown && blueDirection == "Up")
