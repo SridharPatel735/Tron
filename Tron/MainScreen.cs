@@ -94,7 +94,7 @@ namespace Tron
         {
             buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
             buttonClickPlayer.Play();
-            //InstructionScreen
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
             FourPlayer fp = new FourPlayer();
