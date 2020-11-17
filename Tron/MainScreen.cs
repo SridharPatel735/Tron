@@ -19,6 +19,7 @@ namespace Tron
         public static System.Windows.Media.MediaPlayer backgroundPlayer = new System.Windows.Media.MediaPlayer();
         public static System.Windows.Media.MediaPlayer buttonMovePlayer = new System.Windows.Media.MediaPlayer();
         public static System.Windows.Media.MediaPlayer buttonClickPlayer = new System.Windows.Media.MediaPlayer();
+        public static Boolean multiplayer = false;
         public MainScreen()
         {
             InitializeComponent();
@@ -92,6 +93,8 @@ namespace Tron
 
         private void multiPlayerButton_Click(object sender, EventArgs e)
         {
+            multiplayer = true; 
+
             buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
             buttonClickPlayer.Play();
             Form f = this.FindForm();
