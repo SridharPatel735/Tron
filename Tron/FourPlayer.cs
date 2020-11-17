@@ -25,8 +25,8 @@ namespace Tron
         Image orangeRider = Properties.Resources.RedBikeDown;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
-        SolidBrush greenBrush = new SolidBrush (Color.Lime);
-        SolidBrush yellowBrush = new SolidBrush (Color.Gold); 
+        SolidBrush greenBrush = new SolidBrush(Color.Lime);
+        SolidBrush yellowBrush = new SolidBrush(Color.Gold);
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
         int counter = 0;
         int timer = 0;
@@ -432,32 +432,56 @@ namespace Tron
             #endregion
 
             #region Collision
-            //Collision with walls
+            //Blue bike collision with wall
             if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height - 160 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
             {
                 BlueRider.lives--;
                 collisionReset();
             }
+            //Orange bike collision with wall
             else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height - 160 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
                 OrangeRider.lives--;
                 collisionReset();
             }
+
+            //Green bike collision with wall
+            if (GreenRider.Y <= 0 || GreenRider.Y + GreenRider.riderHeight >= this.Height - 160 || GreenRider.X <= 0 || GreenRider.X + GreenRider.riderWidth >= this.Width)
+            {
+                GreenRider.lives--;
+                collisionReset();
+            }
+
+            //Yellow bike collision with wall
+            else if (YellowRider.Y <= 0 || YellowRider.Y + YellowRider.riderHeight >= this.Height - 160 || YellowRider.X <= 0 || YellowRider.X + YellowRider.riderWidth >= this.Width)
+            {
+                YellowRider.lives--;
+                collisionReset();
+            }
+
             //Collision with other player
-            if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
+            if (BlueRider.PlayerCollision(OrangeRider) || BlueRider.PlayerCollision(GreenRider) || BlueRider.PlayerCollision(YellowRider))
+            {
+                collisionReset();
+            }
+            else if (OrangeRider.PlayerCollision(YellowRider) || OrangeRider.PlayerCollision(GreenRider))
+            {
+                collisionReset();
+            }
+            else if (YellowRider.PlayerCollision(GreenRider))
             {
                 collisionReset();
             }
             //Collision with trail
             foreach (Trail x in playerTrailList)
-            {
-                Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
-                if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
                 {
-                    collisionReset();
-                    break;
+                    Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
+                    if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
+                    {
+                        collisionReset();
+                        break;
+                    }
                 }
-            }
             #endregion
         }
         public void collisionReset()
