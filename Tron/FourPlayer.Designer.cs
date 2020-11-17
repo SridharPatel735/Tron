@@ -36,9 +36,10 @@
             // 
             // countDownBox
             // 
-            this.countDownBox.Location = new System.Drawing.Point(496, 386);
+            this.countDownBox.Location = new System.Drawing.Point(372, 314);
+            this.countDownBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.countDownBox.Name = "countDownBox";
-            this.countDownBox.Size = new System.Drawing.Size(760, 629);
+            this.countDownBox.Size = new System.Drawing.Size(570, 511);
             this.countDownBox.TabIndex = 0;
             this.countDownBox.TabStop = false;
             // 
@@ -50,12 +51,13 @@
             // 
             // FourPlayer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.DimGray;
             this.Controls.Add(this.countDownBox);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FourPlayer";
-            this.Size = new System.Drawing.Size(1652, 1348);
+            this.Size = new System.Drawing.Size(1239, 1095);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FourPlayer_Paint);
             this.Enter += new System.EventHandler(this.FourPlayer_Enter);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FourPlayer_KeyUp);
