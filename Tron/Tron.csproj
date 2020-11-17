@@ -199,13 +199,19 @@
     <None Include="Resources\SlowTimePowerUp.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ButtonClick.wav" />
+    <None Include="Resources\ButtonClick.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Explosion.wav" />
+    <None Include="Resources\Explosion.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ButtonSwitch.wav" />
+    <None Include="Resources\ButtonSwitch.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RedTronBike-1.png.png" />
@@ -316,7 +322,9 @@
     <None Include="Resources\orangeLife-1.png.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\382250__alexprost__epic-strings.wav" />
+    <None Include="Resources\backgroundMusic.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\Windows\" />

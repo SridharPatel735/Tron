@@ -62,31 +62,50 @@ namespace Tron
             switch (e.KeyCode)
             {
                 case Keys.Up:
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
                     upArrowDown = true;
                     break;
                 case Keys.Down:
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
                     downArrowDown = true;
                     break;
                 case Keys.Left:
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
                     leftArrowDown = true;
                     break;
                 case Keys.Right:
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
                     rightArrowDown = true;
                     break;
                 case Keys.W:
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
                     wDown = true;
                     break;
                 case Keys.A:
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
                     aDown = true;
                     break;
                 case Keys.S:
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
                     sDown = true;
                     break;
                 case Keys.D:
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
                     dDown = true;
                     break;
                 case Keys.Space:
                     // Goes to the game screen
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
+                    MainScreen.backgroundPlayer.Stop();
                     GameScreen gs = new GameScreen();
                     Form form = this.FindForm();
 
