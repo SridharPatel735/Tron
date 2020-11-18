@@ -93,8 +93,7 @@ namespace Tron
 
         private void multiPlayerButton_Click(object sender, EventArgs e)
         {
-            multiplayer = true; 
-
+            multiplayer = true;
             buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
             buttonClickPlayer.Play();
             Form f = this.FindForm();
