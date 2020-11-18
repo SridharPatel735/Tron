@@ -27,6 +27,7 @@ namespace Tron
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
         int counter = 0;
         int timer = 0;
+        int musicCounter = 0;
         SolidBrush obsBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
@@ -35,6 +36,8 @@ namespace Tron
         Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown;
         Boolean reset = true;
+        System.Windows.Media.MediaPlayer musicPlayer = new System.Windows.Media.MediaPlayer();
+        System.Windows.Media.MediaPlayer buttonClickPlayer = new System.Windows.Media.MediaPlayer();
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             switch (e.KeyCode)
@@ -64,6 +67,8 @@ namespace Tron
                     dDown = true;
                     break;
                 case Keys.Escape:
+                    buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    buttonClickPlayer.Play();
                     escDown = true;
                     Pause();
                     break;
@@ -106,11 +111,12 @@ namespace Tron
         public GameScreen()
         {
             InitializeComponent();
+            musicPlayer.Open(new Uri(Application.StartupPath + "/Resources/gameBackgroundMusic.wav"));
             OnStart();
         }
         public void OnStart()
         {
-            for (int i = 0; i <= randGen.Next(3,6); i++)
+            for (int i = 0; i <= randGen.Next(3, 6); i++)
             {
                 int x = randGen.Next(55, this.Width - 55);
                 if (x >= 130 && x <= 170)
@@ -336,6 +342,16 @@ namespace Tron
             {
                 HighScore();
             }
+
+            #region Music
+            musicCounter++;
+            if (musicCounter == 616)
+            {
+                musicCounter = 0;
+                musicPlayer.Open(new Uri(Application.StartupPath + "/Resources/gameBackgroundMusic.wav"));
+                musicPlayer.Play();
+            }
+            #endregion
 
             #region Collision
             //Collision with walls
@@ -611,7 +627,7 @@ namespace Tron
             timer = 0;
             Refresh();
             if (BlueRider.lives == 0 || OrangeRider.lives == 0)
-            {}
+            { }
             else
             {
                 CountDown();

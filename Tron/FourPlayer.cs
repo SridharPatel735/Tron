@@ -19,7 +19,7 @@ namespace Tron
         Rider OrangeRider = new Rider(1475, 10, 5);
         Rider BlueRider = new Rider(150, 1148, 5);
         Rider GreenRider = new Rider(10, 150, 5);
-        Rider YellowRider = new Rider(200, 200, 5);
+        Rider YellowRider = new Rider(1600, 1040, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
         Image blueRider = Properties.Resources.BlueBikeUp;
         Image orangeRider = Properties.Resources.RedBikeDown;
@@ -32,13 +32,17 @@ namespace Tron
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
         public int riderWidth = 20;
         public int riderHeight = 55;
+        int musicCounter = 0;
         public static string blueDirection = "Up", greenDirection = "Right", yellowDirection = "Left", orangeDirection = "Down";
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown, bDown, nDown, mDown, spaceDown, cDown, vDown, xDown, zDown;
         Boolean blueAlive = true, orangeAlive = true, greenAlive = true, yellowAlive = true;
+        System.Windows.Media.MediaPlayer musicPlayer = new System.Windows.Media.MediaPlayer();
+        System.Windows.Media.MediaPlayer buttonClickPlayer = new System.Windows.Media.MediaPlayer();
 
         public FourPlayer()
         {
             InitializeComponent();
+            musicPlayer.Open(new Uri(Application.StartupPath + "/Resources/gameBackgroundMusic.wav"));
         }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -46,6 +50,16 @@ namespace Tron
             greenLives.Text = GreenRider.lives + "";
             orangeLives.Text = OrangeRider.lives + "";
             yellowLives.Text = YellowRider.lives + "";
+
+            #region Music
+            musicCounter++;
+            if (musicCounter == 616)
+            {
+                musicCounter = 0;
+                musicPlayer.Open(new Uri(Application.StartupPath + "/Resources/gameBackgroundMusic.wav"));
+                musicPlayer.Play();
+            }
+            #endregion
 
             #region Changing Direction
 
@@ -836,7 +850,8 @@ namespace Tron
 
         private void FourPlayer_Enter(object sender, EventArgs e)
         {
-            //CountDown();
+            CountDown();
+            winnerLabel.Visible = false;
         }
 
         private void FourPlayer_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -1004,6 +1019,8 @@ namespace Tron
                     }
                     break;
                 case Keys.Escape:
+                    buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    buttonClickPlayer.Play();
                     escDown = true;
                     Pause();
                     break;
