@@ -564,7 +564,7 @@ namespace Tron
                     YellowRider.PlayerMoveUpDown(yellowDirection);
                     foreach (Trail x in playerTrailList)
                     {
-                        while (x.colour == yellowBrush)
+                        if (x.colour == yellowBrush)
                         {
                             playerTrailList.Remove(x);
                         }
