@@ -53,6 +53,7 @@ namespace Tron
             playButton.BackgroundImage = Properties.Resources.playImage;
             exitButton.BackgroundImage = Properties.Resources.exitImageSelected;
             multiPlayerButton.BackgroundImage = Properties.Resources._4PlayerButton;
+            highScoreButton.BackgroundImage = Properties.Resources.highScore;
         }
 
         private void playButton_Enter(object sender, EventArgs e)
@@ -62,6 +63,7 @@ namespace Tron
             playButton.BackgroundImage = Properties.Resources.playImageSelected;
             exitButton.BackgroundImage = Properties.Resources.exitImage;
             multiPlayerButton.BackgroundImage = Properties.Resources._4PlayerButton;
+            highScoreButton.BackgroundImage = Properties.Resources.highScore;
         }
 
         private void MainScreen_Load(object sender, EventArgs e)
@@ -78,6 +80,7 @@ namespace Tron
             playButton.BackgroundImage = Properties.Resources.playImage;
             exitButton.BackgroundImage = Properties.Resources.exitImage;
             multiPlayerButton.BackgroundImage = Properties.Resources._4PlayerButtonSelected;
+            highScoreButton.BackgroundImage = Properties.Resources.highScore;
         }
 
         private void musicTimer_Tick(object sender, EventArgs e)
@@ -97,6 +100,28 @@ namespace Tron
             Form f = this.FindForm();
             f.Controls.Remove(this);
             InstructionScreen4Player gs = new InstructionScreen4Player();
+            f.Controls.Add(gs);
+            gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
+            gs.Focus();
+        }
+
+        private void highScoreButton_Enter(object sender, EventArgs e)
+        {
+            buttonMovePlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonSwitch.wav"));
+            buttonMovePlayer.Play();
+            playButton.BackgroundImage = Properties.Resources.playImage;
+            exitButton.BackgroundImage = Properties.Resources.exitImage;
+            multiPlayerButton.BackgroundImage = Properties.Resources._4PlayerButton;
+            highScoreButton.BackgroundImage = Properties.Resources.highScoreSelected;
+        }
+
+        private void highScoreButton_Click(object sender, EventArgs e)
+        {
+            buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+            buttonClickPlayer.Play();
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            HighScoreScreen gs = new HighScoreScreen();
             f.Controls.Add(gs);
             gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
             gs.Focus();

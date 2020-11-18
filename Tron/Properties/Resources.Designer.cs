@@ -286,6 +286,16 @@ namespace Tron.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap highScore {
+            get {
+                object obj = ResourceManager.GetObject("highScore", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;highscore&gt;
         ///  &lt;Score&gt;
@@ -318,6 +328,16 @@ namespace Tron.Properties {
         internal static string HighScores {
             get {
                 return ResourceManager.GetString("HighScores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap highScoreSelected {
+            get {
+                object obj = ResourceManager.GetObject("highScoreSelected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

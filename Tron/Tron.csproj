@@ -69,6 +69,12 @@
     <Compile Include="GameScreen.Designer.cs">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="HighScoreScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HighScoreScreen.Designer.cs">
+      <DependentUpon>HighScoreScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="InstructionScreen4Player.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HighScoreScreen.resx">
+      <DependentUpon>HighScoreScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InstructionScreen4Player.resx">
       <DependentUpon>InstructionScreen4Player.cs</DependentUpon>

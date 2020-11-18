@@ -38,6 +38,7 @@ namespace Tron
         Boolean reset = true;
         System.Windows.Media.MediaPlayer musicPlayer = new System.Windows.Media.MediaPlayer();
         System.Windows.Media.MediaPlayer buttonClickPlayer = new System.Windows.Media.MediaPlayer();
+        System.Windows.Media.MediaPlayer collisionPlayer = new System.Windows.Media.MediaPlayer();
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             switch (e.KeyCode)
@@ -112,6 +113,8 @@ namespace Tron
         {
             InitializeComponent();
             musicPlayer.Open(new Uri(Application.StartupPath + "/Resources/gameBackgroundMusic.wav"));
+            collisionPlayer.Open(new Uri(Application.StartupPath + "/Resources/Explosion.wav"));
+            buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
             OnStart();
         }
         public void OnStart()
@@ -614,6 +617,8 @@ namespace Tron
         }
         public void collisionReset()
         {
+            collisionPlayer.Open(new Uri(Application.StartupPath + "/Resources/Explosion.wav"));
+            collisionPlayer.Play();
             blueDirection = "Up";
             BlueRider.PlayerMoveUpDown(blueDirection);
             orangeDirection = "Down";
