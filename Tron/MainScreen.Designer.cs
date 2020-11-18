@@ -45,9 +45,10 @@
             this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exitButton.FlatAppearance.BorderSize = 0;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Location = new System.Drawing.Point(922, 587);
+            this.exitButton.Location = new System.Drawing.Point(615, 391);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(338, 126);
+            this.exitButton.Size = new System.Drawing.Size(225, 84);
             this.exitButton.TabIndex = 3;
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -60,9 +61,10 @@
             this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.playButton.FlatAppearance.BorderSize = 0;
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playButton.Location = new System.Drawing.Point(97, 587);
+            this.playButton.Location = new System.Drawing.Point(65, 391);
+            this.playButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(338, 126);
+            this.playButton.Size = new System.Drawing.Size(225, 84);
             this.playButton.TabIndex = 1;
             this.playButton.UseVisualStyleBackColor = false;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
@@ -72,20 +74,22 @@
             // 
             this.titlePictureBox.BackgroundImage = global::Tron.Properties.Resources.mainScreenTitle;
             this.titlePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.titlePictureBox.Location = new System.Drawing.Point(97, 0);
+            this.titlePictureBox.Location = new System.Drawing.Point(65, 0);
+            this.titlePictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.titlePictureBox.Name = "titlePictureBox";
-            this.titlePictureBox.Size = new System.Drawing.Size(1163, 543);
+            this.titlePictureBox.Size = new System.Drawing.Size(775, 362);
             this.titlePictureBox.TabIndex = 1;
             this.titlePictureBox.TabStop = false;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Font = new System.Drawing.Font("Digital-7 Mono", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label1.Location = new System.Drawing.Point(476, 730);
+            this.label1.Location = new System.Drawing.Point(317, 487);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(445, 60);
+            this.label1.Size = new System.Drawing.Size(297, 40);
             this.label1.TabIndex = 2;
             this.label1.Text = "Press Space to Select\r\n";
             // 
@@ -96,11 +100,13 @@
             this.multiPlayerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.multiPlayerButton.FlatAppearance.BorderSize = 0;
             this.multiPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.multiPlayerButton.Location = new System.Drawing.Point(441, 587);
+            this.multiPlayerButton.Location = new System.Drawing.Point(294, 391);
+            this.multiPlayerButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.multiPlayerButton.Name = "multiPlayerButton";
-            this.multiPlayerButton.Size = new System.Drawing.Size(475, 126);
+            this.multiPlayerButton.Size = new System.Drawing.Size(317, 84);
             this.multiPlayerButton.TabIndex = 2;
             this.multiPlayerButton.UseVisualStyleBackColor = false;
+            this.multiPlayerButton.Click += new System.EventHandler(this.multiPlayerButton_Click);
             this.multiPlayerButton.Enter += new System.EventHandler(this.multiPlayerButton_Enter);
             // 
             // musicTimer
@@ -110,7 +116,7 @@
             // 
             // MainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -119,8 +125,9 @@
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.titlePictureBox);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainScreen";
-            this.Size = new System.Drawing.Size(1350, 800);
+            this.Size = new System.Drawing.Size(900, 533);
             this.Load += new System.EventHandler(this.MainScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.titlePictureBox)).EndInit();
             this.ResumeLayout(false);
