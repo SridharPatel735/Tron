@@ -110,40 +110,22 @@ namespace Tron
                     dDown = true;
                     break;
                 case Keys.Space:
+                    // Goes to the game screen
+                    MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
+                    MainScreen.buttonClickPlayer.Play();
+                    MainScreen.backgroundPlayer.Stop();
+                    GameScreen gs = new GameScreen();
+                    Form form = this.FindForm();
 
-                    if (MainScreen.multiplayer)
-                    {
-                        MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
-                        MainScreen.buttonClickPlayer.Play();
-                        MainScreen.backgroundPlayer.Stop();
-                        FourPlayer fp = new FourPlayer();
-                        Form form = this.FindForm();
+                    form.Controls.Add(gs);
+                    gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
+                    form.Controls.Remove(this);
 
-                        form.Controls.Add(fp);
-                        fp.Location = new Point((form.Width - fp.Width) / 2, (form.Height - fp.Height) / 2);
-                        form.Controls.Remove(this);
-                    }
-                    else
-                    {
-                        // Goes to the game screen
-                        MainScreen.buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
-                        MainScreen.buttonClickPlayer.Play();
-                        MainScreen.backgroundPlayer.Stop();
-                        GameScreen gs = new GameScreen();
-                        Form form = this.FindForm();
+                    //set the player name
+                    bluePlayerName = nameInput1.Text + nameInput2.Text + nameInput3.Text;
+                    orangePlayerName = nameInput4.Text + nameInput5.Text + nameInput6.Text;
+                    break;
 
-                        form.Controls.Add(gs);
-                        gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
-                        form.Controls.Remove(this);
-
-                        //gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
-
-                        //set the player name
-                        bluePlayerName = nameInput1.Text + nameInput2.Text + nameInput3.Text;
-                        orangePlayerName = nameInput4.Text + nameInput5.Text + nameInput6.Text;
-                    }
-                        break;
-                    
             }
         }
 

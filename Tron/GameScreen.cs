@@ -344,13 +344,13 @@ namespace Tron
                 BlueRider.lives--;
                 collisionReset();
             }
-            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height - 160 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height - 160 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
                 OrangeRider.lives--;
                 collisionReset();
             }
             //Collision with other player
-            if (BlueRider.PlayerCollision(OrangeRider) || OrangeRider.PlayerCollision(BlueRider))
+            if (BlueRider.PlayerCollision(OrangeRider))
             {
                 collisionReset();
             }
@@ -358,7 +358,7 @@ namespace Tron
             foreach (Trail x in playerTrailList)
             {
                 Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
-                if (BlueRider.Collision(tempTrail) || OrangeRider.Collision(tempTrail))
+                if (BlueRider.Collision(tempTrail))
                 {
                     collisionReset();
                     break;

@@ -35,6 +35,8 @@ namespace Tron
         private void exitButton_Click(object sender, EventArgs e)
         {
             buttonResult = DialogResult.Abort;
+            Form form = this.FindForm();
+            form.Controls.Remove(this);
             pauseForm.Close();
         }
 

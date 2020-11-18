@@ -16,30 +16,37 @@ namespace Tron
     public partial class FourPlayer : UserControl
     {
         List<Trail> playerTrailList = new List<Trail>();
-        Rider OrangeRider = new Rider(745, 2, 5);
-        Rider BlueRider = new Rider(150, 503, 5);
-        Rider GreenRider = new Rider(150, 2, 5);
-        Rider YellowRider = new Rider(745, 503, 5);
+        Rider OrangeRider = new Rider(1475, 10, 5);
+        Rider BlueRider = new Rider(150, 1148, 5);
+        Rider GreenRider = new Rider(10, 150, 5);
+        Rider YellowRider = new Rider(200, 200, 5);
         int bufferDistanceY = 10, bufferDistanceX = 1;
         Image blueRider = Properties.Resources.BlueBikeUp;
         Image orangeRider = Properties.Resources.RedBikeDown;
+        Image yellowRider = Properties.Resources.YellowBikeLeft;
+        Image greenRider = Properties.Resources.GreenBikeRight;
         SolidBrush blueBrush = new SolidBrush(Color.DeepSkyBlue);
         SolidBrush orangeBrush = new SolidBrush(Color.OrangeRed);
         SolidBrush greenBrush = new SolidBrush(Color.Lime);
         SolidBrush yellowBrush = new SolidBrush(Color.Gold);
         SolidBrush blackBrush = new SolidBrush(Color.FromArgb(17, 17, 17));
-        int counter = 0;
-        int timer = 0;
-        SolidBrush obsBrush = new SolidBrush(Color.White);
         public int riderWidth = 20;
         public int riderHeight = 55;
         public static string blueDirection = "Up", greenDirection = "Right", yellowDirection = "Left", orangeDirection = "Down";
-        int obsWidth = 10, obsHeight = 400;
-        Random randGen = new Random();
         Boolean rightArrowDown, leftArrowDown, upArrowDown, downArrowDown, aDown, wDown, sDown, dDown, escDown, bDown, nDown, mDown, spaceDown, cDown, vDown, xDown, zDown;
+        Boolean blueAlive = true, orangeAlive = true, greenAlive = true, yellowAlive = true;
 
+        public FourPlayer()
+        {
+            InitializeComponent();
+        }
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            blueLives.Text = BlueRider.lives + "";
+            greenLives.Text = GreenRider.lives + "";
+            orangeLives.Text = OrangeRider.lives + "";
+            yellowLives.Text = YellowRider.lives + "";
+
             #region Changing Direction
 
             #region Cancel presses on more than one
@@ -121,14 +128,14 @@ namespace Tron
             if (cDown && yellowDirection == "Up")
             {
                 yellowDirection = "Left";
-                YellowRider.X -= 32;
+                YellowRider.X -= 23;
                 YellowRider.Y += 32;
                 cDown = false;
             }
             else if (cDown && yellowDirection == "Down")
             {
                 yellowDirection = "Left";
-                YellowRider.X -= 32;
+                YellowRider.X -= 23;
                 YellowRider.Y -= 6;
                 cDown = false;
             }
@@ -147,7 +154,7 @@ namespace Tron
             else if (vDown && yellowDirection != "Up" && yellowDirection == "Left")
             {
                 yellowDirection = "Up";
-                YellowRider.X += 32;
+                YellowRider.X += 23;
                 YellowRider.Y -= 32;
             }
             else if (vDown && yellowDirection != "Up" && yellowDirection == "Right")
@@ -159,7 +166,7 @@ namespace Tron
             else if (zDown && yellowDirection != "Down" && yellowDirection == "Left")
             {
                 yellowDirection = "Down";
-                YellowRider.X += 32;
+                YellowRider.X += 23;
                 YellowRider.Y += 6;
             }
             else if (zDown && yellowDirection != "Down" && yellowDirection == "Right")
@@ -436,41 +443,290 @@ namespace Tron
             if (BlueRider.Y <= 0 || BlueRider.Y + BlueRider.riderHeight >= this.Height - 160 || BlueRider.X <= 0 || BlueRider.X + BlueRider.riderWidth >= this.Width)
             {
                 BlueRider.lives--;
-                collisionReset();
+                if (BlueRider.lives == 0)
+                {
+                    blueAlive = false;
+                    blueDirection = "Up";
+                    BlueRider.PlayerMoveUpDown(blueDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == blueBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    BlueRider.Reset();
+                }
+                else
+                {
+                    blueDirection = "Up";
+                    BlueRider.PlayerMoveUpDown(blueDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == blueBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    BlueRider.Reset();
+                    Refresh();
+                }
             }
             //Orange bike collision with wall
-            else if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height - 160 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
+            if (OrangeRider.Y <= 0 || OrangeRider.Y + OrangeRider.riderHeight >= this.Height - 160 || OrangeRider.X <= 0 || OrangeRider.X + OrangeRider.riderWidth >= this.Width)
             {
                 OrangeRider.lives--;
-                collisionReset();
+                if (OrangeRider.lives == 0)
+                {
+                    orangeAlive = false;
+                    orangeDirection = "Down";
+                    OrangeRider.PlayerMoveUpDown(orangeDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == orangeBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    OrangeRider.Reset();
+                }
+                else
+                {
+                    orangeDirection = "Dowm";
+                    OrangeRider.PlayerMoveUpDown(orangeDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == orangeBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    OrangeRider.Reset();
+                    Refresh();
+                }
             }
 
             //Green bike collision with wall
             if (GreenRider.Y <= 0 || GreenRider.Y + GreenRider.riderHeight >= this.Height - 160 || GreenRider.X <= 0 || GreenRider.X + GreenRider.riderWidth >= this.Width)
             {
                 GreenRider.lives--;
-                collisionReset();
+                if (GreenRider.lives == 0)
+                {
+                    greenAlive = false;
+                    greenDirection = "Right";
+                    GreenRider.PlayerMoveUpDown(greenDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == greenBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    GreenRider.Reset();
+                }
+                else
+                {
+                    greenDirection = "Right";
+                    GreenRider.PlayerMoveUpDown(greenDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == greenBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    GreenRider.Reset();
+                    Refresh();
+                }
             }
 
             //Yellow bike collision with wall
-            else if (YellowRider.Y <= 0 || YellowRider.Y + YellowRider.riderHeight >= this.Height - 160 || YellowRider.X <= 0 || YellowRider.X + YellowRider.riderWidth >= this.Width)
+            if (YellowRider.Y <= 0 || YellowRider.Y + YellowRider.riderHeight >= this.Height - 160 || YellowRider.X <= 0 || YellowRider.X + YellowRider.riderWidth >= this.Width)
             {
                 YellowRider.lives--;
-                collisionReset();
+                if (YellowRider.lives == 0)
+                {
+                    yellowAlive = false;
+                    yellowDirection = "Left";
+                    YellowRider.PlayerMoveUpDown(yellowDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == yellowBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    YellowRider.Reset();
+                }
+                else
+                {
+                    yellowDirection = "Left";
+                    YellowRider.PlayerMoveUpDown(yellowDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        while (x.colour == yellowBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    YellowRider.Reset();
+                    Refresh();
+                }
             }
 
             //Collision with other player
             if (BlueRider.PlayerCollision(OrangeRider) || BlueRider.PlayerCollision(GreenRider) || BlueRider.PlayerCollision(YellowRider))
             {
-                collisionReset();
+                if (BlueRider.PlayerCollision(OrangeRider))
+                {
+                    blueDirection = "Up";
+                    BlueRider.PlayerMoveUpDown(blueDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == blueBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    BlueRider.Reset();
+                    orangeDirection = "Dowm";
+                    OrangeRider.PlayerMoveUpDown(orangeDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == orangeBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    OrangeRider.Reset();
+                    Refresh();
+                }
+                else if (BlueRider.PlayerCollision(GreenRider))
+                {
+                    blueDirection = "Up";
+                    BlueRider.PlayerMoveUpDown(blueDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == blueBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    BlueRider.Reset();
+                    greenDirection = "Right";
+                    GreenRider.PlayerMoveUpDown(greenDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == greenBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    GreenRider.Reset();
+                    Refresh();
+                }
+                else if (BlueRider.PlayerCollision(YellowRider))
+                {
+                    blueDirection = "Up";
+                    BlueRider.PlayerMoveUpDown(blueDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == blueBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    BlueRider.Reset();
+                    yellowDirection = "Left";
+                    YellowRider.PlayerMoveUpDown(yellowDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == yellowBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    YellowRider.Reset();
+                    Refresh();
+                }
             }
-            else if (OrangeRider.PlayerCollision(YellowRider) || OrangeRider.PlayerCollision(GreenRider))
+            if (OrangeRider.PlayerCollision(YellowRider) || OrangeRider.PlayerCollision(GreenRider))
             {
-                collisionReset();
+                if (OrangeRider.PlayerCollision(YellowRider))
+                {
+                    orangeDirection = "Dowm";
+                    OrangeRider.PlayerMoveUpDown(orangeDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == orangeBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    OrangeRider.Reset();
+                    yellowDirection = "Left";
+                    YellowRider.PlayerMoveUpDown(yellowDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == yellowBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    YellowRider.Reset();
+                    Refresh();
+                }
+                else if (OrangeRider.PlayerCollision(GreenRider))
+                {
+                    orangeDirection = "Dowm";
+                    OrangeRider.PlayerMoveUpDown(orangeDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == orangeBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    OrangeRider.Reset();
+                    greenDirection = "Right";
+                    GreenRider.PlayerMoveUpDown(greenDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == greenBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    GreenRider.Reset();
+                    Refresh();
+                }
             }
-            else if (YellowRider.PlayerCollision(GreenRider))
+            if (YellowRider.PlayerCollision(GreenRider))
             {
-                collisionReset();
+                if (YellowRider.PlayerCollision(GreenRider))
+                {
+                    yellowDirection = "Left";
+                    YellowRider.PlayerMoveUpDown(yellowDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == yellowBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    YellowRider.Reset();
+                    greenDirection = "Right";
+                    GreenRider.PlayerMoveUpDown(greenDirection);
+                    foreach (Trail x in playerTrailList)
+                    {
+                        if (x.colour == greenBrush)
+                        {
+                            playerTrailList.Remove(x);
+                        }
+                    }
+                    GreenRider.Reset();
+                    Refresh();
+                }
             }
 
             #region Collision with trails
@@ -480,6 +736,9 @@ namespace Tron
                 Trail tempTrail = new Trail(x.trailX, x.trailY, x.colour);
                 if (BlueRider.Collision(tempTrail))
                 {
+                    blueDirection = "Up";
+                    BlueRider.PlayerMoveUpDown(blueDirection);
+                    BlueRider.Reset();
                     foreach (Trail t in playerTrailList)
                     {
                         if (t.colour == blueBrush)
@@ -490,6 +749,9 @@ namespace Tron
                 }
                 if (OrangeRider.Collision(tempTrail))
                 {
+                    orangeDirection = "Up";
+                    OrangeRider.PlayerMoveUpDown(blueDirection);
+                    OrangeRider.Reset();
                     foreach (Trail t in playerTrailList)
                     {
                         if (t.colour == orangeBrush)
@@ -500,6 +762,9 @@ namespace Tron
                 }
                 if (GreenRider.Collision(tempTrail))
                 {
+                    greenDirection = "Up";
+                    GreenRider.PlayerMoveUpDown(blueDirection);
+                    GreenRider.Reset();
                     foreach (Trail t in playerTrailList)
                     {
                         if (t.colour == greenBrush)
@@ -510,6 +775,9 @@ namespace Tron
                 }
                 if (YellowRider.Collision(tempTrail))
                 {
+                    yellowDirection = "Up";
+                    YellowRider.PlayerMoveUpDown(blueDirection);
+                    YellowRider.Reset();
                     foreach (Trail t in playerTrailList)
                     {
                         if (t.colour == yellowBrush)
@@ -522,68 +790,53 @@ namespace Tron
             #endregion
 
             #endregion
-            
-            //LifeCheck();
+
+            #region lifeCheck
+            if ((BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives != 0) || (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives != 0 && YellowRider.lives == 0) || (BlueRider.lives == 0 && OrangeRider.lives != 0 && GreenRider.lives == 0 && YellowRider.lives == 0) || (BlueRider.lives != 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives == 0))
+            {
+                LifeCheck();
+            }
+            #endregion
+
+            Refresh();
         }
 
-        //public void LifeCheck()
-        //{
-        //    gameTimer.Enabled = false;
-        //    countDownBox.Visible = false;
-        //    winnerLabel.Visible = true;
-
-        //    if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives != 0)
-        //    {
-        //        winnerLabel.Text = "Yellow is the Winner!!!";
-        //    }
-
-        //    else if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives != 0 && YellowRider.lives == 0)
-        //    {
-        //        winnerLabel.Text = "Green is the Winner!!!";
-        //    }
-        //    else if (BlueRider.lives == 0 && OrangeRider.lives != 0 && GreenRider.lives == 0 && YellowRider.lives == 0)
-        //    {
-        //        winnerLabel.Text = "Orange is the Winner!";
-        //    }
-        //    else if(BlueRider.lives != 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives == 0)
-        //    {
-        //        winnerLabel.TExt = "Blue is the winner";
-        //    }
-
-        //    Refresh();
-        //    Thread.Sleep(4000);
-        //    winnerLabel.Visible = false;
-        //    Refresh();
-
-        //    // Goes to the main screen
-        //    Form f = this.FindForm();
-        //    f.Controls.Remove(this);
-        //    MainScreen ms = new MainScreen();
-        //    f.Controls.Add(ms);
-        //    ms.Focus();
-        //}
-        public void collisionReset()
+        public void LifeCheck()
         {
-            blueDirection = "Up";
-            BlueRider.PlayerMoveUpDown(blueDirection);
-            orangeDirection = "Down";
-            OrangeRider.PlayerMoveUpDown(orangeDirection);
-            playerTrailList.Clear();
-            BlueRider.Reset();
-            OrangeRider.Reset();
-            timer = 0;
-            Refresh();
-            if (BlueRider.lives == 0 || OrangeRider.lives == 0)
-            { }
-            else
+            gameTimer.Enabled = false;
+            countDownBox.Visible = false;
+            winnerLabel.Visible = true;
+            if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives != 0)
             {
-                CountDown();
+                winnerLabel.Text = "Yellow is the Winner!!!";
             }
+            else if (BlueRider.lives == 0 && OrangeRider.lives == 0 && GreenRider.lives != 0 && YellowRider.lives == 0)
+            {
+                winnerLabel.Text = "Green is the Winner!!!";
+            }
+            else if (BlueRider.lives == 0 && OrangeRider.lives != 0 && GreenRider.lives == 0 && YellowRider.lives == 0)
+            {
+                winnerLabel.Text = "Orange is the Winner!";
+            }
+            else if (BlueRider.lives != 0 && OrangeRider.lives == 0 && GreenRider.lives == 0 && YellowRider.lives == 0)
+            {
+                winnerLabel.Text = "Blue is the winner";
+            }
+            Refresh();
+            Thread.Sleep(4000);
+            winnerLabel.Visible = false;
+            Refresh();
+            // Goes to the main screen
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            MainScreen ms = new MainScreen();
+            f.Controls.Add(ms);
+            ms.Focus();
         }
 
         private void FourPlayer_Enter(object sender, EventArgs e)
         {
-            CountDown();
+            //CountDown();
         }
 
         private void FourPlayer_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -591,56 +844,168 @@ namespace Tron
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    leftArrowDown = true;
+                    if (blueAlive == false)
+                    {
+                        leftArrowDown = false;
+                    }
+                    else
+                    {
+                        leftArrowDown = true;
+                    }
                     break;
                 case Keys.Right:
-                    rightArrowDown = true;
+                    if (blueAlive == false)
+                    {
+                        rightArrowDown = false;
+                    }
+                    else
+                    {
+                        rightArrowDown = true;
+                    }
                     break;
                 case Keys.Down:
-                    downArrowDown = true;
+                    if (blueAlive == false)
+                    {
+                        downArrowDown = false;
+                    }
+                    else
+                    {
+                        downArrowDown = true;
+                    }
                     break;
                 case Keys.Up:
-                    upArrowDown = true;
+                    if (blueAlive == false)
+                    {
+                        upArrowDown = false;
+                    }
+                    else
+                    {
+                        upArrowDown = true;
+                    }
                     break;
                 case Keys.A:
-                    aDown = true;
+                    if (orangeAlive == false)
+                    {
+                        aDown = false;
+                    }
+                    else
+                    {
+                        aDown = true;
+                    }
                     break;
                 case Keys.W:
-                    wDown = true;
+                    if (orangeAlive == false)
+                    {
+                        wDown = false;
+                    }
+                    else
+                    {
+                        wDown = true;
+                    }
                     break;
                 case Keys.S:
-                    sDown = true;
+                    if (orangeAlive == false)
+                    {
+                        sDown = false;
+                    }
+                    else
+                    {
+                        sDown = true;
+                    }
                     break;
                 case Keys.D:
-                    dDown = true;
+                    if (orangeAlive == false)
+                    {
+                        dDown = false;
+                    }
+                    else
+                    {
+                        dDown = true;
+                    }
                     break;
                 case Keys.B:
-                    bDown = true;
+                    if (greenAlive == false)
+                    {
+                        bDown = false;
+                    }
+                    else
+                    {
+                        bDown = true;
+                    }
                     break;
                 case Keys.N:
-                    nDown = true;
+                    if (greenAlive == false)
+                    {
+                        nDown = false;
+                    }
+                    else
+                    {
+                        nDown = true;
+                    }
                     break;
                 case Keys.M:
-                    mDown = true;
+                    if (greenAlive == false)
+                    {
+                        mDown = false;
+                    }
+                    else
+                    {
+                        mDown = true;
+                    }
                     break;
                 case Keys.Space:
-                    spaceDown = true;
+                    if (greenAlive == false)
+                    {
+                        spaceDown = false;
+                    }
+                    else
+                    {
+                        spaceDown = true;
+                    }
                     break;
                 case Keys.C:
-                    cDown = true;
+                    if (yellowAlive == false)
+                    {
+                        cDown = false;
+                    }
+                    else
+                    {
+                        cDown = true;
+                    }
                     break;
                 case Keys.V:
-                    vDown = true;
+                    if (yellowAlive == false)
+                    {
+                        vDown = false;
+                    }
+                    else
+                    {
+                        vDown = true;
+                    }
                     break;
                 case Keys.X:
-                    xDown = true;
+                    if (yellowAlive == false)
+                    {
+                        xDown = false;
+                    }
+                    else
+                    {
+                        xDown = true;
+                    }
                     break;
                 case Keys.Z:
-                    zDown = true;
+                    if (yellowAlive == false)
+                    {
+                        zDown = false;
+                    }
+                    else
+                    {
+                        zDown = true;
+                    }
                     break;
                 case Keys.Escape:
                     escDown = true;
-                    //Pause();
+                    Pause();
                     break;
             }
         }
@@ -720,8 +1085,6 @@ namespace Tron
                     Form form = this.FindForm();
                     MainScreen ms = new MainScreen();
 
-                    //ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
-
                     form.Controls.Add(ms);
                     form.Controls.Remove(this);
                 }
@@ -751,13 +1114,18 @@ namespace Tron
             countDownBox.Visible = false;
         }
 
-        public FourPlayer()
-        {
-            InitializeComponent();
-        }
         private void FourPlayer_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(blackBrush, 0, this.Height - 150, this.Width, 80);
+            foreach (Trail b in playerTrailList)
+            {
+                e.Graphics.FillRectangle(b.colour, b.trailX, b.trailY, b.trailWidth, b.trailHeight);
+            }
+            e.Graphics.DrawImage(blueRider, BlueRider.X, BlueRider.Y, BlueRider.riderWidth, BlueRider.riderHeight);
+            e.Graphics.DrawImage(orangeRider, OrangeRider.X, OrangeRider.Y, OrangeRider.riderWidth, OrangeRider.riderHeight);
+            e.Graphics.DrawImage(yellowRider, YellowRider.X, YellowRider.Y, YellowRider.riderWidth, YellowRider.riderHeight);
+            e.Graphics.DrawImage(greenRider, GreenRider.X, GreenRider.Y, GreenRider.riderWidth, GreenRider.riderHeight);
+
+            e.Graphics.FillRectangle(blackBrush, 0, this.Height - 160, this.Width, 160);
         }
     }
 }

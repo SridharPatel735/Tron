@@ -19,7 +19,6 @@ namespace Tron
         public static System.Windows.Media.MediaPlayer backgroundPlayer = new System.Windows.Media.MediaPlayer();
         public static System.Windows.Media.MediaPlayer buttonMovePlayer = new System.Windows.Media.MediaPlayer();
         public static System.Windows.Media.MediaPlayer buttonClickPlayer = new System.Windows.Media.MediaPlayer();
-        public static Boolean multiplayer = false;
         public MainScreen()
         {
             InitializeComponent();
@@ -93,23 +92,14 @@ namespace Tron
 
         private void multiPlayerButton_Click(object sender, EventArgs e)
         {
-            multiplayer = true;
             buttonClickPlayer.Open(new Uri(Application.StartupPath + "/Resources/ButtonClick.wav"));
             buttonClickPlayer.Play();
             Form f = this.FindForm();
             f.Controls.Remove(this);
-            InstructionScreen gs = new InstructionScreen();
+            InstructionScreen4Player gs = new InstructionScreen4Player();
             f.Controls.Add(gs);
             gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
             gs.Focus();
-            InstructionScreen.l1.Visible = false;
-            InstructionScreen.l2.Visible = false;
-            InstructionScreen.l3.Visible = false;
-            InstructionScreen.l4.Visible = false;
-            InstructionScreen.l5.Visible = false;
-            InstructionScreen.l6.Visible = false;
-            InstructionScreen.l7.Visible = false;
-            InstructionScreen.l8.Visible = false;
         }
     }
 }
